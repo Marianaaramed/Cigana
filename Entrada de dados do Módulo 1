@@ -51,8 +51,8 @@ void telaPrincipal(void) {
     printf("///                      = = = = = =  Cigana Virtual = = = = = =                      ///\n");
     printf("///                                                                                   ///\n");
     printf("///                        1. Módulo Usuário                                          ///\n");
-    printf("///                        2. Módulo Previsões                                        ///\n");
-    printf("///                        3. Módulo Antrologia                                       ///\n");
+    printf("///                        2. Módulo Consultor                                        ///\n");
+    printf("///                        3. Módulo Oráculo                                          ///\n");
     printf("///                        4. Módulo Relatórios                                       ///\n");
     printf("///                        5. Módulo Sobre                                            ///\n");
     printf("///                        0. Sair                                                    ///\n");
