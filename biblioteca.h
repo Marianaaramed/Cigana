@@ -1,43 +1,17 @@
-/////////////////////////////////////////////////////////////////////////////////////////
-///                                                                                   ///
-///                   Universidade Federal do Rio Grande do Norte                     ///
-///                   Centro de Ensino Superior do Seridó                             ///
-///                   Departamento de Computação e Tecnologia                         ///
-///                   Disciplina DCT1106 - Programação                                ///
-///                   Projeto Cigana Virtual                                          ///
-///                   Desenvolvido por mariana                                        ///
-///                                                                                   ///
-/////////////////////////////////////////////////////////////////////////////////////////
+#define True 1
+#define False 0
 
+void delay(int);
+void limpaTela(void);
+int ehDigito(char); 
+int ehDigito(char);
+int ehLetra(char);
+int ehBissexto(int);
+int ehData(int, int, int);
 
-//////
-////// Assisnaturas das funcões Módulo Usuario
-//////
-typedef struct usuario Usuario;
-
-struct usuario {
-    char CPF[12];
-    char nome[51];
-    char email[51];
-    char nasc[11];
-    char celular[12];
-    int status;
-};
-
-void moduloUsuario(void);
-char menuUsuario(void);
-Usuario* telapreecherUsuario(void);
-char* telaPesquisarUsuario(void);
-char* telaAlterarUsuario(void);
-void telaExcluirUsuario(void);
-char* telaExcluirUsuario(void);
-void telaErroArquivo(void);
-void cadastrarUsuario(void);
-void pesquisarUsuario(void);
-void alterarUsuario(void);
-void excluirUsuario(void);
-void gravarUsuario(Usuario*);
-void exibirUsuario(Usuario*);
-Usuario* buscarUsuario(char);
-void exibirUsuario(Usuario*);
-void regravarUsuario(Usuario*)
+int validarNome(char*);
+int validarcpf(char*);
+int validarEmail(char*);
+int validarData(char*);
+int validarCelular(char*);
+int validarNum(char*)
