@@ -16,7 +16,7 @@
 
 typedef struct consultor Consultor;
 struct consultor {
-    char CPF[12];
+    char cpf[12];
     char nome[51];
     char especialidade[51];
     char email[51];
@@ -27,7 +27,7 @@ struct consultor {
 
 void moduloConsultor(void);
 char menuConsultor(void);
-Consultor* telaPreencherConsultor(void);
+Consultor* telaCadastrarConsultor(void);
 char* telaPesquisarConsultor(void);
 char* telaAlterarConsultor(void);
 char* telaExcluirConsultor(void);
