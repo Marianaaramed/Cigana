@@ -24,7 +24,7 @@ void moduloConsultor(void);
 
 void cadastrarConsultor(void){
     Consultor *csr;
-    csr = telaPreencherConsultor();    
+    csr = telaCadastrarConsultor();    
     gravarConsultor(csr);     
     free(csr);
 }
@@ -52,12 +52,13 @@ void alterarConsultor(void) {
   printf("\n\nConsultor não encontrado!\n\n");
   } else {
     regravarConsultor(csr, cpf);
-            csr = telaPreencherConsultor();
+            csr = telacadastrarConsultor();
             strcpy(csr->cpf, cpf);
             regravarConsultor(csr);
             // Outra opção:
             // excluirConsultor(cpf);
             // gravarConsultor(csr);
+	    free(csr);
   }
   free(cpf);
 }
@@ -90,12 +91,12 @@ char menuConsultor(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///                  = = = = = = = = = Menu Consultor = = = = = = = =             ///\n");
+    printf("///                   = = = = = = = = = Menu Consultor = = = = = = =              ///\n");
     printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                               ///\n");
     printf("///                   1. Cadastrar novo Consultor                                 ///\n");
     printf("///                   2. Pesquisar Consultor                                      ///\n");
-    printf("///                   3. Atualizar cadastro do Consultor                          ///\n");
+    printf("///                   3. Alterar cadastro do Consultor                            ///\n");
     printf("///                   4. Excluir Consultor do sistema                             ///\n");
     printf("///                   0. Voltar ao menu anterior                                  ///\n");
     printf("///                                                                               ///\n");
@@ -112,31 +113,31 @@ char menuConsultor(void) {
 
 
 
-void telaErroArquivo(void) {
+void telaErroArquivoConsultor(void) {
     limpaTela();
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
-	printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
-	printf("///           = = = com informações sobre o Consultor = = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
-	printf("///           = = =  mas este programa será finalizado! = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///                                                                       ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
+    printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
+    printf("///           = = = com informações sobre o Consultor = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-	printf("\n\nTecle ENTER para continuar!\n\n");
-	getchar();
-	exit(1);
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+    exit(1);
 }
 
 
 
-Consultor* telaPreencherConsultor(void) {    
+Consultor* telaCadastrarrConsultor(void) {    
     Consultor *csr;
+    csr = (Consultor*) malloc(sizeof(Consultor ));
     limpaTela();
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -145,7 +146,6 @@ Consultor* telaPreencherConsultor(void) {
     printf("///                = = = = = = = = Cadastrar Consultor = = = = = = =              ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
-  csr = (Consultor*) malloc(sizeof(Consultor)); 
   do {
         printf("///                  CPF (apenas números): ");
         scanf("%[0-9]", csr->cpf);
@@ -175,7 +175,7 @@ do {
 
 
 
-char telaPesquisarConsultor(void) {
+char* telaPesquisarConsultor(void) {
     char* cpf;
 
     cpf = (char*) malloc(12*sizeof(char));
@@ -200,7 +200,7 @@ char telaPesquisarConsultor(void) {
  
 
 
-char telaAlterarConsultor(void) {
+char* telaAlterarConsultor(void) {
     char* cpf;
 
     cpf = (char*) malloc(12*sizeof(char));
@@ -225,7 +225,7 @@ char telaAlterarConsultor(void) {
 
 
 
-char telaExcluirConsultor(void) {
+char* telaExcluirConsultor(void) {
     char* cpf;
 
     cpf = (char*) malloc(12*sizeof(char));
@@ -255,7 +255,7 @@ void gravarConsultor(Consultor* csr) {
 
   fp = fopen("consultores.dat", "ab");
      if (fp == NULL) {
-          telaErroArquivo();
+          telaErroArquivoConsultor();
   }
   fwrite(csr, sizeof(Consultor), 1, fp);
   fclose(fp);
@@ -270,7 +270,7 @@ Consultor* buscarConsultor(char* cpf) {
     csr = (Consultor*) malloc(sizeof(Consultor));
     fp = fopen("consultores.dat", "rb");
     if (fp == NULL) {
-                telaErroArquivo();
+                telaErroArquivoConsultor();
     }
         while(fread(csr, sizeof(Consultor), 1, fp)) {
             if (strcm(csr->cpf, cpf) == 0) && (csr->status == True)) {
@@ -311,7 +311,7 @@ void regravarConsultor(Consultor* csr, char* cpf) {
     csrLido = (Consultor*) malloc(sizeof(Consultor));
         fp = fopen("consultores.dat", "r+b");
         if (fp == NULL) {
-                telaErroArquivo();
+                telaErroArquivoConsultor();
         }
         //while(!feof(fp)) {
         achou = False;
