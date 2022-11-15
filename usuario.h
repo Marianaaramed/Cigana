@@ -26,18 +26,16 @@ struct usuario {
 
 void moduloUsuario(void);
 char menuUsuario(void);
-Usuario* telapreecherUsuario(void);
+Usuario* telaCadastrUsuario(void);
 char* telaPesquisarUsuario(void);
-char* telaAlterarUsuario(void);
+void telaAlterarUsuario(void);
 void telaExcluirUsuario(void);
-char* telaExcluirUsuario(void);
-void telaErroArquivo(void);
+void gravarUsuario(Usuario*)
+
 void cadastrarUsuario(void);
 void pesquisarUsuario(void);
 void alterarUsuario(void);
 void excluirUsuario(void);
-void gravarUsuario(Usuario*);
-void exibirUsuario(Usuario*);
+
 Usuario* buscarUsuario(char);
 void exibirUsuario(Usuario*);
-void regravarUsuario(Usuario*)
