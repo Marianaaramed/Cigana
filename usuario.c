@@ -113,31 +113,31 @@ char menuUsuario(void) {
 
 
 
-void telaErroArquivo(void) {
+void telaErroArquivoUsuario(void) {
     limpaTela();
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
-	printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
-	printf("///           = = = com informações sobre o Usuário = = = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
-	printf("///           = = =  mas este programa será finalizado! = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///                                                                       ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
+    printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
+    printf("///           = = = com informações sobre o Usuário = = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");	
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-	printf("\n\nTecle ENTER para continuar!\n\n");
-	getchar();
-	exit(1);
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+    exit(1);
 }
 
 
 
 Usuario* telaPreencherUsuario(void) {    
-    Usuario *usr;
+    Usuario* usr;
+    usr = (Usuario*) malloc(sizeof(Usuario));
     limpaTela();
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -146,7 +146,6 @@ Usuario* telaPreencherUsuario(void) {
     printf("///                = = = = = = = = Cadastrar Usuário  = = = = = = = =             ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
-  usr = (Usuario*) malloc(sizeof(Usuario)); 
   do {
         printf("///                  CPF (apenas números): ");
         scanf("%[0-9]", usr->cpf);
@@ -178,8 +177,8 @@ do {
 
 char telaPesquisarUsuario(void) {
     char* cpf;
-
     cpf = (char*) malloc(12*sizeof(char));
+	
     limpaTela();
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -256,7 +255,7 @@ void gravarUsuario(Usuario* usr) {
 
   fp = fopen("usuarios.dat", "ab");
      if (fp == NULL) {
-          telaErroArquivo();
+          telaErroArquivoUsuario();
   }
   fwrite(usr, sizeof(Usuario), 1, fp);
   fclose(fp);
@@ -271,7 +270,7 @@ Usuario* buscarUsuario(char* cpf) {
     usr = (Usuario*) malloc(sizeof(Usuario));
     fp = fopen("usuarios.dat", "rb");
     if (fp == NULL) {
-                telaErroArquivo();
+                telaErroArquivoUsuario();
     }
         while(fread(usr, sizeof(Usuario), 1, fp)) {
             if (strcm(usr->cpf, cpf) == 0) && (usr->status == True)) {
@@ -312,7 +311,7 @@ void regravarUsuario(Usuario* usr, char* cpf) {
     usrLido = (Usuario*) malloc(sizeof(Usuario));
         fp = fopen("usuarios.dat", "r+b");
         if (fp == NULL) {
-                telaErroArquivo();
+                telaErroArquivoUsuario();
         }
         //while(!feof(fp)) {
         achou = False;
