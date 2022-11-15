@@ -11,12 +11,10 @@
 
 
 
-//////
-////// Assistenaturas das funções 
-//////
 typedef struct  oraculo Oraculo;
 
 struct oraculo {
+    char num[15];
     char temas[50];
     char horoscopo[50];
     char previsoes[50];
@@ -25,12 +23,13 @@ struct oraculo {
 
 
 void moduloOraculo(void);
-char telaMenuOraculo(void);
-void telaCadastrarOraculo(void);
+char telamenuOraculo(void);
+Oraculo* telaCadastrarOraculo(void);
 void telaPesquisarOraculo(void);
 void telaAlterarOraculo(void);
 void telaExcluirOraculo(void);
-void CadastrarOraculo(void);
-void PesquisarOraculo(void);
-void AlterarOraculo(void);
-void ExcluirOraculo(void);
+void cadastrarOraculo(void);
+void pesquisarOraculo(void);
+void alterarOraculo(void);
+void excluirOraculo(void);
+void gravarOraculo(Oraculo*);
