@@ -263,7 +263,7 @@ void gravarConsultor(Consultor* csr) {
 
 
 
-Usuario* buscarUsuario(char* cpf) {
+Consultor* buscarConsultor(char* cpf) {
     FILE* fp;
     Consultor* csr;
 
