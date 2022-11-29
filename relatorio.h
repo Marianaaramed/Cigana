@@ -1,0 +1,12 @@
+void moduloRelatorio(void);
+char menuRelatorio(void);
+void tempoPorconsultar(void);
+void usuariosPorconsultor(void);
+void oraculosPorconsultor(void);
+char* telaTempoPorconsultar(void);
+char* telaUsuariosPorconsultor(void);
+char* telaOraculosPorconsultor(void);
+void relatTempoPorconsultar(char*);
+void relatUsuariosPorconsultor(char*);
+void relatOraculosPorconsultor(char*);
+void listaOraculosPorconsultor(char*);
