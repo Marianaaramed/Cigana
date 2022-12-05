@@ -279,10 +279,3 @@ void listaOraculosPorconsultor(char* cpfCsr) {
     fclose(fp);
     free(ocl);
 }
-
-
-
-
-
-
-
