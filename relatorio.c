@@ -20,33 +20,159 @@ void moduloRelatorio(void) {
 	} while (opcao != '0');
 }
 
-void usuarioPororaculo(void) {
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-    char* codOraculo;
-	codOraculo = telaUsuarioPororaculo();
-    relatUsuarioPororaculo(codOraculo);
-    free(codOraculo);
+
+UsuarioPororaculo* telaUsuariosPorconsultor(void){
+	char* codOraculo;
+	codOraculo = (char*) malloc(4*sizeof(char));
+	limpaTela();
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = = = = = = =  Cigana Virtual   = = = = = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = =  Usuario Por oraculo  = = = = = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	 do{
+        printf("\t === Insira o CPF do Usuario:    ");
+        scanf("%s", codOraculo->cpf);
+        getchar();
+	 }while(!validarCPF(codOraculo->cpf));
+	printf("\t === Insira o codigo do servico:  ");
+	scanf("%10[^\n]", codOraculo->codigo_servico);
+	getchar();
+	printf("\t === Insira a data de agendamento:   ");
+	scanf("%s", codOraculo->data);
+	getchar();
+	printf("\t === Insira o horario:   ");
+	scanf("%s", codOraculo->hora);
+	getchar();
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	delay(1);
+    	return codOraculo;
 }
 
-void oraculoPorconsultor(void) {
+
+
+void gravaUsuario(UsuarioPororaculo* codOraculo){
+    FILE* fp;
+    fp = fopen("usuario.dat", "ab");
+    if(fp==NULL){
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possivel continuar esse programa...\n");
+        exit(1);
+    }
+    fwrite(age,sizeof(UsuarioPororaculo),1,fp);
+    fclose(fp);
+}
+UsuarioPororaculo* buscarUsuario(){
+    FILE* fp;
+    UsuarioPororaculo* codOraculo;
+    char codOraculo[15];
+    printf("\n ===== Buscar Usuario Por oraculo ======");
+    printf("\n Informe o codigo de servico: ");
+    scanf("%s", codOraculo);
+    getchar();
     
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-    char* cpfConsultor;
-	cpfConsultor = telaOraculoPorconsultor();
-    relatOraculoPorconsultor(cpfConsultor);
-    free(cpfConsultor);
+    codOraculo = (UsuarioPororaculo*) malloc(sizeof(UsuarioPororaculo));
+    fp = fopen("usuario.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu  ko um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+    while(!feof(fp)){
+        fread(codOraculo, sizeof(UsuarioPororaculo), 1, fp);
+        if ((strcmp(codOraculo -> codigo_servico, codOraculo) == 0) &&(codOraculo->status != 'x')){
+            fclose(fp);
+            return codOraculo;
+        }
+    }
+fclose(fp);
+return NULL;
 }
 
-void oraculoPortempo(void) {
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-    char* tempo;
-	tempo = telaOraculoPortempo();
-    relatOraculoPortempo(tempo);
-    free(tempo);
+
+
+UsuarioPororaculo* buscarUsuario(){
+    FILE* fp;
+    UsuarioPororaculo* codOraculo;
+    char codOraculo[15];
+    printf("\n ===== Buscar Usuario por oraculo ======");
+    printf("\n Informe o codigo de servico: ");
+    scanf("%s", codOraculo);
+    getchar();
+    
+    codOraculo = (UsuarioPororaculo*) malloc(sizeof(UsuarioPororaculo));
+    fp = fopen("usuario.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu  ko um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+    while(!feof(fp)){
+        fread(codOraculo, sizeof(UsuarioPororaculo), 1, fp);
+        if ((strcmp(codOraculo -> codigo_servico, codOraculo) == 0) &&(codOraculo->status != 'x')){
+            fclose(fp);
+            return codOraculo;
+        }
+    }
+fclose(fp);
+return NULL;
 }
+
+
+
+void exibeUsuarioPororaculo(UsuarioPororaculo* codOraculo) {
+    printf(" | Codigo da Consultar: %s\n", codOraculo->codigo_servico);
+    printf(" | CPF: %s\n", codOraculo->cpf);
+    printf(" | Tipo de Consultar: %s\n", codOraculo->tipo);
+    printf(" | Tempo do Agendamento: %s\n", codOraculo->hora);
+    printf(" | Status: %c\n", codOraculo->status);
+    printf("\n");
+}
+
+
+
+int listarUsuarioPororaculo(void){
+    FILE* fp;
+    UsuarioPororaculo* codOraculo;
+    fp = fopen("usuario.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Erro na abertura do arquivo!\n");
+        return 0;
+    }
+    codOraculo = (UsuarioPororaculo*)malloc(sizeof(UsuarioPororaculo));
+    while(fread(codOraculo, sizeof(UsuarioPororaculo), 1, fp)) {
+	    if (cpf->status == 'x') {
+        system(" cls || clear");
+        printf(" | ===================== Lista Usuarios ======================== | \n");
+        printf(" |                                                           | \n");
+        exibeusuario(cpf);    
+        printf(" | Pressione qualquer tecla para sair...");
+        getchar();
+		    else {
+            printf(" | Nenhum Usuario excluido...\n");
+            printf(" | Pressione qualquer tecla para sair...");
+            getchar();
+             }
+    }
+    fclose(fp);
+    free(codOraculo);
+    return 0;
+
+}    
+
+
 
 char menuRelatorio(void) {
 	char op;
