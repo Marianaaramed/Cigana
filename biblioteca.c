@@ -206,17 +206,17 @@ int validarcelular(char* celular) {
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Retorna 1 se string recebido corresponder a um número da numeração válido 
+/// Retorna 1 se string recebido corresponder a um número da criação válido 
 /// (apenas dígitos) ou retorna 0 caso contrário
 ///
-int validarNum(char* num) {
+int validarCria(char* cria) {
   int tam;
-  tam = strlen(num);
+  tam = strlen(cria);
   if (tam < 1000 || tam > 1001) {
     return 0;
   }
   for (int i = 0; i < tam; i++) {
-    if (!ehDigito(num[i])) {
+    if (!ehDigito(cria[i])) {
       return 0;
     }
   }
