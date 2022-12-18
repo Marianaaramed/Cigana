@@ -17,10 +17,10 @@ int main(void) {
     return 0;
 }
 
-// ///
+/////
 // Funções
 
-void  telaPrincipal(void) {
+void telaPrincipal(void) {
     printf("\n");
     printf("////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                  ///\n");
@@ -48,7 +48,7 @@ void  telaPrincipal(void) {
 
 
 
-void  telaSobre(void) {
+void telaSobre(void) {
     printf("\n");
     printf("////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                  ///\n");
@@ -73,7 +73,7 @@ void  telaSobre(void) {
 
 
 
-void  telaEquipe(void) {
+void telaEquipe(void) {
     printf("\n");
     printf("////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                  ///\n");
@@ -86,7 +86,7 @@ void  telaEquipe(void) {
     printf("///                                                                                  ///\n");
     printf("////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                  ///\n");
-    printf("///                   = = = = = = Cigana Virtual = = = = = =                         ///\n");
+    printf("///                 = = = = = = = = Cigana Virtual = = = = = = =                     ///\n");
     printf("///                                                                                  ///\n");
     printf("///                 Este projeto foi desenvolvido por:                               ///\n");
     printf("///                                                                                  ///\n");
