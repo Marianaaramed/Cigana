@@ -10,7 +10,7 @@
 
 
 void telaSobre(void) {
-    sistema("clear || cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
@@ -38,7 +38,7 @@ void telaSobre(void) {
 
 
 void telaEquipe(void) {
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
