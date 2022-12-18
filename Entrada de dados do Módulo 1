@@ -7,11 +7,11 @@
 void telaPrincipal(void);
 void telaSobre(void);
 void telaEquipe(void);
-void telaMenuUsuário(void);
-void telaCadastrarUsuário(void);
-void telaPesquisarUsuário(void);
-void telaAlterarUsuário(void);
-void telaExcluirUsuário(void);
+void telaMenuUsuario(void);
+void telaCadastrarUsuario(void);
+void telaPesquisarUsuario(void);
+void telaAlterarUsuario(void);
+void telaExcluirUsuario(void);
 
 /////
 //Programa principal
@@ -20,11 +20,11 @@ int main(void) {
     telaPrincipal();
     telaSobre();
     telaEquipe();
-    telaMenuUsuário();
-    telaCadastrarUsuário();
-    telaPesquisarUsuário();
-    telaAlterarUsuário();
-    telaExcluirUsuário();
+    telaMenuUsuario();
+    telaCadastrarUsuario();
+    telaPesquisarUsuario();
+    telaAlterarUsuario();
+    telaExcluirUsuario();
     return 0;
 }
 
@@ -35,7 +35,7 @@ int main(void) {
 
 void telaPrincipal(void) {
     char op;
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
@@ -53,8 +53,9 @@ void telaPrincipal(void) {
     printf("///                        1. Módulo Usuário                                          ///\n");
     printf("///                        2. Módulo Consultor                                        ///\n");
     printf("///                        3. Módulo Oráculo                                          ///\n");
-    printf("///                        4. Módulo Relatórios                                       ///\n");
-    printf("///                        5. Módulo Sobre                                            ///\n");
+    printf("///                        4. Módulo Consulta                                        ///\n");
+    printf("///                        5. Módulo Relatórios                                       ///\n");
+    printf("///                        6. Módulo Sobre                                            ///\n");
     printf("///                        0. Sair                                                    ///\n");
     printf("///                                                                                   ///\n");
     printf("///                        Escolha a opção desejada:   ");
@@ -71,7 +72,7 @@ void telaPrincipal(void) {
 
 
 void telaSobre(void) {
-    sistema("clear || cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
@@ -86,9 +87,9 @@ void telaSobre(void) {
     printf("///                                                                                   ///\n");
     printf("///                      = = = = = = Cigana Virtual  = = = = = =                      ///\n");
     printf("///                                                                                   ///\n");
-    printf("///          Programa  utilizado na disciplina DCT1106 - Programação, para fins       ///\n");
-    printf("///          avaliativo no Semestre 2021.2. O programa contém os principais módulos   ///\n");
-    printf("///          e funcionalidades que serão exigidos ao longo da disciplina.             ///\n");
+    printf("///        Programa  utilizado na disciplina DCT1106 - Programação, para fins         ///\n");
+    printf("///        avaliativo no Semestre 2021.2. O programa contém os principais módulos     ///\n");
+    printf("///        e funcionalidades que serão exigidos ao longo da disciplina.               ///\n");
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
@@ -99,7 +100,7 @@ void telaSobre(void) {
 
 
 void telaEquipe(void) {
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
@@ -112,7 +113,7 @@ void telaEquipe(void) {
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
-    printf("///                      = = = = = = Cigana Virtual = = = = = =                       ///\n");
+    printf("///                 = = = = = = = = Cigana Virtual = = = = = = = =                    ///\n");
     printf("///                                                                                   ///\n");
     printf("///             Este projeto exemplo foi desenvolvido por:                            ///\n");
     printf("///                                                                                   ///\n");
@@ -128,18 +129,18 @@ void telaEquipe(void) {
 
 
 
-void telaMenuUsuário(void) {
+void telaMenuUsuario(void) {
     char op;
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///               = = = = = = = = = = Menu Usuário = = = = = = = = = =            ///\n");
-    printf("///                = = = = = = = = = = = = = = = = = = = = = = = = = =            ///\n");
+    printf("///                 = = = = = = = = = Menu Usuário = = = = = = = = =              ///\n");
+    printf("///                 = = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                               ///\n");
     printf("///                     1. Cadastrar Usuário                                      ///\n");
-    printf("///                     2. Pesquisar o CPF do Usuário                             ///\n");
+    printf("///                     2. Pesquisar dados do Usuário                             ///\n");
     printf("///                     3. Atualizar o cadastro do Usuário                        ///\n");
     printf("///                     4. Excluir Usuário do sistema                             ///\n");
     printf("///                     0. Voltar ao menu anterior                                ///\n");
@@ -157,18 +158,18 @@ void telaMenuUsuário(void) {
 
 
 
-void telaCadastrarUsuário(void) {
+void telaCadastrarUsuario(void) {
     char CPF[12];
     char nome[51];
     char email[51];
     char nasc[11];
     char celular[12];
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                = = = = = = = = = Cadastrar Usuário = = = = = = = =            ///\n");
+    printf("///                  = = = = = = = = Cadastrar Usuário = = = = = = =              ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
     printf("///                  CPF (apenas números): ");
@@ -196,14 +197,14 @@ void telaCadastrarUsuário(void) {
 
 
 
-void telaPesquisarUsuário(void) {
+void telaPesquisarUsuario(void) {
     char CPF[12];
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
-    printf("///               = = = = = = = = Pesquisar Usuário = = = = = = = =               ///\n");
+    printf("///                 = = = = = = = Pesquisar Usuário = = = = = = = =               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
     printf("///                     Informe o CPF (apenas números):  ");
@@ -219,14 +220,14 @@ void telaPesquisarUsuário(void) {
 
 
 
-void telaAlterarUsuário(void) {
+void telaAlterarUsuario(void) {
     char CPF[12];
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                = = = = = = = = Alterar Usuário = = = = = = = = =              ///\n");
+    printf("///                  = = = = = = = Alterar Usuário = = = = = = = = =              ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
     printf("///                     Informe o CPF (apenas números):    ");
@@ -242,14 +243,14 @@ void telaAlterarUsuário(void) {
 
 
 
-void telaExcluirUsuário(void) {
+void telaExcluirUsuario(void) {
     char CPF[12];
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
-    printf("///               = = = = = = = = Excluir Usuário = = = = = = = = =               ///\n");
+    printf("///                 = = = = = = = Excluir Usuário = = = = = = = = =               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
     printf("///                 Informe o CPF (apenas números):     ");
