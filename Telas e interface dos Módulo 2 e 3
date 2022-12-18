@@ -378,7 +378,7 @@ void telaAlterarConsultor(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
-    printf("///                 = = = = = = = Alterar Consultor = = = = = = = =               ///\n");
+    printf("///                 = = = = = = = Atualizar Consultor = = = = = = = =               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
     printf("///                    Informe o CPF (apenas números):     ");                      
@@ -429,7 +429,7 @@ void telaMenuOraculo(void) {
     printf("///                                                                               ///\n");
     printf("///                     1. Cadastrar Oráculo                                      ///\n");
     printf("///                     2. Pesquisar Oráculo                                      ///\n");
-    printf("///                     3. Alterar Oráculo                                        ///\n");
+    printf("///                     3. Atualizar Oráculo                                        ///\n");
     printf("///                     4. Excluir Oráculo                                        ///\n");
     printf("///                     0. Voltar ao menu anterior                                ///\n");
     primtf("///                                                                               ///\n");
