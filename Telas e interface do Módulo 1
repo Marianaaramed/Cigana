@@ -38,7 +38,7 @@ int main(void) {
 // Funções
 
 void telaPrincipal(void) {
-    sistema("clear||cls");
+    system("clear||cls"); 
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
@@ -69,7 +69,7 @@ void telaPrincipal(void) {
 
 
 void telaSobre(void) {
-    sistema("clear || cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
@@ -97,7 +97,7 @@ void telaSobre(void) {
 
 
 void telaEquipe(void) {
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
@@ -127,7 +127,7 @@ void telaEquipe(void) {
 
 
 void telaMenuUsuario(void) {
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
@@ -153,7 +153,7 @@ void telaMenuUsuario(void) {
 
 
 void telaCadastrarUsuario(void) {
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
@@ -177,7 +177,7 @@ void telaCadastrarUsuario(void) {
 
 
 void telaPesquisarUsuario(void) {
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
@@ -197,7 +197,7 @@ void telaPesquisarUsuario(void) {
 
 
 void telaAlterarUsuario(void) {
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
@@ -217,7 +217,7 @@ void telaAlterarUsuario(void) {
 
 
 void telaExcluirUsuario(void) {
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
