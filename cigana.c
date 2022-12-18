@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include "Usuario.h"
-#include "Consultor.h"
-#include "Oraculo.h"
-#include "relatorio.h"
+#include <unistd.h>
+#include "usuario.h"
+#include "consultor.h"
+#include "oraculo.h"
+
 
 /////
 // Assinatura das funções
@@ -12,9 +12,6 @@
 void menuPrincipal(void);
 void telaSobre(void);
 void telaEquipe(void);
-void moduloRelarorio(void);
-void delay(int)
-
 
 
 
@@ -81,61 +78,7 @@ char menuPrincipal(void) {
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    delay(1);
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
     return op;
-}
-
-
-
-void telaSobre(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                                   ///\n");
-    printf("///                    Universidade Federal do Rio Grande do Norte                    ///\n");
-    printf("///                    Centro de Ensino Superior do Seridó                            ///\n");
-    printf("///                    Departamento de Computação e Tecnologia                        ///\n");
-    printf("///                    Disciplina DCT1106 - Programação                               ///\n");
-    printf("///                    Projeto Cigana Virtual                                         ///\n");
-    printf("///                    Desenvolvido por mariana - 2022.2                              ///\n");
-    printf("///                                                                                   ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                                   ///\n");
-    printf("///                   = = = = = = = Sistema Cigana Virtual = = = = = = = =            ///\n");
-    printf("///                                                                                   ///\n");
-    printf("///          Programa  utilizado na disciplina DCT1106 - Programação, para fins       ///\n");
-    printf("///          avaliativo no Semestre 2022.2. O programa contém os principais módulos   ///\n");
-    printf("///          e funcionalidades que serão exigidos ao longo da disciplina.             ///\n");
-    printf("///                                                                                   ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-void telaEquipe(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                                   ///\n");
-    printf("///                   Universidade Federal do Rio Grande do Norte                     ///\n");
-    printf("///                   Centro de Ensino Superior do Seridó                             ///\n");
-    printf("///                   Departamento de Computação e Tecnologia                         ///\n");
-    printf("///                   Disciplina DCT1106 - Programação                                ///\n");
-    printf("///                   Projeto Cigana Virtual                                          ///\n");
-    printf("///                   Desenvolvido por mariana - 2022.2                               ///\n");
-    printf("///                                                                                   ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                                   ///\n");
-    printf("///                      = = = = = = Sistema Cigana Virtual  = = = = = =              ///\n");
-    printf("///                                                                                   ///\n");
-    printf("///                Este projeto exemplo foi desenvolvido por:                         ///\n");
-    printf("///                                                                                   ///\n");
-    printf("///                Mariana Araújo de Medeiros                                         ///\n");
-    printf("///                E-mail: mariana.medeiros.017@ufrn.edu.br                           ///\n");
-    printf("///                Repositório: https://github.com/Marianaaramed/Cigana.git           ///\n");
-    printf("///                                                                                   ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
 }
