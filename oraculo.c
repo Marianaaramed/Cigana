@@ -3,6 +3,7 @@
 #include "oraculo.h"
 #include "biblioteca.h"
 
+typedef struct oraculo Oraculo;
 
 void moduloOraculo(void);
      char opcao;
@@ -57,12 +58,11 @@ void menuOraculo(void) {
     char op;
 
     system("clear||cls");
-    limpaTela();
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///              = = = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
-    printf("///              = = = = = = = = = Menu Oraculo = = = = = = = = = =               ///\n");
+    printf("///              = = = = = = = = = Menu Oraculo = = = = = = = = =                 ///\n");
     printf("///              = = = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
     printf("///                                                                               ///\n");
     printf("///               1. Cadastrar Oraculo                                            ///\n");
@@ -85,23 +85,23 @@ void menuOraculo(void) {
 
 
 void telaErroArquivoOraculo(void) {
-    limpaTela();
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("///                                                                       ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
-	printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
-	printf("///           = = = = com informações sobre o Oraculo = = = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
-	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///                                                                       ///\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
+    printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
+    printf("///           = = = = com informações sobre o Oraculo = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-	printf("\n\nTecle ENTER para continuar!\n\n");
-	getchar();
-	exit(1);
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+    exit(1);
 }
 
 
@@ -110,25 +110,24 @@ void telaErroArquivoOraculo(void) {
     Oraculo ocl;
     ocl = (Oraculo*) malloc(sizeof(Oraculo));
 
-    limpaTela();
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///                  = = = = = = = = Cadastrar Oraculo = = = = = = = =            ///\n");
+    printf("///                   = = = = = = = = Cadastrar Oraculo = = = = = = =            ///\n");
     printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                               ///\n");
-    printf("///                    Numeração (apenas números): ");  
-    scanf("%[0-9]", num);
+    printf("///                    Código do Oráculo:      ");
+    scanf("%[A-Z0-9]", codOraculo);
     getchar();
-    printf("///                    Tema:       ");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", tema);
+    printf("///                   Tipo do Oráculo:        ");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ0-9]", tipoOraculo);
     getchar();
-    printf("///                    Horoscopo:  ");
-    scanf("%[0-9]", horoscopo);
-    getchar();
-    printf("///                    Previsoes:  ");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", previsoes);    
+    printf("///                   Duração:       ");
+    scanf("%[0-9]", horario);
+    printf("///                   Data da Criação (dd/mm/aaaa):     ");
+    scanf("%[0-9/]", criacao);  
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -141,18 +140,18 @@ void telaErroArquivoOraculo(void) {
 
 
 void telaPesquisarOraculo(void) {
-    char num[12];
+    char codOraculo[4];
     
-    limpaTela();
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                  = = = = = = = Pesquisar Oraculo = = = = = = = =              ///\n");
+    printf("///                  = = = = = = = Pesquisar Oráculo = = = = = = = =              ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
-    printf("///                  Informe a numeração(apenas números): ");
-    scanf("%[0-9]", num);
+    printf("///                   Código do Oráculo:      ");
+    scanf("%[A-Z0-9]", codOraculo); 
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -164,9 +163,9 @@ void telaPesquisarOraculo(void) {
 
 
 void telaAlterarOraculo(void) {
-    char num[12];
+    char codOraculo[4];
 
-    limpaTela();
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
@@ -174,8 +173,8 @@ void telaAlterarOraculo(void) {
     printf("///                  = = = = = = = Alterar Oraculo = = = = = = = = =              ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
-    printf("///                  Informe a numeração(apenas números): ");
-    scanf("%[0-9]", num);
+    printf("///                     Código do Oráculo:      ");
+    scanf("%[A-Z0-9]", codOraculo); 
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -187,9 +186,9 @@ void telaAlterarOraculo(void) {
 
 
 void telaExcluirOraculo(void) {
-    char num[12];
+   char codOraculo[4];
 
-    limpaTela();
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
@@ -197,8 +196,8 @@ void telaExcluirOraculo(void) {
     printf("///                 = = = = = = = Excluir Oraculo = = = = = = = = =               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
-    printf("///                 Informe a numeração (apenas números): ");
-    scanf("%[0-9]", num);
+    printf("///                   Código do Oráculo:      ");
+    scanf("%[A-Z0-9]", codOraculo); 
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
