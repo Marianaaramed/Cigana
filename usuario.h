@@ -39,3 +39,4 @@ void excluirUsuario(void);
 
 Usuario* buscarUsuario(char);
 void exibirUsuario(Usuario*);
+void regravarUsuario(Usuario*);
