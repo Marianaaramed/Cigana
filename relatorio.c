@@ -22,23 +22,26 @@ void moduloRelatorio(void) {
 
 
 void usuarioPorConsultor() {
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaUsuarioPorConsultor();
+	char* cpfCsr;
+	cpfCsr = telaUsuarioPorConsultor();
+    relatUsuarioPorConsultor(cpfCsr);
+    free(cpfCsr);
 }
-
+	
 
 void oraculoPorConsultor() {
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaOraculoPorConsultor();
+	char* cpfCsr;
+	cpfCsr = telaOraculoPorConsultor();
+    relatOraculoPorConsultor();(cpfCsr);
+    free(cpfCsr);
 }
-
+	
 
 void tempoPorOraculo() {
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaTempoPorOraculo();
+	char* codOraculo;
+	codOraculo = telaTempoPorOraculo();
+    relatTempoPorOraculo();(codOraculo);
+    free(codOraculo);
 }
 
 
@@ -78,9 +81,9 @@ char menuRelatorio(void) {
 
 
 
-void telaUsuarioPorConsultor(void) {
-    char cpf[12];
-    
+char* telaUsuarioPorConsultor(void) {
+    char* cpfCsr;
+    cpfCsr = (char*) malloc(4*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -96,7 +99,7 @@ void telaUsuarioPorConsultor(void) {
     printf("///           = = = = = =  Usuario Por Consultor  = = = = = = =             ///\n");
     printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                       ///\n");
-    printf("///           Informe o CPF do Consultor: ");
+    printf("///            Informe o CPF do Consultor: ");
     scanf("%[0-9]", cpf);
     getchar();
     printf("///                                                                       ///\n");
@@ -104,13 +107,14 @@ void telaUsuarioPorConsultor(void) {
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return cpfCsr;
 }
 
 
 
-void telaOraculoPorConsultor(void) {
-	char cpf[12];
-    	
+char* telaOraculoPorConsultor(void) {
+	char* cpfCsr;
+    	cpfCsr = (char*) malloc(4*sizeof(char));
     	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -133,13 +137,14 @@ void telaOraculoPorConsultor(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
+	return cpfCsr;
 }
 
 
 
-void telaTempoPorOraculo(void) {
-	char codOraculo[4];      
-
+char* telaTempoPorOraculo(void) {
+	char* codOraculo[4]; 
+	codOraculo = (char*) malloc(4*sizeof(char));
         system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -156,4 +161,89 @@ void telaTempoPorOraculo(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
+	return codOraculo;
 }
+
+
+
+void relatUsuarioPorConsultor(char* cpfCsr){
+	 // posteriormente, esta função irá buscar o nome do Consultor no arquivo 
+    	// por enquanto, o nome será preenchido com um valor predefinido
+    nomeCsr = (char*) malloc(10*sizeof(char));
+    strcpy(nomeCsr,"Alexandre");
+	system("clear||cls");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+   	printf("///           =====================================================       ///\n");
+	printf("///           ||   CPF do Usuario    ||     Nome do Usuario      ||       ///\n");
+    	printf("///           =====================================================       ///\n");
+   	printf("///           ||    012.351.497-00   || Artrur Barbosa Castro    ||       ///\n");
+    	printf("///           ||    120.153.974-01   || Bryan de Araújo Cardoso  ||       ///\n");
+   	printf("///           ||    274.597.823-02   || Clecio Barbosa Alves     ||       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+   	printf("///Tecle <ENTER> para continuar...///");
+   	getchar();
+}
+
+
+void relatOraculoPorConsultor(char* cpfCsr){
+	 // posteriormente, esta função irá buscar o nome do Consultor no arquivo 
+    	// por enquanto, o nome será preenchido com um valor predefinido
+    nomeCsr = (char*) malloc(10*sizeof(char));
+    strcpy(nomeCsr,"Alexandre");
+	system("clear||cls");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+   	printf("///           ===============================================             ///\n");
+	printf("///           ||  Cod Oraculo  ||     Nome do Consultor    ||             ///\n");
+    	printf("///           ===============================================             ///\n");
+   	printf("///           ||  135792468    || Artrur Barbosa Castro    ||             ///\n");
+    	printf("///           ||  246813579    || Bryan de Araújo Cardoso  ||             ///\n");
+   	printf("///           ||  357912468    || Clecio Barbosa Alves     ||             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+   	printf("///Tecle <ENTER> para continuar...///");
+   	getchar();
+}
+
+
+void relatTempoPorconsultar(char* codOraculo){
+	system("clear||cls");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = =  Código da Consultar: %-5s  = = = = =             ///\n", codClt);
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+   	printf("///           =============================================               ///\n");
+	printf("///           ||    Tempo    ||     Nome do Consultor    ||               ///\n");
+    	printf("///           =============================================               ///\n");
+   	printf("///           ||             || Artrur Barbosa Castro    ||               ///\n");
+    	printf("///           || 	     || Bryan de Araújo Cardoso  ||               ///\n");
+   	printf("///           ||  	     || Clecio Barbosa Alves     ||               ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+   	printf("///Tecle <ENTER> para continuar...///");
+   	getchar();
+}            
