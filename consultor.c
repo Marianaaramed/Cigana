@@ -4,7 +4,7 @@
 #include "consultor.h"
 #include "biblioteca.h"
 
-typedef struct consultor;
+typedef struct consultor Consultor;
 void moduloConsultor(void);
     char opcao;
     do {
