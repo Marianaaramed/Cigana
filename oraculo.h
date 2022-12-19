@@ -14,10 +14,10 @@
 typedef struct  oraculo Oraculo;
 
 struct oraculo {
-    char num[15];
-    char temas[50];
-    char horoscopo[50];
-    char previsoes[50];
+    char codOraculo[4];
+    char tipoOraculo[31];
+    char duração[15];
+    char criacao[11];
     int status;
 };
 
