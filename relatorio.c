@@ -143,8 +143,8 @@ char* telaOraculoPorConsultor(void) {
 
 
 char* telaTempoPorOraculo(void) {
-	char* codOraculo[4]; 
-	codOraculo = (char*) malloc(4*sizeof(char));
+	char* codOraculo; 
+	codOraculo = (char*) malloc(11*sizeof(char));
         system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -224,26 +224,48 @@ void relatOraculoPorConsultor(char* cpfCsr){
 }
 
 
-void relatTempoPorconsultar(char* codOraculo){
+void relatTempoPorconsulta(char* codOraculo){
 	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = =  Tempo da Consultar: %11s  = = = = =             ///\n", Tempo);
+	printf("///           = = = = =  Tempo da Consulta: %11s  = = = = =             ///\n", Tempo);
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
    	printf("///           ===============================================             ///\n");
 	printf("///           ||  Cod Oraculo  ||     Nome do Consultor    ||             ///\n");
     	printf("///           ===============================================             ///\n");
-   	printf("///           ||     1357      || Artrur Barbosa Castro    ||             ///\n");
-    	printf("///           ||     2468      || Bryan de Araújo Cardoso  ||             ///\n");
-   	printf("///           ||     3579      || Clecio Barbosa Alves     ||             ///\n");
-	printf("///                                                                       ///\n");
+	listaTTempoPorconsultar(Tempo);
+   	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
    	printf("///Tecle <ENTER> para continuar...///");
    	getchar();
-}      
+}   
+
+
+void listaTempoPorConsulta(char* tempo) {
+    FILE* fp;
+    Consulta* cs;
+    char codCs[10];
+    int tam;
+
+    trm = (Consulta*) malloc(sizeof(Consulta));
+    fp = fopen("consulta.dat", "rb");
+    while (fread(cs, sizeof(Consulta), 1, fp)) {
+        if (strcmp(cs->tempo, tempo) == 0) {
+            tam = strlen(cs->codOraculo);
+            strncpy(codCs, cs->codOraculo, tam);
+            for (int i = tam; i < 25; i++) {
+                codCs[i] = ' ';
+            }
+            codOraculo[5] = '\0';
+            printf("///           ||     %-3s     || %-26s ||             ///\n", cs->codTurma, codOraculo);
+        }
+    }
+    fclose(fp);
+    free(cs);
+}
