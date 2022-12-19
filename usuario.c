@@ -4,7 +4,7 @@
 #include "Usuario.h"
 #include "biblioteca.h"
 
-typedef struct usuario;
+typedef struct usuario Usuario;
 void moduloUsuario(void);
     char opcao;
     do {
