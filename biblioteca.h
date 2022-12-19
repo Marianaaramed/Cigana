@@ -9,3 +9,4 @@ int validarEmail(void);
 int validarData(void);
 int validarCelular(char);
 int validarCria(void);
+int validarTipo(void);
