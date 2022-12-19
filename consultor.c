@@ -86,7 +86,7 @@ void excluirConsultor(void) {
 char menuConsultor(void) {
     char op;
 
-    limpaTela();
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
@@ -114,7 +114,7 @@ char menuConsultor(void) {
 
 
 void telaErroArquivoConsultor(void) {
-    limpaTela();
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
@@ -138,7 +138,7 @@ void telaErroArquivoConsultor(void) {
 Consultor* telaCadastrarrConsultor(void) {    
     Consultor *csr;
     csr = (Consultor*) malloc(sizeof(Consultor ));
-    limpaTela();
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
@@ -177,9 +177,9 @@ do {
 
 char* telaPesquisarConsultor(void) {
     char* cpf;
-
     cpf = (char*) malloc(12*sizeof(char));
-    limpaTela();
+	
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
@@ -202,9 +202,9 @@ char* telaPesquisarConsultor(void) {
 
 char* telaAlterarConsultor(void) {
     char* cpf;
-
-    cpf = (char*) malloc(12*sizeof(char));
-    limpaTela();
+    cpf = (char*) malloc(12*sizeof(char)); 
+	
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
@@ -229,7 +229,7 @@ char* telaExcluirConsultor(void) {
     char* cpf;
 
     cpf = (char*) malloc(12*sizeof(char));
-    limpaTela();
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
