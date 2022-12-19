@@ -25,7 +25,6 @@ void moduloOraculo(void);
 
 void cadastrarOraculo(void) {
     Oraculo* ocl;
-
     ocl = telaCadastrarOraculo();
     gravarOraculo(ocl);
     free(ocl);
@@ -33,28 +32,57 @@ void cadastrarOraculo(void) {
 
 
 void pesquisarOraculo(void) {
-    // função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-    telaPesquisarOraculo();
+    Oraculo* ocl;
+    char*  codOraculo;
+    codOraculo = telaPesquisarOraculo();
+    ocl = buscarOraculo(codOraculo);
+	    exibirOraculo(ocl);
+    free(ocl);
+    free(codOraculo);
 }
-
+    
 
 void alterarOraculo(void) {
-    // função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-    telaAlterarOraculo();
+    Oraculo* ocl;
+    char*  codOraculo;
+  codOraculo = telaAlterarOraculo();
+  ocl = buscarUsuario(codOraculo);
+  if (ocl == NULL) {    
+  printf("\n\nOraculo não encontrado!\n\n");
+  } else {
+    regravarOraculo(ocl, codOraculo);
+            ocl = telaPreencherOraculo();
+            strcpy(ocl->codOraculo, codOraculo);
+            regravarOraculo(ocl);
+            // Outra opção:
+            // excluirOraculo(codOraculo);
+            // gravarOraculo(ocl);
+  }
+  free(codOraculo);
 }
+    
 
 
 void excluirOraculo(void) {
-    // função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-    telaExcluirOraculo();
+    Oraculo* ocl;
+    char*  codOraculo;
+	codOraculo = telaExcluirOraculo();
+  ocl = (Oraculo*) malloc(sizeof(Oraculo));
+  ocl = buscarOraculo(codOraculo);
+  if (ocl == NULL) {
+  printf("\n\nUsuario não encontrado!\n\n");
+  } else {
+            ocl->status = False;
+            regravarOraculo(ocl);
+            free(ocl);
+  }
+  free(codOraculo);
 }
+    
 
 
 
-void menuOraculo(void) {
+char menuOraculo(void) {
     char op;
 
     system("clear||cls");
@@ -118,30 +146,39 @@ void telaErroArquivoOraculo(void) {
     printf("///                   = = = = = = = = Cadastrar Oraculo = = = = = = =            ///\n");
     printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                               ///\n");
+do{	  
     printf("///                    Código do Oráculo:      ");
-    scanf("%[A-Z0-9]", codOraculo);
+    scanf("%[A-Z0-9]", ocl->codOraculo);
     getchar();
+} while (!validarCod(ocl->codOraculo));	
+do{
     printf("///                   Tipo do Oráculo:        ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ0-9]", tipoOraculo);
     getchar();
+} while (!validarTipo(ocl->tipoOraculo));
+do{
     printf("///                   Duração:       ");
-    scanf("%[0-9]", horario);
-    printf("///                   Data da Criação (dd/mm/aaaa):     ");
-    scanf("%[0-9/]", criacao);  
+    scanf("%[0-9]", ocl->horario);
     getchar();
+} while (!validardelay(ocl->duracao));
+do{
+    printf("///                   Data da Criação (dd/mm/aaaa):     ");
+    scanf("%[0-9/]", ocl->criacao);  
+    getchar();
+} while (!validarcria(ocl->criacao));
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
-    return rct;
+    return ocl;
 }
 
 
-
-void telaPesquisarOraculo(void) {
-    char codOraculo[4];
-    
+char telaPesquisarOraculo(void) {
+    char* codOraculo;
+    codOraculo = (char*) malloc(12*sizeof(char));
+   
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -158,12 +195,14 @@ void telaPesquisarOraculo(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return codOraculo;
 }
 
 
 
-void telaAlterarOraculo(void) {
-    char codOraculo[4];
+char telaAlterarOraculo(void) {
+    char* codOraculo;
+    codOraculo = (char*) malloc(12*sizeof(char));
 
     system("clear||cls");
     printf("\n");
@@ -181,12 +220,14 @@ void telaAlterarOraculo(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return codOraculo;
 }
 
 
 
-void telaExcluirOraculo(void) {
-   char codOraculo[4];
+char telaExcluirOraculo(void) {
+   char* codOraculo;
+   codOraculo = (char*) malloc(12*sizeof(char));
 
     system("clear||cls");
     printf("\n");
@@ -204,6 +245,7 @@ void telaExcluirOraculo(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return codOraculo;
 }  
 
 
@@ -217,4 +259,68 @@ void gravarOraculo(Oraculo* ocl) {
 	}
 	fwrite(ocl, sizeof(Oraculo), 1, fp);
 	fclose(fp);
+}
+
+Oraculo* buscarOraculo(char* codOraculo) {
+    FILE* fp;
+    Oraculo* ocl;
+
+    ocl = (Oraculo*) malloc(sizeof(Oraculo));
+    fp = fopen("oraculo.dat", "rb");
+    if (fp == NULL) {
+                telaErroArquivoOraculo();
+    }
+        while(fread(ocl, sizeof(Oraculo), 1, fp)) {
+            if (strcm(ocl->codOraculo, codOraculo) == 0) && (ocl->status == True)) {
+                  fclose(fp);
+                  return ocl;    
+            }
+    }
+    fclose(fp);
+    return NULL;
+}
+
+
+
+void exibirOraculo(Oraculo* ocl) {
+    if (ocl == NULL) {
+        printf("\n= = = Oraculo Inexistente = = =\n");
+    }
+    else {
+        printf("\n= = = Oraculo Cadastrado = = =\n");
+        printf("Codigo do Oraculo: %s\n", ocl->codOraculo);
+        printf("Tipo do Oraculo: %s\n", ocl->tipoOraculo);        
+        printf("Duração do Oraculo: %s\n", ocl->duração);
+        printf("Data de Criação: %s\n", ocl->cria);
+        printf("Status: %d\n", ocl->status);
+    }
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+}  
+
+
+
+void regravarOraculo(Oraculo* ocl, char* codOraculo) {
+    int achou;
+    FILE* fp;
+    Oraculo* oclLido;
+
+    oclLido = (Oraculo*) malloc(sizeof(Oraculo));
+        fp = fopen("oraculo.dat", "r+b");
+        if (fp == NULL) {
+                telaErroArquivoOraculo();
+        }
+        //while(!feof(fp)) {
+        achou = False;
+        while(fread(oclLido, sizeof(Usuario), 1, fp) && !achou) {
+                //fread(oclLido, sizeof(Oraculo), 1, fp);
+                if (strcmp(oclLido->codOraculo,, ocl->codOraculo) == 0) {
+                      achou = True;
+                      fseek(fp, -1*sizeof(Oraculo), SEEK_CUR);
+                fwrite(ocl, sizeof(Oraculo), 1, fp);
+                        //break;
+                }
+        }
+        fclose(fp);
+        free(oclLido)
 }
