@@ -1,17 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <time.h>
 #include "usuario.h"
 #include "consultor.h"
 #include "oraculo.h"
+#include "biblioteca.h"
+#include "relatolio.h"
 
 
 /////
 // Assinatura das funções
 
 void menuPrincipal(void);
+void moduloInformacoes(void);
 void telaSobre(void);
-void telaEquipe(void);
+void moduloRelatorio(void);
+void delay(int);
 
 
 
@@ -30,13 +34,10 @@ int main(void) {
                       break;
             case '3': moduloOraculo();             
                       break;
-            case '4': // módulo Tempo
-                      break;  
-            case '5': // módulo Relatórios
-                      break;           
-            case '6': telaSobre();
-                      telaEquipe();
-                      break;
+            case '4': moduloRelatorio();
+					  break;
+			case '5': moduloInformacoes();
+					  break;
         } 	
     } while (opcao != '0');
     return 0;
@@ -49,7 +50,7 @@ int main(void) {
 
 char menuPrincipal(void) {
     char op;
-    sistema("clear||cls");
+    system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
@@ -78,7 +79,41 @@ char menuPrincipal(void) {
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t<<< ... Aguarde ... >>>\n");
-    sleep(1);
+    delay(1);
     return op;
+}
+
+
+
+void telaSobre(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                                   ///\n");
+    printf("///                    Universidade Federal do Rio Grande do Norte                    ///\n");
+    printf("///                    Centro de Ensino Superior do Seridó                            ///\n");
+    printf("///                    Departamento de Computação e Tecnologia                        ///\n");
+    printf("///                    Disciplina DCT1106 - Programação                               ///\n");
+    printf("///                    Projeto Cigana Virtual                                         ///\n");
+    printf("///                    Desenvolvido por mariana - 2022.2                              ///\n");
+    printf("///                                                                                   ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                                   ///\n");
+    printf("///                      = = = = = = Cigana Virtual  = = = = = =                      ///\n");
+    printf("///                                                                                   ///\n");
+    printf("///       Programa  utilizado na disciplina DCT1106 - Programação, para fins          ///\n");
+    printf("///       avaliativo no Semestre 2021.2. O programa contém os principais módulos      ///\n");
+    printf("///       e funcionalidades que serão exigidos ao longo da disciplina.                ///\n");
+    printf("///                                                                                   ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+
+void moduloInformacoes(void) {
+	// modulo em desenvolvimento
+	telaSobre();
 }
