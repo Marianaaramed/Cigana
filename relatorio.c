@@ -212,9 +212,9 @@ void relatOraculoPorConsultor(char* cpfCsr){
    	printf("///           ===============================================             ///\n");
 	printf("///           ||  Cod Oraculo  ||     Nome do Consultor    ||             ///\n");
     	printf("///           ===============================================             ///\n");
-   	printf("///           ||  135792468    || Artrur Barbosa Castro    ||             ///\n");
-    	printf("///           ||  246813579    || Bryan de Araújo Cardoso  ||             ///\n");
-   	printf("///           ||  357912468    || Clecio Barbosa Alves     ||             ///\n");
+   	printf("///           ||     1357      || Artrur Barbosa Castro    ||             ///\n");
+    	printf("///           ||     2468      || Bryan de Araújo Cardoso  ||             ///\n");
+   	printf("///           ||     3579      || Clecio Barbosa Alves     ||             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -231,19 +231,19 @@ void relatTempoPorconsultar(char* codOraculo){
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = =  Código da Consultar: %-5s  = = = = =             ///\n", codClt);
+	printf("///           = = = = =  Tempo da Consultar: %11s  = = = = =             ///\n", Tempo);
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-   	printf("///           =============================================               ///\n");
-	printf("///           ||    Tempo    ||     Nome do Consultor    ||               ///\n");
-    	printf("///           =============================================               ///\n");
-   	printf("///           ||             || Artrur Barbosa Castro    ||               ///\n");
-    	printf("///           || 	     || Bryan de Araújo Cardoso  ||               ///\n");
-   	printf("///           ||  	     || Clecio Barbosa Alves     ||               ///\n");
+   	printf("///           ===============================================             ///\n");
+	printf("///           ||  Cod Oraculo  ||     Nome do Consultor    ||             ///\n");
+    	printf("///           ===============================================             ///\n");
+   	printf("///           ||     1357      || Artrur Barbosa Castro    ||             ///\n");
+    	printf("///           ||     2468      || Bryan de Araújo Cardoso  ||             ///\n");
+   	printf("///           ||     3579      || Clecio Barbosa Alves     ||             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
    	printf("///Tecle <ENTER> para continuar...///");
    	getchar();
-}            
+}      
