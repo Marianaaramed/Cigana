@@ -92,7 +92,7 @@ int validar_letra(char c) {
 
 int validarNome(char* nome) {
   for (int i=0; nome[i]!='\0'; i++) {
-    if (!ehLetra(nome[i])) {
+    if (!validar_letra(nome[i])) {
       return 0;
     }
   }
@@ -289,9 +289,23 @@ int validarCria(char* cria) {
     return 0;
   }
   for (int i = 0; i < tam; i++) {
-    if (!hDigito(cria[i])) {
+    if (!Digito(cria[i])) {
       return 0;
     }
   }
   return 1;
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+///validar tipo de oraculo
+
+int validarTipo(char* tipo) {
+  for (int i=0; tipo[i]!='\0'; i++) {
+    if (!validar_letra(tipo[i])) {
+      return 0;
+    }
+  }
+	return 1;
 }
