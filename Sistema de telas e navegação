@@ -10,24 +10,27 @@
 void telaPrincipal(void);
 void telaSobre(void);
 void telaEquipe(void);
+
 void moduloUsuario(void);
 void telaMenuUsuario(void);
 void telaCadastrarUsuario(void);
 void telaPesquisarUsuario(void);
 void telaAlterarUsuario(void);
 void telaExcluirUsuario(void);
-void moduloConsultor(void);
-void telaMenuConsultor(void);
-void telaCadastrarConsultor(void);
-void telaPesquisarConsultor(void);
-void telaAlterarConsultor(void);
-void telaExcluirConsultor(void);
-void moduloOraculo(void);
-void telaMenuOraculo(void);
-void telaCadastrarOraculo(void);
-void telaAlterarOraculo(void);
-void telaPesquisarOraculo(void);
-void telaExcluirOraculo(void);
+
+void moduloAssessor(void);
+void telaMenuAssessor(void);
+void telaCadastrarAssessor(void);
+void telaPesquisarAssessor(void);
+void telaAlterarAssessor(void);
+void telaExcluirAssessor(void);
+
+void moduloConsulta(void);
+void telaMenuConsulta(void);
+void telaCadastrarConsulta(void);
+void telaAlterarConsulta(void);
+void telaPesquisarConsulta(void);
+void telaExcluirConsulta(void);
 
 
 
@@ -43,11 +46,11 @@ int main(void) {
         switch(opcao) {
             case '1':   moduloUsuario();
                         break;
-            case '2':   moduloConsultor();
+            case '2':   moduloAssessor();
                         break;
-            case '3':   moduloOraculo();
+            case '3':   moduloConsulta();
                         break;
-            case '4':   // Módulo Consulta
+            case '4':   // Módulo codRegistro
                         break;
             case '5':   // Módulo Relatórios
                         break;
@@ -77,16 +80,16 @@ char telaPrincipal(void) {
     printf("///                   Departamento de Computação e Tecnologia                         ///\n");
     printf("///                   Disciplina DCT1106 - Programação                                ///\n");
     printf("///                   Projeto Cigana Virtual                                          ///\n");
-    printf("///                   Desenvolvido por mariana - 2022.2                               ///\n");
+    printf("///                   Desenvolvido por mariana - 2023.1                               ///\n");
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
     printf("///                      = = = = = =  Cigana Virtual = = = = = =                      ///\n");
     printf("///                                                                                   ///\n");
     printf("///                        1. Módulo Usuário                                          ///\n");
-    printf("///                        2. Módulo Consultor                                        ///\n");
-    printf("///                        3. Módulo Oráculo                                          ///\n");
-    printf("///                        4. Módulo Consulta                                         ///\n");
+    printf("///                        2. Módulo Assessor                                         ///\n");
+    printf("///                        3. Módulo Consulta                                         ///\n");
+    printf("///                        4. Módulo Codcadastro                                      ///\n");
     printf("///                        5. Módulo Relatórios                                       ///\n");
     printf("///                        6. Módulo Sobre                                            ///\n");
     printf("///                        0. Sair                                                    ///\n");
@@ -114,14 +117,14 @@ char telaPrincipal(void) {
     printf("///                    Departamento de Computação e Tecnologia                        ///\n");
     printf("///                    Disciplina DCT1106 - Programação                               ///\n");
     printf("///                    Projeto Cigana Virtual                                         ///\n");
-    printf("///                    Desenvolvido por mariana - 2022.2                              ///\n");
+    printf("///                    Desenvolvido por mariana - 2023.1                              ///\n");
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
     printf("///                      = = = = = = Cigana Virtual  = = = = = =                      ///\n");
     printf("///                                                                                   ///\n");
     printf("///       Programa  utilizado na disciplina DCT1106 - Programação, para fins          ///\n");
-    printf("///       avaliativo no Semestre 2021.2. O programa contém os principais módulos      ///\n");
+    printf("///       avaliativo no Semestre 2023.1. O programa contém os principais módulos      ///\n");
     printf("///       e funcionalidades que serão exigidos ao longo da disciplina.                ///\n");
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
@@ -142,7 +145,7 @@ void telaEquipe(void) {
     printf("///                   Departamento de Computação e Tecnologia                         ///\n");
     printf("///                   Disciplina DCT1106 - Programação                                ///\n");
     printf("///                   Projeto Cigana Virtual                                          ///\n");
-    printf("///                   Desenvolvido por mariana - 2022.2                               ///\n");
+    printf("///                   Desenvolvido por mariana - 2023.1                               ///\n");
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
@@ -213,6 +216,7 @@ char telaMenuUsuario(void) {
 
 
 void telaCadastrarUsuario(void) {
+    char codRegistro[12];
     char cpf[12];
     char nome[51];
     char email[51];
@@ -226,6 +230,9 @@ void telaCadastrarUsuario(void) {
     printf("///                  = = = = = = = = Cadastrar Usuário = = = = = = =              ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
+    printf("///                  Codigo do registro (apenas números): ");
+    scanf("%[0-9]", codRegistro);
+    getchar();
     printf("///                  CPF (apenas números): ");
     scanf("%[0-9]", cpf);
     getchar();
@@ -251,7 +258,7 @@ void telaCadastrarUsuario(void) {
 
 
 void telaPesquisarUsuario(void) {
-    char cpf[12];
+    char codRegistro[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -260,8 +267,8 @@ void telaPesquisarUsuario(void) {
     printf("///                 = = = = = = = Pesquisar Usuário = = = = = = = =               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
-    printf("///                     Informe o CPF (apenas números):  ");
-    scanf("%[0-9]", cpf);
+    printf("///                  Codigo do registro (apenas números): ");
+    scanf("%[0-9]", codRegistro);
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -274,7 +281,7 @@ void telaPesquisarUsuario(void) {
 
 
 void telaAlterarUsuario(void) {
-    char cpf[12];
+    char codRegistro[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -283,8 +290,8 @@ void telaAlterarUsuario(void) {
     printf("///                  = = = = = = = Alterar Usuário = = = = = = = = =              ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
-    printf("///                     Informe o CPF (apenas números):    ");
-    scanf("%[0-9]", cpf);
+    printf("///                  Codigo do registro (apenas números): ");
+    scanf("%[0-9]", codRegistro);
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -296,7 +303,7 @@ void telaAlterarUsuario(void) {
 
 
 void telaExcluirUsuario(void) {
-    char cpf[12];
+    char codRegistro[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -305,9 +312,9 @@ void telaExcluirUsuario(void) {
     printf("///                 = = = = = = = Excluir Usuário = = = = = = = = =               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
-    printf("///                    Informe o CPF (apenas números):     ");
-    scanf("%[0-9]", cpf);
-    getchar();    
+    printf("///                  Codigo do registro (apenas números): ");
+    scanf("%[0-9]", codRegistro);
+    getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -319,40 +326,40 @@ void telaExcluirUsuario(void) {
 
 
 //////
-/// Funções do Módulo Consultor  
+/// Funções do Módulo Assessor  
 
-void moduloConsultor(void) {
+void moduloAssessor(void) {
     char opcao;
     do {
-        opcao = telaMenuConsultor();
+        opcao = telaMenuAssessor();
         switch(opcao) {
-            case '1': 	telaCadastrarConsultor();
+            case '1': 	telaCadastrarAssessor();
                         break;
-            case '2': 	telaPesquisarConsultor();
+            case '2': 	telaPesquisarAssessor();
                         break;
-            case '3': 	telaAlterarConsultor();
+            case '3': 	telaAlterarAssessor();
                         break;
-            case '4': 	telaExcluirConsultor();
+            case '4': 	telaExcluirAssessor();
                         break;
         } 		
     } while (opcao != '0');
 }
 
 
-char telaMenuConsultor(void) {
+char telaMenuAssessor(void) {
     char op;
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///                   = = = = = = = = Menu Consultor = = = = = = = =              ///\n");
+    printf("///                   = = = = = = = = Menu Assessor = = = = = = = = =             ///\n");
     printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                               ///\n");
-    printf("///                      1. Cadastrar um novo Consultor                           ///\n");
-    printf("///                      2. Pesquisar por Consultor                               ///\n");
-    printf("///                      3. Atualizar o cadastro de um Consultor                  ///\n");
-    printf("///                      4. Excluir Consultor do sistema                          ///\n");
+    printf("///                      1. Cadastrar Assessor                                    ///\n");
+    printf("///                      2. Pesquisar Assessor                                    ///\n");
+    printf("///                      3. Atualizar cadastro do Assessor                        ///\n");
+    printf("///                      4. Excluir Assessor                                      ///\n");
     printf("///                      0. Voltar ao menu anterior                               ///\n");
     printf("///                                                                               ///\n");
     printf("///                      Escolha a opção desejada:   ");
@@ -368,18 +375,18 @@ char telaMenuConsultor(void) {
 
 
 
-void telaCadastrarConsultor(void) {
+void telaCadastrarAssessor(void) {
     char cpf[12]; 
     char nome[51];
+    char ramo [51];
     char email[51];
-    char nasc[11];
     char celular[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                  = = = = = = = Cadastrar Consultor = = = = = = =              ///\n");
+    printf("///                  = = = = = = = = Cadastrar Assessor = = = = = = =             ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
     printf("///                  CPF (apenas números):          ");
@@ -388,11 +395,11 @@ void telaCadastrarConsultor(void) {
     printf("///                  Nome completo:                 ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
     getchar();
+    printf("///                  Ramo do Assessor:                 ");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ,]", ramo);
+    getchar();
     printf("///                  E-mail:                        ");
     scanf("%[A-Za-z0-9@._]", email);
-    getchar();
-    printf("///                  Data de Nascimento (dd/mm/aaaa):     ");
-    scanf("%[0-9/]", nasc);
     getchar();
     printf("///                  Celular (apenas números):      ");
     scanf("%[0-9]", celular);
@@ -407,14 +414,14 @@ void telaCadastrarConsultor(void) {
 
 
 
-void telaPesquisarConsultor(void) {
+void telaPesquisarAssessor(void) {
     char cpf[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///              = = = = = = = = = = = = = = = = = = = = = = = =                  ///\n");
-    printf("///              = = = = = = = Pesquisar Consultor = = = = = = =                  ///\n");
+    printf("///              = = = = = = = Pesquisar Assessor = = = = = = =                   ///\n");
     printf("///              = = = = = = = = = = = = = = = = = = = = = = = =                  ///\n");
     printf("///                                                                               ///\n");
     printf("///                  Informe o CPF (apenas números):    ");                         
@@ -430,14 +437,14 @@ void telaPesquisarConsultor(void) {
 
 
 
-void telaAlterarConsultor(void) {
+void telaAlterarAssessor(void) {
     char cpf[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
-    printf("///                 = = = = = = = Atualizar Consultor = = = = = = = =               ///\n");
+    printf("///                 = = = = = = = Atualizar Assessor = = = = = = =                ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
     printf("///                    Informe o CPF (apenas números):     ");                      
@@ -453,14 +460,14 @@ void telaAlterarConsultor(void) {
 
 
 
-void telaExcluirConsultor(void) {
+void telaExcluirAssessor(void) {
     char cpf[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                = = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
-    printf("///                = = = = = = = Excluir Consultor = = = = = = = =                ///\n");
+    printf("///                = = = = = = = Excluir Assessor = = = = = = = =                 ///\n");
     printf("///                = = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
     printf("///                                                                               ///\n");
     printf("///                 Informe o CPF (apenas números):      ");
@@ -478,20 +485,20 @@ void telaExcluirConsultor(void) {
 
 
 //////
-/// Funções do Módulo Oraculo 
+/// Funções do Módulo Consulta 
 
-void moduloOraculo(void) {
+void moduloConsulta(void) {
     char opcao;
     do {
-        opcao = telaMenuOraculo();
+        opcao = telaMenuConsulta();
         switch(opcao) {
-            case '1': 	telaCadastrarOraculo();
+            case '1': 	telaCadastrarConsulta();
                         break;
-            case '2': 	telaPesquisarOraculo();
+            case '2': 	telaPesquisarConsulta();
                         break;
-            case '3': 	telaAlterarOraculo();
+            case '3': 	telaAlterarConsulta();
                         break;
-            case '4': 	telaExcluirOraculo();
+            case '4': 	telaExcluirConsulta();
                         break;
         } 		
     } while (opcao != '0');
@@ -499,20 +506,20 @@ void moduloOraculo(void) {
 
 
 
-char telaMenuOraculo(void) {
+char telaMenuConsulta(void) {
     char op;
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = =                    ///\n");
-    printf("///                  = = = = = = = Menu Oráculo = = = = = = =                     ///\n");
+    printf("///                  = = = = = = = Menu Consulta = = = = = = =                    ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = =                    ///\n");
     printf("///                                                                               ///\n");
-    printf("///                     1. Cadastrar Oráculo                                      ///\n");
-    printf("///                     2. Pesquisar Oráculo                                      ///\n");
-    printf("///                     3. Atualizar Oráculo                                        ///\n");
-    printf("///                     4. Excluir Oráculo                                        ///\n");
+    printf("///                     1. Cadastrar Consulta                                     ///\n");
+    printf("///                     2. Pesquisar Consulta                                     ///\n");
+    printf("///                     3. Atualizar Consulta                                     ///\n");
+    printf("///                     4. Excluir Consulta                                       ///\n");
     printf("///                     0. Voltar ao menu anterior                                ///\n");
     primtf("///                                                                               ///\n");
     printf("///                     Escolha a opção desejada:     ");
@@ -529,9 +536,9 @@ char telaMenuOraculo(void) {
     
     
     
- void telaCadastrarOraculo(void) {
-    char codOraculo[4];
-    char tipoOraculo[31];
+ void telaCadastrarConsulta(void) {
+    char codConsulta[8];
+    char tipoConsulta[31];
     char duração[15];
     char criacao[11];
     system("clear||cls");
@@ -539,14 +546,14 @@ char telaMenuOraculo(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
-    printf("///                  = = = = = = = Cadastrar Oráculo = = = = = = =                ///\n");
+    printf("///                  = = = = = = = Cadastrar Consulta = = = = = =                 ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
     printf("///                                                                               ///\n");
-    printf("///                  Código do Oráculo:      ");
-    scanf("%[A-Z0-9]", codOraculo);
+    printf("///                  Código da Consulta:      ");
+    scanf("%[A-Z0-9]", codConsulta);
     getchar();
-    printf("///                  Tipo do Oráculo:        ");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ0-9]", tipoOraculo);
+    printf("///                  Tipo da Consulta:        ");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ0-9]", tipoConsulta);
     getchar();
     printf("///                  Duração:       ");
     scanf("%[0-9]", horario);
@@ -563,18 +570,18 @@ char telaMenuOraculo(void) {
 
 
 
-void telaPesquisarOraculo(void) {
-    char codOraculo[4];
+void telaPesquisarConsulta(void) {
+    char codConsulta[8];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///               = = = = = = = = = = = = = = = = = = = = = = =                   ///\n");
-    printf("///               = = = = = = = Pesquisar Oráculo = = = = = = =                   ///\n");
+    printf("///               = = = = = = = Pesquisar Consulta = = = = = =                    ///\n");
     printf("///               = = = = = = = = = = = = = = = = = = = = = = =                   ///\n");
     printf("///                                                                               ///\n");
-    printf("///                  Código do Oráculo:      ");
-    scanf("%[A-Z0-9]", codOraculo); 
+    printf("///                  Código da Consulta:      ");
+    scanf("%[A-Z0-9]", codConsulta); 
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -585,18 +592,18 @@ void telaPesquisarOraculo(void) {
 }
 
 
-void telaAlterarOraculo(void) {
-    char codOraculo[4];
+void telaAlterarConsulta(void) {
+    char codConsulta[8];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
-    printf("///                  = = = = = = = Alterar Oráculo = = = = = = = =                ///\n");
+    printf("///                  = = = = = = = Alterar Consulta = = = = = = =                 ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
     printf("///                                                                               ///\n");
-    printf("///                    Código do Oráculo:      ");
-    scanf("%[A-Z0-9]", codOraculo); 
+    printf("///                    Código da Consulta:      ");
+    scanf("%[A-Z0-9]", codConsulta); 
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -607,18 +614,18 @@ void telaAlterarOraculo(void) {
 }
 
 
-void telaExcluirOraculo(void) {
-    char codOraculo[4];
+void telaExcluirConsulta(void) {
+    char codConsulta[8];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///               = = = = = = = = = = = = = = = = = = = = = = =                   ///\n");
-    printf("///               = = = = = = = Excluir Oráculo = = = = = = = =                   ///\n");
+    printf("///               = = = = = = = Excluir Consulta = = = = = = =                   ///\n");
     printf("///               = = = = = = = = = = = = = = = = = = = = = = =                   ///\n");
     printf("///                                                                               ///\n");
-    printf("///                  Código do Oráculo:      ");
-    scanf("%[A-Z0-9]", codOraculo); 
+    printf("///                  Código da Consulta:      ");
+    scanf("%[A-Z0-9]", codConsulta); 
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
