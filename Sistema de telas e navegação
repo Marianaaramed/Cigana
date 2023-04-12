@@ -89,7 +89,7 @@ char telaPrincipal(void) {
     printf("///                        1. Módulo Usuário                                          ///\n");
     printf("///                        2. Módulo Assessor                                         ///\n");
     printf("///                        3. Módulo Consulta                                         ///\n");
-    printf("///                        4. Módulo Registro                                      ///\n");
+    printf("///                        4. Módulo Registro                                         ///\n");
     printf("///                        5. Módulo Relatórios                                       ///\n");
     printf("///                        6. Módulo Sobre                                            ///\n");
     printf("///                        0. Sair                                                    ///\n");
@@ -626,7 +626,7 @@ void telaExcluirConsulta(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///               = = = = = = = = = = = = = = = = = = = = = = =                   ///\n");
-    printf("///               = = = = = = = Excluir Consulta = = = = = = =                   ///\n");
+    printf("///               = = = = = = = Excluir Consulta = = = = = = =                    ///\n");
     printf("///               = = = = = = = = = = = = = = = = = = = = = = =                   ///\n");
     printf("///                                                                               ///\n");
     printf("///                  Código da Consulta:      ");
