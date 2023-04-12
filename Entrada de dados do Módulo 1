@@ -51,9 +51,9 @@ void telaPrincipal(void) {
     printf("///                      = = = = = =  Cigana Virtual = = = = = =                      ///\n");
     printf("///                                                                                   ///\n");
     printf("///                        1. Módulo Usuário                                          ///\n");
-    printf("///                        2. Módulo Consultor                                        ///\n");
-    printf("///                        3. Módulo Oráculo                                          ///\n");
-    printf("///                        4. Módulo Consulta                                        ///\n");
+    printf("///                        2. Módulo Assessor                                         ///\n");
+    printf("///                        3. Módulo Consulta                                         ///\n");
+    printf("///                        4. Módulo Registro                                         ///\n");
     printf("///                        5. Módulo Relatórios                                       ///\n");
     printf("///                        6. Módulo Sobre                                            ///\n");
     printf("///                        0. Sair                                                    ///\n");
@@ -159,6 +159,7 @@ void telaMenuUsuario(void) {
 
 
 void telaCadastrarUsuario(void) {
+    char registro[12];
     char cpf[12];
     char nome[51];
     char email[51];
@@ -172,6 +173,9 @@ void telaCadastrarUsuario(void) {
     printf("///                  = = = = = = = = Cadastrar Usuário = = = = = = =              ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
+    printf("///                  Registro (apenas números): ");
+    scanf("%[0-9]", registro);
+    getchar();
     printf("///                  CPF (apenas números): ");
     scanf("%[0-9]", cpf);
     getchar();
@@ -198,7 +202,7 @@ void telaCadastrarUsuario(void) {
 
 
 void telaPesquisarUsuario(void) {
-    char cpf[12];
+    char registro[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -207,8 +211,8 @@ void telaPesquisarUsuario(void) {
     printf("///                 = = = = = = = Pesquisar Usuário = = = = = = = =               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
-    printf("///                     Informe o CPF (apenas números):  ");
-    scanf("%[0-9]", cpf);
+    printf("///                  Registro (apenas números): ");
+    scanf("%[0-9]", registro);
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -221,7 +225,7 @@ void telaPesquisarUsuario(void) {
 
 
 void telaAlterarUsuario(void) {
-    char cpf[12];
+    char registro[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -230,8 +234,8 @@ void telaAlterarUsuario(void) {
     printf("///                  = = = = = = = Alterar Usuário = = = = = = = = =              ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
-    printf("///                     Informe o CPF (apenas números):    ");
-    scanf("%[0-9]", cpf);
+    printf("///                  Registro (apenas números): ");
+    scanf("%[0-9]", registro);
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -244,7 +248,7 @@ void telaAlterarUsuario(void) {
 
 
 void telaExcluirUsuario(void) {
-    char cpf[12];
+    char registro[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -253,9 +257,9 @@ void telaExcluirUsuario(void) {
     printf("///                 = = = = = = = Excluir Usuário = = = = = = = = =               ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
-    printf("///                 Informe o CPF (apenas números):     ");
-    scanf("%[0-9]", cpf);
-    getchar();    
+    printf("///                  Registro (apenas números): ");
+    scanf("%[0-9]", registro);
+    getchar(); 
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
