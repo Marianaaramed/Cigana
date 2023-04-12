@@ -540,6 +540,7 @@ char telaMenuConsulta(void) {
     char codConsulta[8];
     char tipoConsulta[31];
     char duração[15];
+    char cpf[12];
     char criacao[11];
     system("clear||cls");
     printf("\n");
@@ -557,6 +558,10 @@ char telaMenuConsulta(void) {
     getchar();
     printf("///                  Duração:       ");
     scanf("%[0-9]", horario);
+    getchar();
+    printf("///                  CPF do Assesssor (apenas números): ");
+    scanf("%[0-9]", cpf);
+    getchar();
     printf("///                  Data da Criação (dd/mm/aaaa):     ");
     scanf("%[0-9/]", criacao);
     getchar();
