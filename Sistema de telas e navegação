@@ -7,26 +7,26 @@
 /////
 // Assinatura das funções
 
-void telaPrincipal(void);
+char telaPrincipal(void);
 void telaSobre(void);
 void telaEquipe(void);
 
 void moduloUsuario(void);
-void telaMenuUsuario(void);
+char telaMenuUsuario(void);
 void telaCadastrarUsuario(void);
 void telaPesquisarUsuario(void);
 void telaAlterarUsuario(void);
 void telaExcluirUsuario(void);
 
 void moduloAssessor(void);
-void telaMenuAssessor(void);
+char telaMenuAssessor(void);
 void telaCadastrarAssessor(void);
 void telaPesquisarAssessor(void);
 void telaAlterarAssessor(void);
 void telaExcluirAssessor(void);
 
 void moduloConsulta(void);
-void telaMenuConsulta(void);
+char telaMenuConsulta(void);
 void telaCadastrarConsulta(void);
 void telaAlterarConsulta(void);
 void telaPesquisarConsulta(void);
@@ -59,7 +59,6 @@ int main(void) {
                         break;
         } 	
     } while (opcao != '0');
-
     
     return 0;
 }
@@ -107,7 +106,7 @@ char telaPrincipal(void) {
     
     
     
-    void telaSobre(void) {
+ void telaSobre(void) {
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
