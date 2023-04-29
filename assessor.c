@@ -50,7 +50,7 @@ void excluirAssessor(void) {
 
 
 
-char telaMenuAssessor(void) {
+char menuAssessor(void) {
     char op;
     system("clear||cls");
     printf("\n");
