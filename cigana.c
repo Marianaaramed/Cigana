@@ -1,21 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <unistd.h>
 #include "usuario.h"
-#include "consultor.h"
-#include "oraculo.h"
-#include "biblioteca.h"
-#include "relatolio.h"
+#include "assessor.h"
+#include "consulta.h"
 
 
 /////
 // Assinatura das funções
 
-void menuPrincipal(void);
-void moduloInformacoes(void);
+void telaPrincipal(void);
 void telaSobre(void);
-void moduloRelatorio(void);
-void delay(int);
+void telaEquipe(void);
 
 
 
@@ -26,20 +22,24 @@ int main(void) {
     char opcao;
 
     do{
-        opcao = menuPrincipal();
+        opcao = telaPrincipal();
         switch(opcao) {
-            case '1': moduloUsuario();
-                      break;
-            case '2': moduloConsultor(); 
-                      break;
-            case '3': moduloOraculo();             
-                      break;
-            case '4': moduloRelatorio();
-					  break;
-			case '5': moduloInformacoes();
-					  break;
+             case '1':  moduloUsuario();
+                        break;
+             case '2':  moduloAssessor();
+                        break;
+             case '3':  moduloConsulta();
+                        break;
+             case '4':  // Módulo Registro
+                        break;
+             case '5':  // Módulo Relatórios
+                        break;
+             case '6':  telaSobre();
+                        telaEquipe();
+                        break;
         } 	
     } while (opcao != '0');
+    
     return 0;
 }
 
@@ -48,7 +48,7 @@ int main(void) {
 /////
 // Funções
 
-char menuPrincipal(void) {
+char telaPrincipal(void) {
     char op;
     system("clear||cls");
     printf("\n");
@@ -59,7 +59,7 @@ char menuPrincipal(void) {
     printf("///                   Departamento de Computação e Tecnologia                         ///\n");
     printf("///                   Disciplina DCT1106 - Programação                                ///\n");
     printf("///                   Projeto Cigana Virtual                                          ///\n");
-    printf("///                   Desenvolvido por mariana - 2022.2                               ///\n");
+    printf("///                   Desenvolvido por mariana - 2023.1                               ///\n");
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
@@ -79,41 +79,7 @@ char menuPrincipal(void) {
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    delay(1);
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
     return op;
-}
-
-
-
-void telaSobre(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                                   ///\n");
-    printf("///                    Universidade Federal do Rio Grande do Norte                    ///\n");
-    printf("///                    Centro de Ensino Superior do Seridó                            ///\n");
-    printf("///                    Departamento de Computação e Tecnologia                        ///\n");
-    printf("///                    Disciplina DCT1106 - Programação                               ///\n");
-    printf("///                    Projeto Cigana Virtual                                         ///\n");
-    printf("///                    Desenvolvido por mariana - 2022.2                              ///\n");
-    printf("///                                                                                   ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                                   ///\n");
-    printf("///                      = = = = = = Cigana Virtual  = = = = = =                      ///\n");
-    printf("///                                                                                   ///\n");
-    printf("///       Programa  utilizado na disciplina DCT1106 - Programação, para fins          ///\n");
-    printf("///       avaliativo no Semestre 2021.2. O programa contém os principais módulos      ///\n");
-    printf("///       e funcionalidades que serão exigidos ao longo da disciplina.                ///\n");
-    printf("///                                                                                   ///\n");
-    printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-
-
-
-void moduloInformacoes(void) {
-	// modulo em desenvolvimento
-	telaSobre();
 }
