@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Usuario.h"
 #include "biblioteca.h"
+
 
 void moduloUsuario(void);
     char opcao;
@@ -95,24 +97,36 @@ void telaCadastrarUsuario(void) {
     printf("///                = = = = = = = = Cadastrar Usuário  = = = = = = = =             ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
+do {
     printf("///                  Registro (apenas números): ");
     scanf("%[0-9]", registro);
     getchar();
+} while (!validarRegistro(registro));
+do {
     printf("///                  CPF (apenas números): ");
     scanf("%[0-9]", cpf);
     getchar();
+} while (!validarCPF(cpf));
+do {
     printf("///                  Nome completo: ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
     getchar();
+} while (!validarNome(nome));
+do {
     printf("///                  E-mail: ");
     scanf("%[A-Za-z0-9@._]", email);
     getchar();
+} while (!validarEmail(email));
+do {
     printf("///                  Data de Nascimento (dd/mm/aaaa): ");  
     scanf("%[0-9]", nasc);
     getchar();
+} while (!validarNasc(nasc));
+do {			
     printf("///                  Celular (apenas números):  ");
     scanf("%[0-9]", celular);
     getchar();
+} while (!validarCelular(celular));
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
