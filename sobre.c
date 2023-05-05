@@ -19,14 +19,14 @@ void telaSobre(void) {
     printf("///                    Departamento de Computação e Tecnologia                        ///\n");
     printf("///                    Disciplina DCT1106 - Programação                               ///\n");
     printf("///                    Projeto Cigana Virtual                                         ///\n");
-    printf("///                    Desenvolvido por mariana - 2022.2                              ///\n");
+    printf("///                    Desenvolvido por mariana - 2023.1                              ///\n");
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
     printf("///                      = = = = = = Cigana Virtual  = = = = = =                      ///\n");
     printf("///                                                                                   ///\n");
     printf("///          Programa  utilizado na disciplina DCT1106 - Programação, para fins       ///\n");
-    printf("///          avaliativo no Semestre 2021.2. O programa contém os principais módulos   ///\n");
+    printf("///          avaliativo no Semestre 2023.1. O programa contém os principais módulos   ///\n");
     printf("///          e funcionalidades que serão exigidos ao longo da disciplina.             ///\n");
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
@@ -47,7 +47,7 @@ void telaEquipe(void) {
     printf("///                   Departamento de Computação e Tecnologia                         ///\n");
     printf("///                   Disciplina DCT1106 - Programação                                ///\n");
     printf("///                   Projeto Cigana Virtual                                          ///\n");
-    printf("///                   Desenvolvido por mariana - 2022.2                               ///\n");
+    printf("///                   Desenvolvido por mariana - 2023.1                               ///\n");
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                                   ///\n");
