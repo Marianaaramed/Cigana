@@ -226,9 +226,9 @@ int valida_data(int dia, int mes, int ano) {
 
 
 /////////////////////////////////////////////////////////////////////////////////
-///validar tipo de consulta
+///validar ramo do assessor
 
-int validar_tipo_de_consulta(char* ramo) {
+int validar_ramo(char* ramo) {
   for (int i=0; ramo[i]!='\0'; i++) {
     if (!validar_letra(ramo[i])) {
       return 0;
@@ -240,7 +240,7 @@ int validar_tipo_de_consulta(char* ramo) {
 
 
 /////////////////////////////////////////////////////////////////////////////////
-///validar ramo do assessor
+///validar tipo de consulta
 
 int validar_tipo_de_consulta(char* tipo) {
   for (int i=0; tipo[i]!='\0'; i++) {
