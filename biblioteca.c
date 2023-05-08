@@ -12,7 +12,7 @@ void delay(int segundos) {
   while (clock() < inicio + tempo) {
     // não faz nada, apenas gasta tempo
   }
-}
+} /// Autor: https://github.com/rauan-meirelles
 
 
 
@@ -24,14 +24,13 @@ void limpaTela(void) {
 	  
 	// limpa a tela, funciona em Linux, Mac e Windows
   }
-}
-
+} /// Autor: https://github.com/rauan-meirelles
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Autor: https://github.com/Got7mj/mariana
+/// Autor: https://github.com/rauan-meirelles
 
-int Digito(char c) {
+int !Digito(char c) {
   if (c >= '0' && c <= '9') {
     return 1;
   } else {
@@ -42,10 +41,9 @@ int Digito(char c) {
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Validar Nome
-/// Autor: https://github.com/rauan-meirelles
+/// Validar letra
 
-int validar_letra(char c) {
+int !validar_letra(char c) {
   if (c >= 'A' && c <= 'Z') {
     return 1;
   } else if (c >= 'a' && c <= 'z') {
@@ -53,57 +51,27 @@ int validar_letra(char c) {
   } else {
     return 0;
   }
-}
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// Autor: //https://www.guj.com.br/t/ano-bissexto-linguagem-c/5696/13//
-
-  int validar_ano_bissexto(void){    
-    int dia, mes, ano;
-    int ultimo_dia[] = {-1,31,28,31,30,31,30,31,31,30,31,30,31};
-    for(;;) {
-        printf ("Digite a data no formato dd/mm/yyyy \n");
-        scanf("%d/%d/%d",&dia,&mes,&ano);
-                
-        if(dia<=0||mes<1||mes>12||ano<=0){	
-            printf("Data invalida\n");
-            continue;
-        }
-        
-        if(ano%4==0 && (ano%400==0 || ano%100!=0))
-            ultimo_dia[2]=29;					
-        else
-            ultimo_dia[2]=28;
-        if(dia>ultimo_dia[mes])
-            printf("Data invalida\n");
-        else 
-            break;
-    }
- return 0;
-}
+} /// Autor: https://github.com/rauan-meirelles
 
 
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Validar Nome
-/// Autor: https://github.com/rauan-meirelles
 
-int validarNome(char* nome) {
+int validar_nome(char* nome) {
   for (int i=0; nome[i]!='\0'; i++) {
     if (!validar_letra(nome[i])) {
       return 0;
     }
   }
 	return 1;
-}
+} /// Autor: https://github.com/rauan-meirelles
 
 
 
 /////////////////////////////////////////////////////////////////
 /// Validar CPF
-///Autor: https://github.com/cdavi-arj/Validate-CPF-CNPJ-Apex
+
 public static boolean isCPF(String CPF) {
     CPF = removeCaractEsp(CPF);
 
@@ -178,16 +146,15 @@ public static boolean isCPF(String CPF) {
       .replace('(', '')
       .replace(')', '');
   }
-}
+} ///Autor: https://github.com/cdavi-arj/Validate-CPF-CNPJ-Apex
  
 
 
 
 ///////////////////////////////////////////////////////////////////////////////
 /// ValidarEmail
-/// Autor: https://pt.stackoverflow.com/users/110948/rog%C3%A9rio-dec
-
 // retorna 0 se for false e 1 se for true
+
 int lerEmail(char email[]){
   int tam=strlen(email);
   int arroba = 0, ponto = 0, antesPonto = 0, depoisPonto = 0, i;
@@ -219,30 +186,29 @@ int lerEmail(char email[]){
         return 1;
     else
         return 0;
-}
+} /// Autor: https://pt.stackoverflow.com/users/110948/rog%C3%A9rio-dec
 
 
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Validar data
-/// Autor: https://www.vivaolinux.com.br/script/Funcao-para-validacao-de-datas
 
-int valida_data(int dia, int mes, int ano) { //by https://www.vivaolinux.com.br/script/Funcao-para-validacao-de-datas
-    if ((dia >= 1 && dia <= 31) && (mes >= 1 && mes <= 12) && (ano >= 1900 && ano <= 2100)) //verifica se os numeros sao validos
+int valida_data(int dia, int mes, int ano) { 
+    if ((dia >= 1 && dia <= 31) && (mes >= 1 && mes <= 12) && (ano >= 1900 && ano <= 2100)) ///verifica se os numeros sao validos
         {
-            if ((dia == 29 && mes == 2) && ((ano % 4) == 0)) //verifica se o ano e bissexto
+            if ((dia == 29 && mes == 2) && ((ano % 4) == 0)) ///verifica se o ano e bissexto
             {
                 return 1;
             }
-            if (dia <= 28 && mes == 2) //verifica o mes de feveireiro
+            if (dia <= 28 && mes == 2) ///verifica o mes de feveireiro
             {
                 return 1;
             }
-            if ((dia <= 30) && (mes == 4 || mes == 6 || mes == 9 || mes == 11)) //verifica os meses de 30 dias
+            if ((dia <= 30) && (mes == 4 || mes == 6 || mes == 9 || mes == 11)) ///verifica os meses de 30 dias
             {
                 return 1;
             }
-            if ((dia <=31) && (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes ==8 || mes == 10 || mes == 12)) //verifica os meses de 31 dias
+            if ((dia <=31) && (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes ==8 || mes == 10 || mes == 12)) ///verifica os meses de 31 dias
             {
                 return 1;
             }
@@ -255,53 +221,28 @@ int valida_data(int dia, int mes, int ano) { //by https://www.vivaolinux.com.br/
            {
                 return 0;
            }
-}
+} /// Autor: https://www.vivaolinux.com.br/script/Funcao-para-validacao-de-datas
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-/// Validar celular
-/// Autor: https://github.com/Got7mj/mariana
+/////////////////////////////////////////////////////////////////////////////////
+///validar tipo de consulta
 
-int validarcelular(char* celular) {
-  int tam;
-  tam = strlen(celular);
-  if (tam != 11) {
-    return 0;
-  }
-  for (int i = 0; i < tam; i++) {
-    if (!Digito(celular[i])) {
-        return 0;
-    }
-  }
-  return 1;
-}
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// validarCriação
-
-int validarCria(char* cria) {
-  int tam;
-  tam = strlen(cria);
-  if (tam < 1000 || tam > 1001) {
-    return 0;
-  }
-  for (int i = 0; i < tam; i++) {
-    if (!Digito(cria[i])) {
+int validar_tipo_de_consulta(char* ramo) {
+  for (int i=0; ramo[i]!='\0'; i++) {
+    if (!validar_letra(ramo[i])) {
       return 0;
     }
   }
-  return 1;
+	return 1;
 }
 
 
 
-//////////////////////////////////////////////////////////////////////////////////
-///validar tipo de oraculo
+/////////////////////////////////////////////////////////////////////////////////
+///validar ramo do assessor
 
-int validarTipo(char* tipo) {
+int validar_tipo_de_consulta(char* tipo) {
   for (int i=0; tipo[i]!='\0'; i++) {
     if (!validar_letra(tipo[i])) {
       return 0;
@@ -309,3 +250,24 @@ int validarTipo(char* tipo) {
   }
 	return 1;
 }
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+/// Retorna 1 se string recebido corresponder a um número do codigo válido 
+/// (apenas dígitos) ou retorna 0 caso contrário
+
+int validar_codConsulta(char* codConsulta) {
+  int tam;
+  tam = strlen(codConsulta);
+  if (tam < 7 || tam > 9) {
+    return 0;
+  }
+  for (int i = 0; i < tam; i++) {
+    if (!Digito(codConsulta[i])) {
+      return 0;
+    }
+  }
+  return 1;
+}
+
