@@ -88,7 +88,6 @@ void telaCadastrarUsuario(void) {
     char nome[51];
     char email[51];
     char nasc[11];
-    char celular[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -122,11 +121,6 @@ do {
     scanf("%[0-9]", nasc);
     getchar();
 } while (!validarNasc(nasc));
-do {			
-    printf("///                  Celular (apenas números):  ");
-    scanf("%[0-9]", celular);
-    getchar();
-} while (!validarCelular(celular));
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
