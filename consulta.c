@@ -80,11 +80,11 @@ char menuConsulta(void) {
     
     
 void telaCadastrarConsulta(void) {
+    char registro[12]
     char codConsulta[8];
     char tipoConsulta[31];
     char duração[15];
     char cpf[12];
-    char criacao[11];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -93,6 +93,9 @@ void telaCadastrarConsulta(void) {
     printf("///                  = = = = = = = Cadastrar Consulta = = = = = =                 ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
     printf("///                                                                               ///\n");
+    printf("///                  Registro do usuário(apenas números): ");
+    scanf("%[0-9]", registro);
+    getchar();
     printf("///                  Código da Consulta:      ");
     scanf("%[A-Z0-9]", codConsulta);
     getchar();
@@ -104,10 +107,7 @@ void telaCadastrarConsulta(void) {
     getchar();
     printf("///                  CPF do Assesssor (apenas números): ");
     scanf("%[0-9]", cpf);
-    getchar();
-    printf("///                  Data da Criação (dd/mm/aaaa):     ");
-    scanf("%[0-9/]", criacao);
-    getchar();
+    getchar();  
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
