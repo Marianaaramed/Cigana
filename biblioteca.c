@@ -155,7 +155,7 @@ public static boolean isCPF(String CPF) {
 /// ValidarEmail
 // retorna 0 se for false e 1 se for true
 
-int lerEmail(char email[]){
+int valida_email(char email[]){
   int tam=strlen(email);
   int arroba = 0, ponto = 0, antesPonto = 0, depoisPonto = 0, i;
   for (i = 0; i < tam; i++) {
