@@ -82,8 +82,6 @@ void telaCadastrarAssessor(void) {
     char cpf[12]; 
     char nome[51];
     char ramo [51];
-    char email[51];
-    char celular[12];
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -100,12 +98,6 @@ void telaCadastrarAssessor(void) {
     getchar();
     printf("///                  Ramo do Assessor:                 ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ,]", ramo);
-    getchar();
-    printf("///                  E-mail:                        ");
-    scanf("%[A-Za-z0-9@._]", email);
-    getchar();
-    printf("///                  Celular (apenas números):      ");
-    scanf("%[0-9]", celular);
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
