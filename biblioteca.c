@@ -30,7 +30,7 @@ void limpaTela(void) {
 ///////////////////////////////////////////////////////////////////////////////
 /// Autor: https://github.com/rauan-meirelles
 
-int !Digito(char c) {
+int Digito(char c) {
   if (c >= '0' && c <= '9') {
     return 1;
   } else {
@@ -43,7 +43,7 @@ int !Digito(char c) {
 ///////////////////////////////////////////////////////////////////////////////
 /// Validar letra
 
-int !validar_letra(char c) {
+int validar_letra(char c) {
   if (c >= 'A' && c <= 'Z') {
     return 1;
   } else if (c >= 'a' && c <= 'z') {
