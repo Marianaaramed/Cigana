@@ -9,3 +9,4 @@ int valida_data(int, int, int);
 int validar_ramo(char);
 int validar_tipo_de_consulta(char);
 int validar_codConsulta(char);
+int validar_horas(char);
