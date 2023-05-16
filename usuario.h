@@ -14,6 +14,16 @@
 ////// Assisnaturas das funcões Módulo Usuario
 //////
 
+typedef struct usuario Usuario;
+struct usuario {
+  char registro[12];
+    char cpf[12];
+    char nome[51];
+    char email[51];
+    char nasc[11];
+  int status;
+};
+
 void moduloUsuario(void);
 char menuUsuario(void);
 void telaCadastrarUsuario(void);
