@@ -3,7 +3,8 @@
 #include "consulta.h"
 #include "biblioteca.h"
 
-void moduloConsulta(void);
+typedef struct consulta Consulta;
+void moduloConsulta(void){
      char opcao;
      do {
         opcao = menuConsulta();
@@ -83,7 +84,7 @@ void telaCadastrarConsulta(void) {
     char registro[12]
     char codConsulta[8];
     char tipoConsulta[31];
-    char duração[15];
+    char duracao[15];
     char cpf[12];
     system("clear||cls");
     printf("\n");
