@@ -4,8 +4,8 @@
 #include "Usuario.h"
 #include "biblioteca.h"
 
-
-void moduloUsuario(void);
+typedef struct usuario Usuario;
+void moduloUsuario(void) { 
     char opcao;
     do {
         opcao = menuUsuario();
