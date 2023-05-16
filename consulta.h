@@ -14,6 +14,17 @@
 ////// Assisnaturas das funcões Módulo Consulta
 //////
 
+typedef struct consulta Consulta;
+
+struct consulta {
+    char registro[12]
+    char codConsulta[8];
+    char tipoConsulta[31];
+    char duracao[15];
+    char cpf[12];
+    int status;
+};
+
 void moduloConsulta(void);
 char menuConsulta(void);
 void telaCadastrarConsulta(void);
