@@ -14,6 +14,15 @@
 ////// Assisnaturas das funcões Módulo Consultor
 //////
 
+typedef struct assessor Assessor;
+
+struct assessor {
+    char cpf[12]; 
+    char nome[51];
+    char ramo [51];
+    int status;
+};
+
 void moduloAssessor(void);
 char menuAssessor(void);
 void telaCadastrarAssessor(void);
