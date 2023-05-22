@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "cigana.h"
 #include "usuario.h"
 #include "assessor.h"
 #include "consulta.h"
