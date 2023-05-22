@@ -7,14 +7,6 @@
 #include "consulta.h"
 
 
-/////
-// Assinatura das funções
-
-void telaPrincipal(void);
-void telaSobre(void);
-void telaEquipe(void);
-
-
 
 /////
 //Programa principal
