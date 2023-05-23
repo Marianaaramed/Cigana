@@ -108,21 +108,44 @@ char menuAssessor(void) {
 
 
 
-void telaCadastrarAssessor(void) {
-    char cpf[12]; 
-    char nome[51];
-    char ramo [51];
+void telaErroArquivoAssessor(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
+    printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
+    printf("///           = = = com informações sobre o Assessor= = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");	
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+    exit(1);
+}
+
+
+
+Assessor* telaPreencherAssessor(void) {
+    Assessor* asr;
+    asr = (Assessor*) malloc(sizeof(Assessor));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                  = = = = = = = = Cadastrar Assessor = = = = = = =             ///\n");
+    printf("///                  = = = = = = =  Cadastrar Assessor = = = = = = =              ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
-    printf("///                  CPF (apenas números):          ");
-    scanf("%[0-9]", cpf);
-    getchar();
+  do {
+        printf("///                  CPF (apenas números):          ");
+        scanf("%[0-9]", asr->cpf);
+        getchar();
+  } while (!validarCPF(asr->cpf));
     printf("///                  Nome completo:                 ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
     getchar();
@@ -134,12 +157,15 @@ void telaCadastrarAssessor(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return asr;
 }
 
 
 
+
 void telaPesquisarAssessor(void) {
-    char cpf[12];
+    char* cpf;
+    cpf = (char*) malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -156,12 +182,14 @@ void telaPesquisarAssessor(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return cpf;
 }
 
 
 
 void telaAlterarAssessor(void) {
-    char cpf[12];
+    char* cpf;
+    cpf = (char*) malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -178,12 +206,14 @@ void telaAlterarAssessor(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return cpf;
 }
 
 
 
 void telaExcluirAssessor(void) {
-    char cpf[12];
+    char* cpf;
+    cpf = (char*) malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -200,4 +230,84 @@ void telaExcluirAssessor(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return cpf;
 }
+
+
+
+void gravarAssessor(Assessor* asr) {
+    FILE* fp;
+
+  fp = fopen("assessor.dat", "ab");
+     if (fp == NULL) {
+          telaErroArquivoAssessor();
+  }
+  fwrite(asr, sizeof(Assessor), 1, fp);
+  fclose(fp);
+}
+
+
+
+Assessor* buscarAssessor(char* cpf) {
+    FILE* fp;
+    Assessor* asr;
+
+    asr = (Assessor*) malloc(sizeof(Assessor));
+    fp = fopen("assessor.dat", "rb");
+    if (fp == NULL) {
+                telaErroArquivoAssessor();
+    }
+        while(fread(asr, sizeof(Assessor), 1, fp)) {
+            if (strcm(asr->cpf, cpf) == 0) && (asr->status == True)) {
+                  fclose(fp);
+                  return asr;    
+            }
+    }
+    fclose(fp);
+    return NULL;
+}
+
+
+
+void exibirAssessor(Assessor* asr) {
+    if (asr == NULL) {
+        printf("\n= = = Assessor Inexistente = = =\n");
+    }
+    else {
+        printf("\n= = = Assessor Cadastrado = = =\n");
+        printf("CPF do Assessor: %s\n", asr->cpf);
+        printf("Nome do Assessor: %s\n", asr->nome);        
+        printf("Ramo do Usuario: %s\n", asr->ramo);
+        printf("Status: %d\n", usr->status);
+    }
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+}  
+
+
+
+void regravarAssessor(Assessor* asr, char* cpf) {
+    int achou;
+    FILE* fp;
+    Assessor* asrLido;
+
+    asrLido = (Assessor*) malloc(sizeof(Assessor));
+        fp = fopen("assessor.dat", "r+b");
+        if (fp == NULL) {
+                telaErroArquivoAssessor();
+        }
+        //while(!feof(fp)) {
+        achou = False;
+        while(fread(asrLido, sizeof(Assessor), 1, fp) && !achou) {
+                //fread(asrLido, sizeof(Assessor), 1, fp);
+                if (strcmp(asrLido->cpf, asr->cpf) == 0) {
+                      achou = True;
+                      fseek(fp, -1*sizeof(Assessor), SEEK_CUR);
+                fwrite(asr, sizeof(Assessor), 1, fp);
+                        //break;
+                }
+        }
+        fclose(fp);
+        free(asrLido)
+}
+
