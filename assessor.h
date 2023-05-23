@@ -34,3 +34,7 @@ void cadastrarAssessor(void);
 void pesquisarAssessor(void);
 void alterarAssessor(void);
 void excluirAssessor(void);
+
+Assessor* buscarAssessor(char);
+void exibirAssessor(Assessor*);
+void regravarAssessor(Assessor*);
