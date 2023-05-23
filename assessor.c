@@ -23,30 +23,59 @@ void moduloAssessor(void){
 
 
 void cadastrarAssessor(void){
-	asr;
-	
-	telaCadastrarAssessor();
+	Assessor *asr;
+	asr = telaPreencherAssessor();  
+	gravarAssessor(asr);  
+	free(asr);	
 }
 
 
 void pesquisarAssessor(void) {
-  	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaCadastrarAssessor();
+  	Assessor *asr;
+	char* cpf;
+	cpf = telaPesquisarAssessor();
+	asr = buscarAssessor(cpf);
+		exibirAssessor(asr);
+	free(asr);
+	free(cpf);
 }
+	
 	
   
 void alterarAssessor(void) {
-  	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaCadastrarAssessor();
+	Assessor *asr;
+  	char* cpf;
+	cpf = telaAlterarAssessor();
+	asr = buscarAssessor(cpf);
+	if (asr == NULL) {  
+		printf("\n\nAssessor não encontrado!\n\n");
+	} else {
+		regravarAssessor(asr, cpf);
+		asr = telaPreencherAssessor();
+		strcpy(asr->cpf, cpf);
+		regravarAssessor(asr);
+		// Outra opção:
+		// excluirAssessor(cpf);
+		// gravarAssessor(asr);
+	}
+	free(cpf);
 }
 
 
 void excluirAssessor(void) {	
-  	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaCadastrarAssessor();
+	Assessor *asr;
+	char* cpf;
+  	cpf = telaExcluirAssessor();
+	asr = (Assessor*) malloc(sizeof(Assessor));
+	asr = buscarAssessor(cpf);
+	if (asr == NULL) {
+		printf("\n\nAssessor não encontrado!\n\n");
+	} else {
+		asr->status = False;
+		regravarAssessor(asr);
+		free(asr);
+	}
+	free(cpf);
 }
 
 
