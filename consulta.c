@@ -23,11 +23,12 @@ void moduloConsulta(void){
 
 
 void cadastrarConsulta(void) {
-  // função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaCadastrarConsulta();
+	Consulta* csa;
+	csa = telacadastrarConsulta();
+	gravarConsulta(csa);
+	free(csa);
 }
-
+	
 
 void pesquisarConsulta(void) {
   // função ainda em desenvolvimento
@@ -80,12 +81,9 @@ char menuConsulta(void) {
     
     
     
-void telaCadastrarConsulta(void) {
-    char registro[12]
-    char codConsulta[8];
-    char tipoConsulta[31];
-    char duracao[15];
-    char cpf[12];
+Consulta* telaCadastrarConsulta(void) {    
+    Consulta *csa;
+    csa = (Consulta*) malloc(sizeof(Consulta ));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -114,6 +112,7 @@ void telaCadastrarConsulta(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return csa;
 }
 
 
