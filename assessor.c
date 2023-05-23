@@ -23,8 +23,8 @@ void moduloAssessor(void){
 
 
 void cadastrarAssessor(void){
-    	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
+	asr;
+	
 	telaCadastrarAssessor();
 }
 
