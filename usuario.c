@@ -24,32 +24,57 @@ void moduloUsuario(void) {
 
 
 void cadastrarUsuario(void){
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaCadastrarUsuario();
+    Usuario *usr;
+    usr = telaPreencherUsuario();    
+    gravarUsuario(usr);     
+    free(usr);
 }
-
-
 void pesquisarUsuario(void) {
-  	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaPesquisarUsuario();
+  Usuario* usr;
+  char* registro;	
+  registro = telaPesquisarUsuario();
+  usr = buscarUsuario(registro);
+	    exibirUsuario(usr);
+  free(usr);
+  free(registro);
 }
 	
   
 void alterarUsuario(void) {
-  	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaAlterarUsuario();
+  Usuario* usr;
+  char* registro;
+  registro = telaAlterarUsuario();
+  usr = buscarUsuario(registro);
+  if (usr == NULL) {    
+  printf("\n\nUsuario não encontrado!\n\n");
+  } else {
+    regravarUsuario(usr, registro);
+            usr = telaPreencherUsuario();
+            strcpy(usr->registro, registro);
+            regravarUsuario(usr);
+            // Outra opção:
+            // excluirUsuario(registro);
+            // gravarUsuario(usr);
+  }
+  free(registro);
 }
 
 
 void excluirUsuario(void) {	
-  	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaExcluirUsuario();
+  Usuario* usr;
+  char *registro;
+	    registro = telaExcluirUsuario();
+  usr = (Usuario*) malloc(sizeof(Usuario));
+  usr = buscarUsuario(registro);
+  if (usr == NULL) {
+  printf("\n\nUsuario não encontrado!\n\n");
+  } else {
+            usr->status = False;
+            regravarUsuario(usr);
+            free(usr);
+  }
+  free(registro);
 }
-
 
 
 char menuUsuario(void) {
@@ -82,12 +107,9 @@ char menuUsuario(void) {
 
 
 
-void telaCadastrarUsuario(void) {
-    char registro[12];
-    char cpf[12];
-    char nome[51];
-    char email[51];
-    char nasc[11];
+Usuario* telaPreencherUsuario(void) {    
+    Usuario* usr;
+    usr = (Usuario*) malloc(sizeof(Usuario));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -106,12 +128,9 @@ do {
     scanf("%[0-9]", cpf);
     getchar();
 } while (!validarCPF(cpf));
-do {
     printf("///                  Nome completo: ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
     getchar();
-} while (!validarNome(nome));
-do {
     printf("///                  E-mail: ");
     scanf("%[A-Za-z0-9@._]", email);
     getchar();
@@ -126,12 +145,14 @@ do {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return usr;
 }
 
 
 
-void telaPesquisarUsuario(void) {
-    char registro[12];
+char telaPesquisarUsuario(void) {
+    char* registro;
+    registro = (char*) malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -148,12 +169,15 @@ void telaPesquisarUsuario(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return usr;
+
 }
  
 
 
-void telaAlterarUsuario(void) {
-    char registro[12];
+char telaAlterarUsuario(void) {
+    char* registro;
+    registro = (char*) malloc(12*sizeof(char));   
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -170,11 +194,14 @@ void telaAlterarUsuario(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return usr;
 }
 
 
-void telaExcluirUsuario(void) {
-    char registro[12];
+
+char telaExcluirUsuario(void) {
+    char* registro;
+    registro = (char*) malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -191,4 +218,6 @@ void telaExcluirUsuario(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return usr;
 }
+
