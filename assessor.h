@@ -16,10 +16,10 @@
 
 typedef struct assessor Assessor;
 
-struct assessor {
+struct assessor{
     char cpf[12]; 
     char nome[51];
-    char ramo [51];
+    char ramo[51];
     int status;
 };
 
