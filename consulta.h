@@ -27,7 +27,7 @@ struct consulta {
 
 void moduloConsulta(void);
 char menuConsulta(void);
-void telaCadastrarConsulta(void);
+Consulta* telaCadastrarConsulta(void);
 void telaPesquisarConsulta(void);
 void telaAlterarConsulta(void);
 void telaExcluirConsulta(void);
