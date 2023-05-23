@@ -24,32 +24,62 @@ void moduloConsulta(void){
 
 void cadastrarConsulta(void) {
 	Consulta* csa;
-	csa = telacadastrarConsulta();
+	csa = telaPreencherConsulta();
 	gravarConsulta(csa);
 	free(csa);
 }
 	
 
 void pesquisarConsulta(void) {
-  // função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaPesquisarConsulta();
+	Consulta* csa;
+	char* codConsulta;
+	codConsulta = telaPesquisarConsulta();
+	csa = buscarConsulta(codConsulta);
+	      exibirConsulta(csa);
+	free(csa);
+	free(codConsulta);
 }
     
 
 void alterarConsulta(void) {
-  // função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaAlterarConsulta();
-}    
+	Consulta* csa;
+	char* codConsulta;
+	codConsulta = telaPesquisarConsulta();
+	csa = buscarConsulta(codConsulta);
+	if (csa == NULL) {
+		printf("\n\nConsulta não encontrado!\n\n");
+	} else {
+		regravarConsulta(csa, codConsulta);
+		csa = telacadastrarConsulta();
+		strcpy(csr->cpf, cpf);
+		regravarConsulta(csa);
+		// Outra opção:
+		// excluirConsulta(codConsulta);
+		// gravarConsulta(csa);
+		free(csa);
+	}
+	free(codConsulta);
+}
+	
+  
 
 
 void excluirConsulta(void) {
-  // função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaExcluirConsulta();
+	Consulta* csa;
+	char* codConsulta;
+	codConsulta = telaExcluirConsulta();
+	csa = (Consulta*) malloc(sizeof(Consulta));
+	csa = buscarConsulta(codConsulta);
+	if (csa == NULL) {
+		printf("\n\nConsulta não encontrado!\n\n");
+	} else {
+		csa->status = False;
+		regravarConsulta)(csa);
+		free(csa);
+	}
+	free(codConsulta));
 }
-    
+  
 
 
 char menuConsulta(void) {
@@ -78,12 +108,34 @@ char menuConsulta(void) {
     delay(1);
   return op;
     }
+
+
+
+void telaErroArquivoConsulta(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
+    printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
+    printf("///           = = = com informações sobre a Consulta  = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+    exit(1);
+}
     
     
     
-Consulta* telaCadastrarConsulta(void) {    
+Consulta* telaPreencherConsulta(void) {    
     Consulta *csa;
-    csa = (Consulta*) malloc(sizeof(Consulta ));
+    csa = (Consulta*) malloc(sizeof(Consulta));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -93,11 +145,13 @@ Consulta* telaCadastrarConsulta(void) {
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
     printf("///                                                                               ///\n");
     printf("///                  Registro do usuário(apenas números): ");
-    scanf("%[0-9]", registro);
+    scanf("%[0-9]", csa->registro);
     getchar();
-    printf("///                  Código da Consulta:      ");
-    scanf("%[A-Z0-9]", codConsulta);
-    getchar();
+do {
+	printf("///                  Código da Consulta:      ");
+    	scanf("%[A-Z0-9]", csa->codConsulta);
+    	getchar();
+  } while (!validarcodConsulta(csa->codConsulta);    
     printf("///                  Tipo da Consulta:        ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ0-9]", tipoConsulta);
     getchar();
@@ -118,7 +172,8 @@ Consulta* telaCadastrarConsulta(void) {
 
 
 void telaPesquisarConsulta(void) {
-    char codConsulta[8];
+    char* codConsulta;
+	codConsulta = (char*) malloc(8*sizeof(char));	
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -135,12 +190,14 @@ void telaPesquisarConsulta(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return codConsulta;	
 }
 
 
 
 void telaAlterarConsulta(void) {
-    char codConsulta[8];
+    char* codConsulta;
+	codConsulta = (char*) malloc(8*sizeof(char));	
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -156,13 +213,15 @@ void telaAlterarConsulta(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-   delay(1);
+    delay(1);
+    retun codConsulta;
 }
 
 
 
 void telaExcluirConsulta(void) {
-    char codConsulta[8];
+    char* codConsulta;
+	codConsulta = (char*) malloc(8*sizeof(char));	
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -179,4 +238,83 @@ void telaExcluirConsulta(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return codConsulta;	
+}
+	   
+	   
+	   
+void gravarConsulta(Consulta* csa) {
+    FILE* fp;
+	fp = fopen("consulta.dat", "ab");
+	if (fp == NULL) {
+		telaErroArquivoConsulta();
+	}
+	fwrite(csa, sizeof(Consulta), 1, fp);
+	fclose(fp);
+}
+
+
+
+Consulta* buscarConsulta(char* Consulta) {
+    FILE* fp;
+    Consulta* csa;
+    csa = (Consulta*) malloc(sizeof(Consulta));
+    fp = fopen("consulta.dat", "rb");
+    if (fp == NULL) {
+                telaErroArquivoUsuario();
+    }
+	while(fread(csa, sizeof(Consulta), 1, fp)) {
+		if (strcm(csa->codConsulta, codConsulta) == 0) && (csa->status == True)) {
+			fclose(fp);
+			return csa;   
+		}
+	}
+	fclose(fp);
+	return NULL;
+}
+
+
+
+void exibirConsulta(Consulta* csa) {
+    if (csa == NULL) {
+        printf("\n= = = Consulta Inexistente = = =\n");
+    }
+    else {
+        printf("\n= = = Consulta Cadastrado = = =\n");
+        printf("Registro do Usuario: %s\n", usr->registro);
+	printf("Codigo da Consulta: %s\n", csa->codConsulta);
+	printf("Tipo da Consulta: %s\n", csa->tipoConsulta);
+	printf("Duracao da Consulta: %s\n", csa->duracao);
+        printf("CPF do Assessor: %s\n", asr->cpf);
+	printf("Status: %d\n", asr->status);
+    }
+	printf("\n\nTecle ENTER para continuar!\n\n");
+	getchar();
+}  
+
+
+
+void regravarConsulta(Consulta* csa, char* codConsulta) {
+    int achou;
+    FILE* fp;
+    Consulta* csaLido;
+
+    csaLido = (Consulta*) malloc(sizeof(Consulta));
+        fp = fopen("consulta.dat", "r+b");
+        if (fp == NULL) {
+                telaErroArquivoConsulta();
+        }
+        //while(!feof(fp)) {
+        achou = False;
+        while(fread(csaLido, sizeof(Consulta), 1, fp) && !achou) {
+                //fread(csaLido, sizeof(Consulta), 1, fp);
+                if (strcmp(csaLido->codConsulta, csa->codConsulta) == 0) {
+                      achou = True;
+                      fseek(fp, -1*sizeof(Consulta), SEEK_CUR);
+                fwrite(csa, sizeof(Consulta), 1, fp);
+                        //break;
+                }
+        }
+        fclose(fp);
+        free(csaLido)
 }
