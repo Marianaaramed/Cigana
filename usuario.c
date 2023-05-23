@@ -319,7 +319,7 @@ void regravarUsuario(Usuario* usr, char* registro) {
         achou = False;
         while(fread(usrLido, sizeof(Usuario), 1, fp) && !achou) {
                 //fread(usrLido, sizeof(Usuario), 1, fp);
-                if (strcmp(usrLido->registro,, usr->registro) == 0) {
+                if (strcmp(usrLido->registro, usr->registro) == 0) {
                       achou = True;
                       fseek(fp, -1*sizeof(Usuario), SEEK_CUR);
                 fwrite(usr, sizeof(Usuario), 1, fp);
