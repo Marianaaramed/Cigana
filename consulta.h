@@ -36,3 +36,7 @@ void cadastrarConsulta(void);
 void pesquisarConsulta(void);
 void alterarConsulta(void);
 void excluirConsulta(void);
+
+Consulta* buscarConsulta(char);
+void exibirConsulta(Consulta*);
+void regravarConsulta(Consulta*);
