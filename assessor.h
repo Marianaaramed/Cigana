@@ -25,7 +25,7 @@ struct assessor {
 
 void moduloAssessor(void);
 char menuAssessor(void);
-void telaCadastrarAssessor(void);
+Assessor* telaCadastrarAssessor(void);
 void telaPesquisarAssessor(void);
 void telaAlterarAssessor(void);
 void telaExcluirAssessor(void);
