@@ -26,7 +26,7 @@ struct usuario {
 
 void moduloUsuario(void);
 char menuUsuario(void);
-void telaCadastrarUsuario(void);
+Usuario* telaCadastrarUsuario(void);
 void telaPesquisarUsuario(void);
 void telaAlterarUsuario(void);
 void telaExcluirUsuario(void);
