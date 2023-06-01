@@ -253,6 +253,47 @@ int validar_tipo_de_consulta(char* tipo) {
 
 
 
+/////////////////// VALIDAR ID/CODIGO /////////////////////
+
+ ///// funcao que valida digitos numericos /////
+int numero(char n) {
+    if (n >= '0' && n <= '9') {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+////// FUNÇÃO DE ID/CODIGO
+int valida_id(char* id, int tam) {
+    //       o id em si, o tamanho do id para tornar uma função genérica
+    //                   *Lembrar de passar o segundo parametro quando for usar a função
+
+    int i;
+
+    // quantidade de digitos
+    for (i = 0; i < tam; i++) {
+        if (id[i] == '\0') {
+            return 0;
+        }
+    }
+    if (id[i] != '\0') {
+        return 0;
+    }
+
+    // apenas digitos numericos
+    for (i = 0; i < tam; i++) {
+        if (!numero(id[i])) {
+            return 0;
+        }
+    }
+
+    // ID valido
+    return 1;
+} ////// AUTOR: MATHEUS QUIRINO FERNANDES FIGUEIREDO /// GIT: https://github.com/quirinof
+
+
+
 ///////////////////////////////////////////////////////////////////////////////
 /// Retorna 1 se string recebido corresponder a um número do codigo válido 
 /// (apenas dígitos) ou retorna 0 caso contrário
@@ -264,7 +305,7 @@ int validar_codConsulta(char* codConsulta) {
     return 0;
   }
   for (int i = 0; i < tam; i++) {
-    if (!Digito(codConsulta[i])) {
+    if (!valida_id(codConsulta[i])) {
       return 0;
     }
   }
