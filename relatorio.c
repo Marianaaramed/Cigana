@@ -10,45 +10,45 @@ void moduloRelatorio(void) {
 	do {
 		opcao = menuRelatorio();
 		switch(opcao) {
-			case '1': 	usuarioPorConsultor();
+			case '1': 	listra_usuario();
 						break;
-			case '2': 	oraculoPorConsultor();
+			case '2': 	listra_assessor();
 						break;
-			case '3': 	tempoPorOraculo();
+			case '3': 	listra_consulta();
 						break;
 			} 		
 	} while (opcao != '0');
 }
 
 
-void usuarioPorConsultor() {
-	char* cpfCsr;
-	cpfCsr = telaUsuarioPorConsultor();
-    relatUsuarioPorConsultor(cpfCsr);
-    free(cpfCsr);
+void listra_usuario() {
+	char* registro;
+	registro = telaListra_usuario();
+        relatListra_usuario(registro);
+        free(registro);
 }
 	
 
-void oraculoPorConsultor() {
-	char* cpfCsr;
-	cpfCsr = telaOraculoPorConsultor();
-    relatOraculoPorConsultor();(cpfCsr);
-    free(cpfCsr);
+void listra_assessor() {
+	char* cpfasr;
+	cpfasr = telaListra_assessor();
+        relatListra_assessor();(cpfasr);
+        free(cpfasr);
 }
 	
 
-void tempoPorOraculo() {
-	char* codOraculo;
-	codOraculo = telaTempoPorOraculo();
-    relatTempoPorOraculo();(codOraculo);
-    free(codOraculo);
+void listra_consulta() {
+	char* codConsulta;
+	codConsulta = telaListra_consulta();
+        relatListra_consulta();(codConsulta);
+        free(codConsulta);
 }
 
 
 
 char menuRelatorio(void) {
 	char op;
-    	system("clear||cls");
+	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -63,12 +63,12 @@ char menuRelatorio(void) {
 	printf("///           = = = = = = = =  Menu Relatório = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           1. Listar usuarios por consultor                            ///\n");
-	printf("///           2. Exibir oraculos de um consultor                          ///\n");
-	printf("///           3. Exibir tempo por consultar                               ///\n");
-	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///             1. Lista  usuarios                                        ///\n");
+	printf("///             2. Lista  assessores                                      ///\n");
+	printf("///             3. Lista  consultas                                       ///\n");
+	printf("///             0. Voltar ao menu anterior                                ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Escolha a opção desejada: ");
+	printf("///             Escolha a opção desejada: ");
 	scanf("%c", &op);
 	getchar();
 	printf("///                                                                       ///\n");
@@ -81,9 +81,9 @@ char menuRelatorio(void) {
 
 
 
-char* telaUsuarioPorConsultor(void) {
-    char* cpfCsr;
-    cpfCsr = (char*) malloc(4*sizeof(char));
+char* telaListra_usuario();(void) {
+    char* registro;
+    registro = (char*) malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -96,26 +96,26 @@ char* telaUsuarioPorConsultor(void) {
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
     printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///           = = = = = =  Usuario Por Consultor  = = = = = = =             ///\n");
+    printf("///           = = = = = = = = = =  Usuarios  = = = = = = = = =            ///\n");
     printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                       ///\n");
-    printf("///            Informe o CPF do Consultor: ");
-    scanf("%[0-9]", cpf);
+    printf("///            Informe o registro do usuario: ");
+    scanf("%[0-9]", registro;);
     getchar();
     printf("///                                                                       ///\n");
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
-    return cpfCsr;
+    return registro;
 }
 
 
 
-char* telaOraculoPorConsultor(void) {
-	char* cpfCsr;
-    	cpfCsr = (char*) malloc(4*sizeof(char));
-    	system("clear||cls");
+char* telaListra_assessor(void) {
+	char* cpfasr;
+	cpfasr = (char*) malloc(12*sizeof(char));
+	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -126,10 +126,10 @@ char* telaOraculoPorConsultor(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = =  Oraculo Por Consultor  = = = = = =             ///\n");
+	printf("///           = = = = = = = = = = Assessores  = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Informe o CPF do consultor (apenas números): ");
+	printf("///           Informe o CPF do Assessor (apenas números): ");
 	scanf("%[0-9]", cpf);
 	getchar();
 	printf("///                                                                       ///\n");
@@ -137,31 +137,31 @@ char* telaOraculoPorConsultor(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
-	return cpfCsr;
+	return cpfasr;
 }
 
 
 
-char* telaTempoPorOraculo(void) {
-	char* codOraculo; 
-	codOraculo = (char*) malloc(11*sizeof(char));
+char* telaListra_consulta(void) {
+	char* codConsulta; 
+	codconsulta = (char*) malloc(11*sizeof(char));
         system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = =   Tempo Por Oraculo    = = = = = =             ///\n");
+	printf("///           = = = = = = = = = = Consultas = = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///              Código do Oráculo:      ");
-        scanf("%[A-Z0-9]", codOraculo); 
+	printf("///              Código do Consulta:      ");
+	scanf("%[A-Z0-9]", 	codConsulta); 
 	getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
-	return codOraculo;
+	return codConsulta;
 }
 
 
@@ -247,25 +247,13 @@ void relatTempoPorconsulta(char* codOraculo){
 }   
 
 
-void listaTempoPorConsulta(char* tempo) {
+void lista_usuario(void) {
     FILE* fp;
-    Consulta* cs;
-    char codCs[10];
-    int tam;
-
-    trm = (Consulta*) malloc(sizeof(Consulta));
-    fp = fopen("consulta.dat", "rb");
-    while (fread(cs, sizeof(Consulta), 1, fp)) {
-        if (strcmp(cs->tempo, tempo) == 0) {
-            tam = strlen(cs->codOraculo);
-            strncpy(codCs, cs->codOraculo, tam);
-            for (int i = tam; i < 25; i++) {
-                codCs[i] = ' ';
-            }
-            codOraculo[5] = '\0';
-            printf("///           ||     %-3s     || %-26s ||             ///\n", cs->codTurma, codOraculo);
-        }
+    Usuario *usr;
+    usr = (Usuario*) malloc(sizeof(Usuario));
+    fp = fopen("usuario.dat", rb);
+	while( fread(usr,sizeof(usuario), 1, fp)){
     }
     fclose(fp);
-    free(cs);
-}
+    free(usr);
+
