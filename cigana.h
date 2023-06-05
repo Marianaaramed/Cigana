@@ -13,6 +13,6 @@
 /////
 // Assinatura das funções
 
-void telaPrincipal(void);
+char telaPrincipal(void);
 void telaSobre(void);
 void telaEquipe(void);
