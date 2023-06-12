@@ -10,37 +10,37 @@ void moduloRelatorio(void) {
 	do {
 		opcao = menuRelatorio();
 		switch(opcao) {
-			case '1': 	listra_usuario();
+			case '1': 	listrar_usuario();
 						break;
-			case '2': 	listra_assessor();
+			case '2': 	listrar_assessor();
 						break;
-			case '3': 	listra_consulta();
+			case '3': 	listrar_consulta();
 						break;
 			} 		
 	} while (opcao != '0');
 }
 
 
-void listra_usuario() {
+void listrar_usuario() {
 	char* registro;
-	registro = telaListra_usuario();
-        relatListra_usuario(registro);
+	registro = telaListrar_usuario();
+        relatListrar_usuario(registro);
         free(registro);
 }
 	
 
-void listra_assessor() {
-	char* cpfasr;
-	cpfasr = telaListra_assessor();
-        relatListra_assessor();(cpfasr);
-        free(cpfasr);
+void listrar_assessor() {
+	char* cpf_asr;
+	cpf_asr = telaListrar_assessor();
+        relatListrar_assessor();(cpf_asr);
+        free(cpf_asr);
 }
 	
 
-void listra_consulta() {
+void listrar_consulta() {
 	char* codConsulta;
-	codConsulta = telaListra_consulta();
-        relatListra_consulta();(codConsulta);
+	codConsulta = telaListrar_consulta();
+        relatListrar_consulta();(codConsulta);
         free(codConsulta);
 }
 
@@ -63,9 +63,9 @@ char menuRelatorio(void) {
 	printf("///           = = = = = = = =  Menu Relatório = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///             1. Lista  usuarios                                        ///\n");
-	printf("///             2. Lista  assessores                                      ///\n");
-	printf("///             3. Lista  consultas                                       ///\n");
+	printf("///             1. Listar  usuarios                                       ///\n");
+	printf("///             2. Listar  assessores                                     ///\n");
+	printf("///             3. Listar  consultas                                      ///\n");
 	printf("///             0. Voltar ao menu anterior                                ///\n");
 	printf("///                                                                       ///\n");
 	printf("///             Escolha a opção desejada: ");
@@ -81,7 +81,7 @@ char menuRelatorio(void) {
 
 
 
-char* telaListra_usuario();(void) {
+char* telaListrar_usuario(void) {
     char* registro;
     registro = (char*) malloc(12*sizeof(char));
     system("clear||cls");
@@ -112,9 +112,9 @@ char* telaListra_usuario();(void) {
 
 
 
-char* telaListra_assessor(void) {
-	char* cpfasr;
-	cpfasr = (char*) malloc(12*sizeof(char));
+char* telaListrar_assessor(void) {
+	char* cpf_asr;
+	cpf_asr = (char*) malloc(17*sizeof(char));
 	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -137,12 +137,12 @@ char* telaListra_assessor(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
-	return cpfasr;
+	return cpf_asr;
 }
 
 
 
-char* telaListra_consulta(void) {
+char* telaListrar_consulta(void) {
 	char* codConsulta; 
 	codconsulta = (char*) malloc(11*sizeof(char));
         system("clear||cls");
@@ -166,7 +166,68 @@ char* telaListra_consulta(void) {
 
 
 
-void lista_usuario(void) {
+void relatListrar_usuario( char*registro) {
+	nomeUsr = (char*) malloc(10*sizeof(char));
+	strcpy(nomeUsr,"Arthur");
+	system("clear||cls");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+   	printf("///           =====================================================       ///\n");
+	printf("///           ||   CPF do Usuario    ||     Nome do Usuario      ||       ///\n");
+        printf("///           =====================================================       ///\n");
+   	printf("///           ||    012.351.497-00   || Artrur Barbosa Castro    ||       ///\n");
+        printf("///           ||    120.153.974-01   || Bryan de Araújo Cardoso  ||       ///\n");
+   	printf("///           ||    274.597.823-02   || Clecio Barbosa Alves     ||       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+   	printf("///Tecle <ENTER> para continuar...///");
+   	getchar();
+}
+
+
+
+void relatListrar_assessor( char*cpf_asr) {
+	cpf_asr = (char*) malloc(17*sizeof(char));
+        strcpy(nome_asr,"Arthur");
+	system("clear||cls");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+   	printf("///           =====================================================       ///\n");
+	printf("///           ||   CPF do Usuario    ||     Nome do Usuario      ||       ///\n");
+        printf("///           =====================================================       ///\n");
+   	printf("///           ||    012.351.497-00   || Artrur Barbosa Castro    ||       ///\n");
+        printf("///           ||    120.153.974-01   || Bryan de Araújo Cardoso  ||       ///\n");
+   	printf("///           ||    274.597.823-02   || Clecio Barbosa Alves     ||       ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+   	printf("///Tecle <ENTER> para continuar...///");
+   	getchar();
+}
+
+
+
+void relatListrar_consulta(char* codConsulta) {
+	//tela em desenvolvimento
+	
+	
+
+void listar_usuario(void) {
     FILE* fp;
     Usuario *usr;
     usr = (Usuario*) malloc(sizeof(Usuario));
@@ -175,3 +236,26 @@ void lista_usuario(void) {
     }
     fclose(fp);
     free(usr);
+	
+	
+void listar_assessor(void) {
+	FILE* fp;
+        assessor* asr;
+	asr = (Assessor*) malloc(sizeof(Assessor));
+	fp = fopen("assessor.dat", rb);
+	while( fread(usr,sizeof(assessor), 1, fp)){
+	}
+	fclose(fp);
+	free(usr);
+	
+	
+	
+void listar_consulta(void) {
+	FILE* fp;
+        consulta* codConsulta;
+	codConsulta = (Consulta*) malloc(sizeof(Consulta));
+	fp = fopen("consulta.dat", rb);
+	while( fread(usr,sizeof(consulta), 1, fp)){
+	}
+	fclose(fp);
+	free(usr);	
