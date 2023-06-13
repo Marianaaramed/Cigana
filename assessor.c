@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "consultor.h"
+#include <string.h>
+#include "assessor.h"
 #include "biblioteca.h"
 
 typedef struct assessor Assessor;
@@ -35,7 +36,7 @@ void pesquisarAssessor(void) {
 	char* cpf;
 	cpf = telaPesquisarAssessor();
 	asr = buscarAssessor(cpf);
-		exibirAssessor(asr);
+          exibirAssessor(asr);
 	free(asr);
 	free(cpf);
 }
@@ -50,7 +51,7 @@ void alterarAssessor(void) {
 	if (asr == NULL) {  
 		printf("\n\nAssessor não encontrado!\n\n");
 	} else {
-		regravarAssessor(asr, cpf);
+		regravarAssessor(asr);
 		asr = telaPreencherAssessor();
 		strcpy(asr->cpf, cpf);
 		regravarAssessor(asr);
@@ -123,9 +124,7 @@ void telaErroArquivoAssessor(void) {
     printf("///                                                                       ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\n\nTecle ENTER para continuar!\n\n");
-    getchar();
-    exit(1);
+
 }
 
 
@@ -145,12 +144,12 @@ Assessor* telaPreencherAssessor(void) {
         printf("///                  CPF (apenas números):          ");
         scanf("%[0-9]", asr->cpf);
         getchar();
-  } while (!validarCPF(asr->cpf));
+  } while (!validar_cpf(asr->cpf));
     printf("///                  Nome completo:                 ");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", asr->nome);
     getchar();
     printf("///                  Ramo do Assessor:                 ");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ,]", ramo);
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ,]", asr->ramo);
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -162,8 +161,7 @@ Assessor* telaPreencherAssessor(void) {
 
 
 
-
-void telaPesquisarAssessor(void) {
+char* telaPesquisarAssessor(void) {
     char* cpf;
     cpf = (char*) malloc(12*sizeof(char));
     system("clear||cls");
@@ -187,7 +185,7 @@ void telaPesquisarAssessor(void) {
 
 
 
-void telaAlterarAssessor(void) {
+char* telaAlterarAssessor(void) {
     char* cpf;
     cpf = (char*) malloc(12*sizeof(char));
     system("clear||cls");
@@ -211,7 +209,7 @@ void telaAlterarAssessor(void) {
 
 
 
-void telaExcluirAssessor(void) {
+char* telaExcluirAssessor(void) {
     char* cpf;
     cpf = (char*) malloc(12*sizeof(char));
     system("clear||cls");
@@ -258,7 +256,7 @@ Assessor* buscarAssessor(char* cpf) {
                 telaErroArquivoAssessor();
     }
         while(fread(asr, sizeof(Assessor), 1, fp)) {
-            if (strcm(asr->cpf, cpf) == 0) && (asr->status == True)) {
+            if ((strcmp(asr->cpf, cpf) == 0) && (asr->status == True)) {
                   fclose(fp);
                   return asr;    
             }
@@ -278,7 +276,7 @@ void exibirAssessor(Assessor* asr) {
         printf("CPF do Assessor: %s\n", asr->cpf);
         printf("Nome do Assessor: %s\n", asr->nome);        
         printf("Ramo do Usuario: %s\n", asr->ramo);
-        printf("Status: %d\n", usr->status);
+        printf("Status: %d\n", asr->status);
     }
     printf("\n\nTecle ENTER para continuar!\n\n");
     getchar();
@@ -286,7 +284,7 @@ void exibirAssessor(Assessor* asr) {
 
 
 
-void regravarAssessor(Assessor* asr, char* cpf) {
+void regravarAssessor(Assessor* asr) {
     int achou;
     FILE* fp;
     Assessor* asrLido;
@@ -296,18 +294,14 @@ void regravarAssessor(Assessor* asr, char* cpf) {
         if (fp == NULL) {
                 telaErroArquivoAssessor();
         }
-        //while(!feof(fp)) {
-        achou = False;
         while(fread(asrLido, sizeof(Assessor), 1, fp) && !achou) {
-                //fread(asrLido, sizeof(Assessor), 1, fp);
-                if (strcmp(asrLido->cpf, asr->cpf) == 0) {
-                      achou = True;
-                      fseek(fp, -1*sizeof(Assessor), SEEK_CUR);
+            if (strcmp(asrLido->cpf, asr->cpf) == 0) {
+                achou = True;
+                fseek(fp, -1*sizeof(Assessor), SEEK_CUR);
                 fwrite(asr, sizeof(Assessor), 1, fp);
                         //break;
                 }
         }
         fclose(fp);
-        free(asrLido)
+        free(asrLido);
 }
-
