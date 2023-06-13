@@ -23,11 +23,9 @@ int main(void) {
                         break;
              case '3':  moduloConsulta();
                         break;
-             case '4':  // Módulo Registro
+             case '4':  // Módulo Relatórios
                         break;
-             case '5':  // Módulo Relatórios
-                        break;
-             case '6':  telaSobre();
+             case '5':  telaSobre();
                         telaEquipe();
                         break;
         } 	
@@ -59,8 +57,8 @@ char telaPrincipal(void) {
     printf("///                      = = = = = =  Cigana Virtual = = = = = =                      ///\n");
     printf("///                                                                                   ///\n");
     printf("///                        1. Módulo Usuário                                          ///\n");
-    printf("///                        2. Módulo Consultor                                        ///\n");
-    printf("///                        3. Módulo Oraculo                                          ///\n");
+    printf("///                        2. Módulo Assessor                                         ///\n");
+    printf("///                        3. Módulo Consulta                                         ///\n");
     printf("///                        4. Módulo Relatórios                                       ///\n");
     printf("///                        5. Módulo Sobre                                            ///\n");
     printf("///                        0. Sair                                                    ///\n");
