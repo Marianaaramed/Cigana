@@ -11,7 +11,7 @@
 
 
 //////
-////// Assisnaturas das funcões Módulo Consultor
+////// Assisnaturas das funcões Módulo Assessor
 //////
 
 typedef struct assessor Assessor;
@@ -25,16 +25,17 @@ struct assessor{
 
 void moduloAssessor(void);
 char menuAssessor(void);
-Assessor* telaCadastrarAssessor(void);
-void telaPesquisarAssessor(void);
-void telaAlterarAssessor(void);
-void telaExcluirAssessor(void);
+Assessor* telaPreencherAssessor(void);
+char* telaPesquisarAssessor(void);
+char* telaAlterarAssessor(void);
+char* telaExcluirAssessor(void);
 
 void cadastrarAssessor(void);
 void pesquisarAssessor(void);
 void alterarAssessor(void);
 void excluirAssessor(void);
+void gravarAssessor(Assessor*);
 
-Assessor* buscarAssessor(char);
+Assessor* buscarAssessor(char*);
 void exibirAssessor(Assessor*);
 void regravarAssessor(Assessor*);
