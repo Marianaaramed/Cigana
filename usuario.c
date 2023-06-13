@@ -5,7 +5,7 @@
 #include "biblioteca.h"
 
 typedef struct usuario Usuario;
-void moduloUsuario(void);
+void moduloUsuario(void) {
     char opcao;
     do {
         opcao = menuUsuario();
@@ -53,7 +53,7 @@ void alterarUsuario(void) {
   if (usr == NULL) {    
   printf("\n\nUsuario não encontrado!\n\n");
   } else {
-    regravarUsuario(usr, registro);
+            regravarUsuario(usr);
             usr = telaPreencherUsuario();
             strcpy(usr->registro, registro);
             regravarUsuario(usr);
@@ -69,8 +69,8 @@ void alterarUsuario(void) {
 void excluirUsuario(void) {	
   Usuario* usr;
   char *registro;
-
-	    registro = telaExcluirUsuario();
+  
+  registro = telaExcluirUsuario();
   usr = (Usuario*) malloc(sizeof(Usuario));
   usr = buscarUsuario(registro);
   if (usr == NULL) {
@@ -148,36 +148,36 @@ Usuario* telaPreencherUsuario(void) {
     printf("///                = = = = = = = = Cadastrar Usuário  = = = = = = = =             ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
-  do {
+    do {
         printf("///                  Registro (apenas números): ");
         scanf("%[0-9]", usr->registro);
         getchar();
-  } while (!validarRegistro(usr->registro));
-        printf("///                  CPF (apenas números): ");
-        scanf("%[0-9]", usr->cpf);
-        getchar();
-        printf("///                  Nome completo: ");
-        scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", usr->nome);
-        getchar();
-        printf("///                  E-mail: ");
-        scanf("%[A-Za-z0-9@._]", usr->email);
-        getchar();
-  do {
+    } while (!validarRegistro(usr->registro));
+    printf("///                  CPF (apenas números): ");
+    scanf("%[0-9]", usr->cpf);
+    getchar();
+    printf("///                  Nome completo: ");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", usr->nome);
+    getchar();
+    printf("///                  E-mail: ");
+    scanf("%[A-Za-z0-9@._]", usr->email);
+    getchar();
+    do {
         printf("///                  Data de Nascimento (dd/mm/aaaa): ");  
         scanf("%[0-9]", usr->nasc);
         getchar();
- } while (!validarNascimento(usr->nasc));    
-        printf("///                                                                               ///\n");
-        printf("///                                                                               ///\n");
-        printf("/////////////////////////////////////////////////////////////////////////////////////\n");
-        printf("\n");
-        delay(1);
-        return usr;
+    } while (!validarData(usr->nasc));    
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    delay(1);
+    return usr;
 }
 
 
 
-char telaPesquisarUsuario(void) {
+char* telaPesquisarUsuario(void) {
     char* registro;
     registro = (char*) malloc(12*sizeof(char));
 	
@@ -202,7 +202,7 @@ char telaPesquisarUsuario(void) {
  
 
 
-char telaAlterarUsuario(void) {
+char* telaAlterarUsuario(void) {
     char* registro;
 
     registro = (char*) malloc(12*sizeof(char));
@@ -227,7 +227,7 @@ char telaAlterarUsuario(void) {
 
 
 
-char telaExcluirUsuario(void) {
+char* telaExcluirUsuario(void) {
     char* registro;
 
     registro = (char*) malloc(12*sizeof(char));
@@ -255,12 +255,12 @@ char telaExcluirUsuario(void) {
 void gravarUsuario(Usuario* usr) {
     FILE* fp;
 
-  fp = fopen("usuarios.dat", "ab");
-     if (fp == NULL) {
-          telaErroArquivoUsuario();
-  }
-  fwrite(usr, sizeof(Usuario), 1, fp);
-  fclose(fp);
+    fp = fopen("usuarios.dat", "ab");
+    if (fp == NULL) {
+        telaErroArquivoUsuario();
+    }
+    fwrite(usr, sizeof(Usuario), 1, fp);
+    fclose(fp);
 }
 
 
@@ -272,13 +272,13 @@ Usuario* buscarUsuario(char* registro) {
     usr = (Usuario*) malloc(sizeof(Usuario));
     fp = fopen("usuarios.dat", "rb");
     if (fp == NULL) {
-                telaErroArquivoUsuario();
+        telaErroArquivoUsuario();
     }
-        while(fread(usr, sizeof(Usuario), 1, fp)) {
-            if (strcm(usr->registro, registro) == 0) && (usr->status == True)) {
-                  fclose(fp);
-                  return usr;    
-            }
+    while(fread(usr, sizeof(Usuario), 1, fp)) {
+        if ((strcmp(usr->registro, registro) == 0) && (usr->status == True)) {
+            fclose(fp);
+            return usr;    
+        }
     }
     fclose(fp);
     return NULL;
@@ -305,29 +305,24 @@ void exibirUsuario(Usuario* usr) {
 
 
 
-void regravarUsuario(Usuario* usr, char* registro) {
+void regravarUsuario(Usuario* usr) {
     int achou;
     FILE* fp;
     Usuario* usrLido;
 
     usrLido = (Usuario*) malloc(sizeof(Usuario));
-        fp = fopen("usuarios.dat", "r+b");
-        if (fp == NULL) {
-                telaErroArquivoUsuario();
-        }
-        //while(!feof(fp)) {
-        achou = False;
-        while(fread(usrLido, sizeof(Usuario), 1, fp) && !achou) {
-                //fread(usrLido, sizeof(Usuario), 1, fp);
-                if (strcmp(usrLido->registro, usr->registro) == 0) {
-                      achou = True;
-                      fseek(fp, -1*sizeof(Usuario), SEEK_CUR);
-                fwrite(usr, sizeof(Usuario), 1, fp);
-                        //break;
-                }
-        }
-        fclose(fp);
-        free(usrLido)
+    fp = fopen("usuarios.dat", "r+b");
+    if (fp == NULL) {
+            telaErroArquivoUsuario();
+    }
+    achou = False;
+    while(fread(usrLido, sizeof(Usuario), 1, fp) && !achou) { 
+          if (strcmp(usrLido->registro, usr->registro) == 0) {
+                    achou = True;
+                    fseek(fp, -1*sizeof(Usuario), SEEK_CUR);
+            fwrite(usr, sizeof(Usuario), 1, fp);
+             }
+    }
+    fclose(fp);
+    free(usrLido);
 }
-
-
