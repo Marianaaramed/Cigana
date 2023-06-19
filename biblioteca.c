@@ -46,7 +46,7 @@ int Digito(char c) {
 ///////////////////////////////////////////////////////////////////////////////
 /// Validar letra
 
-int validar_letra(char c) {
+int letra(char c) {
   if (c >= 'A' && c <= 'Z') {
     return 1;
   } else if (c >= 'a' && c <= 'z') {
@@ -63,11 +63,11 @@ int validar_letra(char c) {
 
 int validar_nome(char* nome) {
   for (int i=0; nome[i]!='\0'; i++) {
-    if (!validar_letra(nome[i])) {
-      return 0;
+    if (!letra(nome[i])) {
+      return 1;
     }
   }
-	return 1;
+	return 0;
 } /// Autor: https://github.com/rauan-meirelles
 
 
@@ -75,88 +75,51 @@ int validar_nome(char* nome) {
 /////////////////////////////////////////////////////////////////
 /// Validar CPF
 
-public static boolean isCPF(String CPF) {
-    CPF = removeCaractEsp(CPF);
-
-    if (!CPF.isNumeric())
-      return false;
-
-    CPF = CPF.replace('-', '');
-    CPF = CPF.replace('.', '');
-
-    if (
-      CPF.equals('00000000000') ||
-      CPF.equals('11111111111') ||
-      CPF.equals('22222222222') ||
-      CPF.equals('33333333333') ||
-      CPF.equals('44444444444') ||
-      CPF.equals('55555555555') ||
-      CPF.equals('66666666666') ||
-      CPF.equals('77777777777') ||
-      CPF.equals('88888888888') ||
-      CPF.equals('99999999999') ||
-      (CPF.length() != 11)
-    )
-      return (false);
-
-    Integer dig10, dig11, sm, i, r, num, peso;
-
-    sm = 0;
-    peso = 10;
-    List < String > cpfString = cpf.split('');
-    for (i = 0; i < 9; i++) {
-      num = Integer.valueOf(cpfString[i]);
-      sm = sm + (num * peso);
-      peso = peso - 1;
+int validaCPF(char *cpf){
+	int i, resto1=0, resto2=0, ehValido=0, x;
+    //Leitura do CPF
+    for(i=1; i<10 && ehValido==0; i++){
+        if(*(cpf+0)!=*(cpf+i))
+            ehValido = 1;
     }
 
-    r = 11 - (math.mod(sm, 11));
-    if ((r == 10) || (r == 11))
-      dig10 = 0;
-    else
-      dig10 = r;
-
-    // Calculo do 2o. Digito Verificador
-    sm = 0;
-    peso = 11;
-    for (i = 0; i < 10; i++) {
-      num = Integer.valueOf(cpfString[i]);
-      sm = sm + (num * peso);
-      peso = peso - 1;
+    if(ehValido == 1)
+    {
+        for(i=0; i<9; i++)
+            resto1 += (*(cpf+i)-'0')*(10-i);
+        resto1 = (resto1*10)%11;
+        if (resto1 == 10)
+            resto1 = 0;
+        if(resto1 == *(cpf+9)-'0') 
+        {
+            for(i=0; i<10; i++)
+                resto2 += (*(cpf+i)-'0')*(11-i);
+            resto2 = (resto2*10)%11;
+            if(resto2 == 10)
+                resto2 = 0;
+            if(resto2 != *(cpf+10)-'0') 
+                ehValido = 0;
+        }
+        else 
+            ehValido = 0;
     }
 
-    r = 11 - (math.mod(sm, 11));
-    if ((r == 10) || (r == 11))
-      dig11 = 0;
+    //verificação final de CPF válido
+    if(ehValido==1)
+        x=1;
     else
-      dig11 = r;
+        x=0;
+    return x;
 
-    // Verifica se os digitos calculados conferem com os digitos informados.
-    if (
-      dig10 == Integer.valueOf(cpfString[9]) &&
-      dig11 == Integer.ValueOf(cpfString[10])
-    )
-      return true;
-    else
-      return false;
-  }
+    
+}
 
-  public static String removeCaractEsp(string texto) {
-    return texto.replace('.', '')
-      .replace('-', '')
-      .replace('/', '')
-      .replace(' ', '')
-      .replace('(', '')
-      .replace(')', '');
-  }
-} ///Autor: https://github.com/cdavi-arj/Validate-CPF-CNPJ-Apex
- 
+
 
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// ValidarEmail
-// retorna 0 se for false e 1 se for true
+xxx/// ValidarEmail
 
 int valida_email(char email[]){
   int tam=strlen(email);
@@ -194,37 +157,43 @@ int valida_email(char email[]){
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Validar data
+/// Retorna 1 se ano for bissexto (divisível por 4, não divisível por ...
+/// 100 ou divisível por 400) e retorna 0 caso contrário
+///
+int ehBissexto(int aa) {
+  if ((aa % 4 == 0) && (aa % 100 != 0)) {
+    return 1;
+  } else if (aa % 400 == 0) {
+    return 1;
+  } else {
+    return 0;
+  }
+} /// Autor: https://github.com/flgorgonio/linguasolta_2020.2.git
 
-int valida_data(int dia, int mes, int ano) { 
-    if ((dia >= 1 && dia <= 31) && (mes >= 1 && mes <= 12) && (ano >= 1900 && ano <= 2100)) ///verifica se os numeros sao validos
-        {
-            if ((dia == 29 && mes == 2) && ((ano % 4) == 0)) ///verifica se o ano e bissexto
-            {
-                return 1;
-            }
-            if (dia <= 28 && mes == 2) ///verifica o mes de feveireiro
-            {
-                return 1;
-            }
-            if ((dia <= 30) && (mes == 4 || mes == 6 || mes == 9 || mes == 11)) ///verifica os meses de 30 dias
-            {
-                return 1;
-            }
-            if ((dia <=31) && (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes ==8 || mes == 10 || mes == 12)) ///verifica os meses de 31 dias
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-      }
-       else
-           {
-                return 0;
-           }
-} /// Autor: https://www.vivaolinux.com.br/script/Funcao-para-validacao-de-datas
+
+
+///////////////////////////////////////////////////////////////////////////////
+/// Retorna 1 se dia, mes e ano correspondem a uma data válida, inclusive
+/// em anos bissextos, ou retorna 0 caso contrário
+///
+int valida_data(int dd, int mm, int aa) {
+  int maiorDia;
+  if (aa < 0 || mm < 1 || mm > 12)
+    return 0;
+  if (mm == 2) {
+    if (ehBissexto(aa)) 
+      maiorDia = 29;
+    else
+      maiorDia = 28;
+  } else if (mm == 4 || mm == 6 || mm == 9 || mm == 11) {
+    maiorDia = 30;
+  } else
+    maiorDia = 31;
+  if (dd < 1 || dd > maiorDia)
+    return 0;
+  return 1;
+} /// Autor: https://github.com/flgorgonio/linguasolta_2020.2.git
+
 
 
 
@@ -233,46 +202,19 @@ int valida_data(int dia, int mes, int ano) {
 
 int validar_ramo(char* ramo) {
   for (int i=0; ramo[i]!='\0'; i++) {
-    if (!validar_letra(ramo[i])) {
-      return 0;
+    if (!letra(ramo[i])) {
+      return 1;
     }
   }
-	return 1;
-}
-
-
-
-/////////////////////////////////////////////////////////////////////////////////
-///validar tipo de consulta
-
-int validar_tipo_de_consulta(char* tipo) {
-  for (int i=0; tipo[i]!='\0'; i++) {
-    if (!validar_letra(tipo[i])) {
-      return 0;
-    }
-  }
-	return 1;
+	return 0;
 }
 
 
 
 /////////////////// VALIDAR ID/CODIGO /////////////////////
 
- ///// funcao que valida digitos numericos /////
-int numero(char n) {
-    if (n >= '0' && n <= '9') {
-        return 1;
-    }
-    else {
-        return 0;
-    }
-}
-////// FUNÇÃO DE ID/CODIGO
 int valida_id(char* id, int tam) {
-    //       o id em si, o tamanho do id para tornar uma função genérica
-    //                   *Lembrar de passar o segundo parametro quando for usar a função
-
-    int i;
+	int i;
 
     // quantidade de digitos
     for (i = 0; i < tam; i++) {
@@ -305,14 +247,14 @@ int validar_codConsulta(char* codConsulta) {
   int tam;
   tam = strlen(codConsulta);
   if (tam < 7 || tam > 9) {
-    return 0;
+    return 1;
   }
   for (int i = 0; i < tam; i++) {
     if (!valida_id(codConsulta[i])) {
-      return 0;
+      return 1;
     }
   }
-  return 1;
+  return 0;
 }
 
 
