@@ -151,12 +151,12 @@ do {
     	getchar();
 } while (!validarcodConsulta(csa->codConsulta);    
     printf("///                      Hora da Consulta:        ");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ0-9]", tipoConsulta);
+   /// scanf("%[);
     getchar();
-    printf("///                      Data da Consulta::       ");
-    scanf("%[0-9]", horario);
+    printf("///                      Data da Consulta:(dd/mm/aaaa):     ");     
+    scanf("%[0-9]", data);
     getchar();
-    printf("///                      CPF do Assesssor (apenas números): ");
+    printf("///                      CPF do Assesssor(apenas números): ");
     scanf("%[0-9]", cpf);
     getchar();  
     printf("///                                                                               ///\n");
@@ -195,7 +195,7 @@ void telaPesquisarConsulta(void) {
 
 void telaAlterarConsulta(void) {
     char* codConsulta;
-	codConsulta = (char*) malloc(8*sizeof(char));	
+    codConsulta = (char*) malloc(8*sizeof(char));	
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -219,7 +219,7 @@ void telaAlterarConsulta(void) {
 
 void telaExcluirConsulta(void) {
     char* codConsulta;
-	codConsulta = (char*) malloc(8*sizeof(char));	
+    codConsulta = (char*) malloc(8*sizeof(char));	
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -242,7 +242,7 @@ void telaExcluirConsulta(void) {
 	   
 	   
 void gravarConsulta(Consulta* csa) {
-    FILE* fp;
+    FILE *fp;
 	fp = fopen("consulta.dat", "ab");
 	if (fp == NULL) {
 		telaErroArquivoConsulta();
@@ -253,23 +253,24 @@ void gravarConsulta(Consulta* csa) {
 
 
 
-Consulta* buscarConsulta(char* Consulta) {
-    FILE* fp;
+Consulta* buscarConsulta(char *Consulta) {
+    FILE *fp;
     Consulta* csa;
     csa = (Consulta*) malloc(sizeof(Consulta));
     fp = fopen("consulta.dat", "rb");
     if (fp == NULL) {
-                telaErroArquivoConsulta();
+	    telaErroArquivoConsulta();
     }
 	while(fread(csa, sizeof(Consulta), 1, fp)) {
-		if (strcm(csa->codConsulta, codConsulta) == 0) && (csa->status == True)) {
-			fclose(fp);
-			return csa;   
-		}
-	}
-	fclose(fp);
-	return NULL;
+		if (strcmp(csa->codConsulta, codConsulta) == 0) && (csa->status == True)) {
+		  fclose(fp);
+                  return csa;    
+            }
+    }
+    fclose(fp);
+    return NULL;
 }
+
 
 
 
@@ -302,8 +303,7 @@ void regravarConsulta(Consulta* csa, char* codConsulta) {
         if (fp == NULL) {
                 telaErroArquivoConsulta();
         }
-        //while(!feof(fp)) {
-        achou = False;
+         achou = False;
         while(fread(csaLido, sizeof(Consulta), 1, fp) && !achou) {
                 //fread(csaLido, sizeof(Consulta), 1, fp);
                 if (strcmp(csaLido->codConsulta, csa->codConsulta) == 0) {
