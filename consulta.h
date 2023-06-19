@@ -21,6 +21,7 @@ struct consulta {
     char codConsulta[8];
     char hora[8];
     char data[8];
+    char cpf[12];
     int status;
 };
 
