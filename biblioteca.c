@@ -44,7 +44,8 @@ int Digito(char c) {
 
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Validar letra
+/// Retorna 1 se o caractere recebido for uma alfabético 
+/// (letra entre 'A' e 'Z' ou 'a' e 'z') ou retorna 0 caso contrário
 
 int letra(char c) {
   if (c >= 'A' && c <= 'Z') {
@@ -75,7 +76,7 @@ int validar_nome(char* nome) {
 /////////////////////////////////////////////////////////////////
 /// Validar CPF
 
-int validaCPF(char *cpf){
+int validar_cpf(char *cpf){
 	int i, resto1=0, resto2=0, ehValido=0, x;
     //Leitura do CPF
     for(i=1; i<10 && ehValido==0; i++){
@@ -109,50 +110,53 @@ int validaCPF(char *cpf){
         x=1;
     else
         x=0;
-    return x;
-
-    
+    return x;    
 }
 
 
 
+/////////////////////////////////////////
+//// função necessária para criar a função que valida email
 
-
-///////////////////////////////////////////////////////////////////////////////
-xxx/// ValidarEmail
-
-int valida_email(char email[]){
-  int tam=strlen(email);
-  int arroba = 0, ponto = 0, antesPonto = 0, depoisPonto = 0, i;
-  for (i = 0; i < tam; i++) {
-    char c = email[i];
-    if(c == '@') {
-      if (arroba)
-         break; // não pode ter uma segunda @
-      arroba++;
-      if (i < 3)
-        break; // se @ vier antes de 3 caracteres, erro
-    }
-    else if (arroba) { // se já encontrou @
-      if (ponto) { // se já encontrou . depois de @@
-        depoisPonto++;
-      }
-      else if(c == '.') {
-        ponto = 1;
-        if (antesPonto < 3) {
-          break; // se . depois de @ vier antes de 3 caracteres, erro
-        }
-      }
-      else {
-        antesPonto++;
-      }
-    }
-  } // for
-    if (i == tam && depoisPonto > 1)
-        return 1;
-    else
+int caracteres_email(char c) {
+    if ((!letra(c)) && (!Digito(c)) && (c != '@') && (c != '.') && (c != '_') && (c != '-')) {
         return 0;
-} /// Autor: https://pt.stackoverflow.com/users/110948/rog%C3%A9rio-dec
+    }
+    else {
+        return 1;
+    }
+}////// AUTOR: https://github.com/quirinof
+
+
+
+/////////////////// VALIDA EMAIL ///////////////////////
+int validar_email(char* email) {
+    int i;
+    int a = 0, p = 0;
+    // verifica se o primeiro caracter segue as normas de email
+    if(!letra(email[0]) && !Digito(email[0])) {
+            return 0;
+        }
+    for (i = 0; email[i] != '\0'; i++) {
+        // verifica se o email contem apenas os caracteres validos
+        if (!caracteres_email(email[i])) {
+            return 0;
+        }
+        // verificando quantidade de arroba e ponto
+        if (email[i] == '@') {
+            a++;
+        }
+        if (email[i] == '.') {
+            p++;
+        }
+    }
+    // valida arroba e ponto
+    if (a != 1 || p != 1) {
+        return 0;
+    }
+    // EMAIL valido
+    return 1;
+//// AUTOR: https://github.com/quirinof
 
 
 
@@ -176,7 +180,7 @@ int ehBissexto(int aa) {
 /// Retorna 1 se dia, mes e ano correspondem a uma data válida, inclusive
 /// em anos bissextos, ou retorna 0 caso contrário
 ///
-int valida_data(int dd, int mm, int aa) {
+int Data(int dd, int mm, int aa) {
   int maiorDia;
   if (aa < 0 || mm < 1 || mm > 12)
     return 0;
@@ -191,6 +195,30 @@ int valida_data(int dd, int mm, int aa) {
     maiorDia = 31;
   if (dd < 1 || dd > maiorDia)
     return 0;
+  return 1;
+} /// Autor: https://github.com/flgorgonio/linguasolta_2020.2.git
+
+
+/////////////////////////////////////////////////////////////////////////////////
+/// validarData
+int validar_data(char* data) {
+  int tam, dia, mes, ano;
+  tam = strlen(data);
+  if (tam != 8) {
+    return 0;
+  }
+  for (int i = 0; i < tam; i++) {
+    if (!Digito(data[i])) {
+      return 0;
+    }
+  }
+  dia = (data[0] - '0') * 10 + (data[1] - '0');
+  mes = (data[2] - '0') * 10 + (data[3] - '0');
+  ano = (data[4] - '0') * 1000 + (data[5] - '0') * 100 + 
+        (data[6] - '0') * 10 + (data[7] - '0');
+  if (!Data(dia, mes, ano)) {
+    return 0;
+  }
   return 1;
 } /// Autor: https://github.com/flgorgonio/linguasolta_2020.2.git
 
@@ -235,7 +263,7 @@ int valida_id(char* id, int tam) {
 
     // ID valido
     return 1;
-} ////// AUTOR: MATHEUS QUIRINO FERNANDES FIGUEIREDO /// GIT: https://github.com/quirinof
+} ////// AUTOR: https://github.com/quirinof
 
 
 
