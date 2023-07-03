@@ -73,7 +73,69 @@ void excluirUsuario(void) {
   registro = telaExcluirUsuario();
   usr = (Usuario*) malloc(sizeof(Usuario));
   usr = buscarUsuario(registro);
-  if (usr == NULL) {
+  if 
+
+Usuario* buscarUsuario(char* registro) {
+    FILE* fp;
+    Usuario* usr;
+
+    usr = (Usuario*) malloc(sizeof(Usuario));
+    fp = fopen("usuarios.dat", "rb");
+    if (fp == NULL) {
+        telaErroArquivoUsuario();
+    }
+    while(fread(usr, sizeof(Usuario), 1, fp)) {
+        if ((strcmp(usr->registro, registro) == 0) && (usr->status == True)) {
+            fclose(fp);
+            return usr;    
+        }
+    }
+    fclose(fp);
+    return NULL;
+}
+
+
+
+void exibirUsuario(Usuario* usr) {
+    if (usr == NULL) {
+        printf("\n= = = Usuario Inexistente = = =\n");
+    }
+    else {
+        printf("\n= = = Usuario Cadastrado = = =\n");
+        printf("Registro do Usuario: %s\n", usr->registro);
+        printf("CPF do Usuario: %s\n", usr->cpf);
+        printf("Nome do Usuario: %s\n", usr->nome);        
+        printf("E-mail do Usuario: %s\n", usr->email);
+        printf("Data de Nasc: %s\n", usr->nasc);
+        printf("Status: %d\n", usr->status);
+    }
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+}  
+
+
+
+void regravarUsuario(Usuario* usr) {
+    int achou;
+    FILE* fp;
+    Usuario* usrLido;
+
+    usrLido = (Usuario*) malloc(sizeof(Usuario));
+    fp = fopen("usuarios.dat", "r+b");
+    if (fp == NULL) {
+            telaErroArquivoUsuario();
+    }
+    achou = False;
+    while(fread(usrLido, sizeof(Usuario), 1, fp) && !achou) { 
+          if (strcmp(usrLido->registro, usr->registro) == 0) {
+                    achou = True;
+                    fseek(fp, -1*sizeof(Usuario), SEEK_CUR);
+            fwrite(usr, sizeof(Usuario), 1, fp);
+             }
+    }
+    fclose(fp);
+    free(usrLido);
+}(usr == NULL) {
   printf("\n\nUsuario não encontrado!\n\n");
   } else {
             usr->status = False;
@@ -93,7 +155,69 @@ char menuUsuario(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///                  = = = = = = = = = Menu Usuario = = = = = = = = =             ///\n");
+    p
+
+Usuario* buscarUsuario(char* registro) {
+    FILE* fp;
+    Usuario* usr;
+
+    usr = (Usuario*) malloc(sizeof(Usuario));
+    fp = fopen("usuarios.dat", "rb");
+    if (fp == NULL) {
+        telaErroArquivoUsuario();
+    }
+    while(fread(usr, sizeof(Usuario), 1, fp)) {
+        if ((strcmp(usr->registro, registro) == 0) && (usr->status == True)) {
+            fclose(fp);
+            return usr;    
+        }
+    }
+    fclose(fp);
+    return NULL;
+}
+
+
+
+void exibirUsuario(Usuario* usr) {
+    if (usr == NULL) {
+        printf("\n= = = Usuario Inexistente = = =\n");
+    }
+    else {
+        printf("\n= = = Usuario Cadastrado = = =\n");
+        printf("Registro do Usuario: %s\n", usr->registro);
+        printf("CPF do Usuario: %s\n", usr->cpf);
+        printf("Nome do Usuario: %s\n", usr->nome);        
+        printf("E-mail do Usuario: %s\n", usr->email);
+        printf("Data de Nasc: %s\n", usr->nasc);
+        printf("Status: %d\n", usr->status);
+    }
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+}  
+
+
+
+void regravarUsuario(Usuario* usr) {
+    int achou;
+    FILE* fp;
+    Usuario* usrLido;
+
+    usrLido = (Usuario*) malloc(sizeof(Usuario));
+    fp = fopen("usuarios.dat", "r+b");
+    if (fp == NULL) {
+            telaErroArquivoUsuario();
+    }
+    achou = False;
+    while(fread(usrLido, sizeof(Usuario), 1, fp) && !achou) { 
+          if (strcmp(usrLido->registro, usr->registro) == 0) {
+                    achou = True;
+                    fseek(fp, -1*sizeof(Usuario), SEEK_CUR);
+            fwrite(usr, sizeof(Usuario), 1, fp);
+             }
+    }
+    fclose(fp);
+    free(usrLido);
+}rintf("///                  = = = = = = = = = Menu Usuario = = = = = = = = =             ///\n");
     printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                               ///\n");
     printf("///                   1. Cadastrar um novo Usuário                                ///\n");
