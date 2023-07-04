@@ -33,4 +33,3 @@ void relatTempoPorconsultar(char*);
 void relatUsuariosPorconsultor(char*);
 void relatOraculosPorconsultor(char*);
 void listaOraculosPorconsultor(char*);
-
