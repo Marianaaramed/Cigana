@@ -10,18 +10,18 @@ void moduloRelatorio(void) {
 	do {
 		opcao = menuRelatorio();
 		switch(opcao) {
-			case '1': 	listrar_usuario();
+			case '1': 	Listrar_usuario();
 						break;
-			case '2': 	listrar_assessor();
+			case '2': 	Listrar_assessor();
 						break;
-			case '3': 	listrar_consulta();
+			case '3': 	Listrar_consulta();
 						break;
 			} 		
 	} while (opcao != '0');
 }
 
 
-void listrar_usuario() {
+void Listrar_usuario() {
 	char* registro;
 	registro = telaListrar_usuario();
         relatListrar_usuario(registro);
@@ -29,18 +29,18 @@ void listrar_usuario() {
 }
 	
 
-void listrar_assessor() {
-	char* cpf_asr;
-	cpf_asr = telaListrar_assessor();
-        relatListrar_assessor();(cpf_asr);
-        free(cpf_asr);
+void Listrar_assessor() {
+	char* cpf;
+	cpf = telaListrar_assessor();
+        relatListrar_assessor(cpf);
+        free(cpf);
 }
 	
 
-void listrar_consulta() {
+void Listrar_consulta() {
 	char* codConsulta;
 	codConsulta = telaListrar_consulta();
-        relatListrar_consulta();(codConsulta);
+        relatListrar_consulta(codConsulta);
         free(codConsulta);
 }
 
@@ -100,7 +100,7 @@ char* telaListrar_usuario(void) {
     printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                       ///\n");
     printf("///            Informe o registro do usuario: ");
-    scanf("%[0-9]", registro;);
+    scanf("%[0-9]", registro);
     getchar();
     printf("///                                                                       ///\n");
     printf("///                                                                       ///\n");
@@ -113,8 +113,8 @@ char* telaListrar_usuario(void) {
 
 
 char* telaListrar_assessor(void) {
-	char* cpf_asr;
-	cpf_asr = (char*) malloc(17*sizeof(char));
+	char* cpf;
+	cpf = (char*) malloc(17*sizeof(char));
 	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -137,15 +137,15 @@ char* telaListrar_assessor(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
-	return cpf_asr;
+	return cpf;
 }
 
 
 
 char* telaListrar_consulta(void) {
 	char* codConsulta; 
-	codconsulta = (char*) malloc(11*sizeof(char));
-        system("clear||cls");
+	codConsulta = (char*) malloc(11*sizeof(char));
+    system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -166,23 +166,23 @@ char* telaListrar_consulta(void) {
 
 
 
-void relatListrar_usuario( char*registro) {
-	nomeUsr = (char*) malloc(10*sizeof(char));
-	strcpy(nomeUsr,"Arthur");
+void relatListrar_usuario(char* registro) {
+	//nomeUsr = (char*) malloc(10*sizeof(char));
+	//strcpy(nomeUsr,"Arthur");
 	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
+	//printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
    	printf("///           =====================================================       ///\n");
 	printf("///           ||   CPF do Usuario    ||     Nome do Usuario      ||       ///\n");
-        printf("///           =====================================================       ///\n");
+    printf("///           =====================================================       ///\n");
    	printf("///           ||    012.351.497-00   || Artrur Barbosa Castro    ||       ///\n");
-        printf("///           ||    120.153.974-01   || Bryan de Araújo Cardoso  ||       ///\n");
+    printf("///           ||    120.153.974-01   || Bryan de Araújo Cardoso  ||       ///\n");
    	printf("///           ||    274.597.823-02   || Clecio Barbosa Alves     ||       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -195,22 +195,22 @@ void relatListrar_usuario( char*registro) {
 
 
 void relatListrar_assessor( char*cpf_asr) {
-	cpf_asr = (char*) malloc(17*sizeof(char));
-        strcpy(nome_asr,"Arthur");
+	//cpf_asr = (char*) malloc(17*sizeof(char));
+    //strcpy(nome_asr,"Arthur");
 	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
+	//printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
    	printf("///           =====================================================       ///\n");
 	printf("///           ||   CPF do Usuario    ||     Nome do Usuario      ||       ///\n");
-        printf("///           =====================================================       ///\n");
+    printf("///           =====================================================       ///\n");
    	printf("///           ||    012.351.497-00   || Artrur Barbosa Castro    ||       ///\n");
-        printf("///           ||    120.153.974-01   || Bryan de Araújo Cardoso  ||       ///\n");
+    printf("///           ||    120.153.974-01   || Bryan de Araújo Cardoso  ||       ///\n");
    	printf("///           ||    274.597.823-02   || Clecio Barbosa Alves     ||       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -227,7 +227,7 @@ void relatListrar_consulta(char* codConsulta) {
 	
 	
 
-void listar_usuario(void) {
+void Listar_usuario(void) {
     FILE* fp;
     Usuario *usr;
     usr = (Usuario*) malloc(sizeof(Usuario));
@@ -238,9 +238,9 @@ void listar_usuario(void) {
     free(usr);
 	
 	
-void listar_assessor(void) {
+void Listar_assessor(void) {
 	FILE* fp;
-        assessor* asr;
+    Assessor* asr;
 	asr = (Assessor*) malloc(sizeof(Assessor));
 	fp = fopen("assessor.dat", rb);
 	while( fread(usr,sizeof(assessor), 1, fp)){
@@ -250,7 +250,7 @@ void listar_assessor(void) {
 	
 	
 	
-void listar_consulta(void) {
+void Listar_consulta(void) {
 	FILE* fp;
         consulta* codConsulta;
 	codConsulta = (Consulta*) malloc(sizeof(Consulta));
