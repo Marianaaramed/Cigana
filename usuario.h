@@ -30,7 +30,7 @@ Usuario* telaPreencherUsuario(void);
 char* telaPesquisarUsuario(void);
 char* telaAlterarUsuario(void);
 char* telaExcluirUsuario(void);
-
+void telaErroArquivoUsuario(void);
 
 void cadastrarUsuario(void);
 void pesquisarUsuario(void);
