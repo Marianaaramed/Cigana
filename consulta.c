@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "consulta.h"
+#include "usuario.h"
+#include "assessor.h"
 #include "biblioteca.h"
 
 typedef struct consulta Consulta;
@@ -51,7 +54,7 @@ void alterarConsulta(void) {
 	} else {
 		regravarConsulta(csa);
 		csa = telaPreencherConsulta();
-		strcpy(csr->codConsulta, codConsulta);
+		strcpy(csa->codConsulta, codConsulta);
 		regravarConsulta(csa);
 		// Outra opção:
 		// excluirConsulta(codConsulta);
@@ -72,10 +75,10 @@ void excluirConsulta(void) {
 		printf("\n\nConsulta não encontrado!\n\n");
 	} else {
 		csa->status = False;
-		regravarConsulta)(csa);
+		regravarConsulta(csa);
 		free(csa);
 	}
-	free(codConsulta));
+	free(codConsulta);
 }
   
 
@@ -95,7 +98,7 @@ char menuConsulta(void) {
     printf("///                     3. Atualizar Consulta                                     ///\n");
     printf("///                     4. Excluir Consulta                                       ///\n");
     printf("///                     0. Voltar ao menu anterior                                ///\n");
-    primtf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
     printf("///                     Escolha a opção desejada:     ");
     scanf("%c", &op);
     getchar();
@@ -145,19 +148,18 @@ Consulta* telaPreencherConsulta(void) {
     printf("///                  Registro do usuário(apenas números): ");
     scanf("%[0-9]", csa->registro);
     getchar();
-do {
-	printf("///                  Código da Consulta:      ");
+    do {
+        printf("///                  Código da Consulta:      ");
     	scanf("%[A-Z0-9]", csa->codConsulta);
     	getchar();
-} while (!validarcodConsulta(csa->codConsulta);    
+    } while (!validar_codConsulta(csa->codConsulta));
     printf("///                      Hora da Consulta:        ");
-   /// scanf("%[);
     getchar();
     printf("///                      Data da Consulta:(dd/mm/aaaa):     ");     
-    scanf("%[0-9]", data);
+    scanf("%[0-9]", csa->data);
     getchar();
     printf("///                      CPF do Assesssor(apenas números): ");
-    scanf("%[0-9]", cpf);
+    scanf("%[0-9]", csa->cpf);
     getchar();  
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
@@ -169,7 +171,7 @@ do {
 
 
 
-void telaPesquisarConsulta(void) {
+char* telaPesquisarConsulta(void) {
     char* codConsulta;
     codConsulta = (char*) malloc(8*sizeof(char));	
     system("clear||cls");
@@ -193,7 +195,7 @@ void telaPesquisarConsulta(void) {
 
 
 
-void telaAlterarConsulta(void) {
+char* telaAlterarConsulta(void) {
     char* codConsulta;
     codConsulta = (char*) malloc(8*sizeof(char));	
     system("clear||cls");
@@ -212,12 +214,12 @@ void telaAlterarConsulta(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
-    retun codConsulta;
+    return codConsulta;
 }
 
 
 
-void telaExcluirConsulta(void) {
+char* telaExcluirConsulta(void) {
     char* codConsulta;
     codConsulta = (char*) malloc(8*sizeof(char));	
     system("clear||cls");
@@ -253,16 +255,16 @@ void gravarConsulta(Consulta* csa) {
 
 
 
-Consulta* buscarConsulta(char *Consulta) {
+Consulta* buscarConsulta(char *codConsulta) {
     FILE *fp;
-    Consulta* csa;
+    Consulta *csa;
     csa = (Consulta*) malloc(sizeof(Consulta));
     fp = fopen("consulta.dat", "rb");
     if (fp == NULL) {
 	    telaErroArquivoConsulta();
     }
 	while(fread(csa, sizeof(Consulta), 1, fp)) {
-		if (strcmp(csa->codConsulta, codConsulta) == 0) && (csa->status == True)) {
+		if ((strcmp(csa->codConsulta, codConsulta) == 0) && (csa->status == True)) {
 		  fclose(fp);
                   return csa;    
             }
@@ -280,12 +282,12 @@ void exibirConsulta(Consulta* csa) {
     }
     else {
         printf("\n= = = Consulta Cadastrado = = =\n");
-        printf("Registro do Usuario: %s\n", usr->registro);
-	printf("Codigo da Consulta: %s\n", csa->codConsulta);
-	printf("Hora da Consulta: %s\n", csa->hora);
-	printf("Data da Consulta: %s\n", csa->data);
-        printf("CPF do Assessor: %s\n", asr->cpf);
-	printf("Status: %d\n", csa->status);
+        printf("Registro do Usuario: %s\n", csa->registro);
+	    printf("Codigo da Consulta: %s\n", csa->codConsulta);
+	    printf("Hora da Consulta: %s\n", csa->hora);
+	    printf("Data da Consulta: %s\n", csa->data);
+        printf("CPF do Assessor: %s\n", csa->cpf);
+	    printf("Status: %d\n", csa->status);
     }
 	printf("\n\nTecle ENTER para continuar!\n\n");
 	getchar();
@@ -293,7 +295,7 @@ void exibirConsulta(Consulta* csa) {
 
 
 
-void regravarConsulta(Consulta* csa, char* codConsulta) {
+void regravarConsulta(Consulta* csa) {
     int achou;
     FILE* fp;
     Consulta* csaLido;
@@ -314,5 +316,5 @@ void regravarConsulta(Consulta* csa, char* codConsulta) {
                 }
         }
         fclose(fp);
-        free(csaLido)
+        free(csaLido);
 }
