@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "usuario.h"
+#include "assessor.h"
+#include "consulta.h"
 #include "relatorio.h"
 #include "biblioteca.h"
 
@@ -167,15 +170,13 @@ char* telaListrar_consulta(void) {
 
 
 void relatListrar_usuario(char* registro) {
-	//nomeUsr = (char*) malloc(10*sizeof(char));
-	//strcpy(nomeUsr,"Arthur");
 	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	//printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
+	printf("///           = = = = = = = = = =  Usuario: = = = = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
    	printf("///           =====================================================       ///\n");
@@ -194,20 +195,18 @@ void relatListrar_usuario(char* registro) {
 
 
 
-void relatListrar_assessor( char*cpf_asr) {
-	//cpf_asr = (char*) malloc(17*sizeof(char));
-    //strcpy(nome_asr,"Arthur");
+void relatListrar_assessor(char* cpf) {
 	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	//printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
+	printf("///           = = = = = = = = = = Assessor = = = = = = = = =              ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
    	printf("///           =====================================================       ///\n");
-	printf("///           ||   CPF do Usuario    ||     Nome do Usuario      ||       ///\n");
+	printf("///           ||   CPF do Assessor   ||     Nome do Assessor     ||       ///\n");
     printf("///           =====================================================       ///\n");
    	printf("///           ||    012.351.497-00   || Artrur Barbosa Castro    ||       ///\n");
     printf("///           ||    120.153.974-01   || Bryan de Araújo Cardoso  ||       ///\n");
@@ -224,38 +223,43 @@ void relatListrar_assessor( char*cpf_asr) {
 
 void relatListrar_consulta(char* codConsulta) {
 	//tela em desenvolvimento
+}
 	
 	
 
-void Listar_usuario(void) {
+void Listar_usuario(char* registro) {
     FILE* fp;
     Usuario *usr;
     usr = (Usuario*) malloc(sizeof(Usuario));
-    fp = fopen("usuario.dat", rb);
-	while( fread(usr,sizeof(usuario), 1, fp)){
+    fp = fopen("usuario.dat", "rb");
+	while( fread(usr,sizeof(Usuario), 1, fp)){
     }
     fclose(fp);
     free(usr);
+}
 	
 	
 void Listar_assessor(void) {
 	FILE* fp;
     Assessor* asr;
 	asr = (Assessor*) malloc(sizeof(Assessor));
-	fp = fopen("assessor.dat", rb);
-	while( fread(usr,sizeof(assessor), 1, fp)){
+	fp = fopen("assessor.dat", "rb");
+	while( fread(asr,sizeof(Assessor), 1, fp)){
 	}
 	fclose(fp);
-	free(usr);
+	free(asr);
+}
+		
 	
 	
 	
 void Listar_consulta(void) {
 	FILE* fp;
-        consulta* codConsulta;
-	codConsulta = (Consulta*) malloc(sizeof(Consulta));
-	fp = fopen("consulta.dat", rb);
-	while( fread(usr,sizeof(consulta), 1, fp)){
+    Consulta* csa;
+	csa = (Consulta*) malloc(sizeof(Consulta));
+	fp = fopen("consulta.dat", "rb");
+	while( fread(csa,sizeof(Consulta), 1, fp)){
 	}
 	fclose(fp);
-	free(usr);	
+	free(csa);	
+}
