@@ -6,8 +6,7 @@ void limpaTela(void);
 int letra(char);
 int Digito(char);
 int ehBissexto(int);
-int Data(int, int, int);
-int valida_id(char, int);
+int data(int, int, int);
 int caracteres_email(char);
 
 int validar_nome(char*);
