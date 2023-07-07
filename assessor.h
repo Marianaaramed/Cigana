@@ -11,8 +11,7 @@
 
 
 //////
-////// Assisnaturas das funcões Módulo Assessor
-//////
+////// Assisnaturas das funcões Módulo Assessor ////
 
 typedef struct assessor Assessor;
 
