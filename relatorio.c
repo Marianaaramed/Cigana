@@ -11,37 +11,44 @@ void moduloRelatorio(void) {
 		opcao = menuRelatorio();
 		switch(opcao) {
 			case '1': 	Listar_usuario_por_assessor();
+				        	break;
+			case '2': 	Listrar_consulta_por_assessor();
 						break;
-			case '2': 	consultaPorAssssor();
+			case '3':       Listrar_consulta_por_horario();
 						break;
-						} 		
+		} 
 	} while (opcao != '0');
 }
 
 
 void Listar_usuario_por_assessor() {
-	char* cpfAsr;
-	cpfAsr = telaListar_usuario_por_assessor();
-    relatListar_usuario_por_assessor(cpfAsr);
-    free(cpfAsr);
+	char* cpf;
+	cpf = telaListar_usuario_por_assessor();
+	relatListar_usuario_por_assessor(cpf);
+	free(cpf);
 }
 	
 
-void oraculoPorAssssor() {
-	char* cpfasr;
-	cpfasr = telaoraculoPorAssssor();
-    relatoraculoPorAssssor();(cpfasr);
-    free(cpfasr);
+void Listrar_consulta_por_assessor() {
+	char* cpf;
+	cpf = telaListrar_consulta_por_assssor();
+     	relatListrar_consulta_por_assssor(cpf);
+    	free(cpf);
+}
+
+
+void Listrar_consulta_por_horario() {
+	char* horario;
+    	horario = telaListrar_consulta_por_horario();
+    	relatListrar_consulta_por_horario(horario);
+   	 free(horario);
 }
 	
-
-
-
 
 
 char menuRelatorio(void) {
 	char op;
-    system("clear||cls");
+    	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -57,8 +64,8 @@ char menuRelatorio(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///             1. Listar usuarios por Assessor                           ///\n");
-	printf("///             2. Listar oraculo por Assessor                            ///\n");
-	printf("///             3. Listar tempo por consulta                              ///\n");
+	printf("///             2. Listar consulta por Assessor                           ///\n");
+	printf("///             3. Exibir horário da consulta                             ///\n");
 	printf("///             0. Voltar ao menu anterior                                ///\n");
 	printf("///                                                                       ///\n");
 	printf("///             Escolha a opção desejada: ");
@@ -75,8 +82,8 @@ char menuRelatorio(void) {
 
 
 char* telaListar_usuario_por_assessor(void) {
-    char* cpfAsr;
-    cpfAsr = (char*) malloc(12*sizeof(char));
+    char *cpf;
+    cpf = (char*) malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -89,7 +96,7 @@ char* telaListar_usuario_por_assessor(void) {
     printf("/////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                       ///\n");
     printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-    printf("///           = = = = = = = = = =  Usuarios  = = = = = = = = =            ///\n");
+    printf("///           = = = = = Usuarios por Assessor = = = = = = = =             ///\n");
     printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
     printf("///                                                                       ///\n");
     printf("///            Informe o CPF do Assessor: ");
@@ -105,9 +112,9 @@ char* telaListar_usuario_por_assessor(void) {
 
 
 
-char* telaoraculoPorAssssor(void) {
-	char* cpfasr;
-	cpfasr = (char*) malloc(12*sizeof(char));
+char* telaListrar_consulta_por_assessor(void) {
+	char *cpf;
+    	cpf = (char*) malloc(12*sizeof(char));
 	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -119,7 +126,7 @@ char* telaoraculoPorAssssor(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = = =  Oraculo Por Assessores   = = = = =             ///\n");
+	printf("///           = = = = = = Consultas por Assessor  = = = = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Informe o CPF do Assessor (apenas números): ");
@@ -130,34 +137,56 @@ char* telaoraculoPorAssssor(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
-	return cpfasr;
+	return cpf;
 }
 
 
 
+char* telaListrar_consulta_por_horario(void) {
+	char *horario;
+    	horario = (char*) malloc(12*sizeof(char));
+	system("clear||cls");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          = = = = = = = = =  Cigana Virtual   = = = = = = = =          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = = Consultas por horario  = = = = = =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Informe o horário desejado (Ex. 3M1): ");
+	scanf("%[A-Za-z0-9]", horario);
+	getchar();
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	delay(1);
+	return horario;
+}
 
 
 
-
-void relatListar_usuario_por_assessor(char* cpfAsr){
-	 // posteriormente, esta função irá buscar o nome do Consultor no arquivo 
-    	// por enquanto, o nome será preenchido com um valor predefinido
-    nomeAsr = (char*) malloc(10*sizeof(char));
-    strcpy(nomeAsr,"Athur");
+void relatListar_usuario_por_assessor(char* cpf){
 	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = =   Consultor: %21s \n", nomeCsr);
+	printf("///           = = = = = = = = = Usuarios: %12 = = = = = = = =             ///\n", cpf);
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
    	printf("///           =====================================================       ///\n");
 	printf("///           ||   CPF do Usuario    ||     Nome do Usuario      ||       ///\n");
-    printf("///           =====================================================       ///\n");
+        printf("///           =====================================================       ///\n");
    	printf("///           ||    012.351.497-00   || Artrur Barbosa Castro    ||       ///\n");
-    printf("///           ||    120.153.974-01   || Bryan de Araújo Cardoso  ||       ///\n");
+        printf("///           ||    120.153.974-01   || Bryan de Araújo Cardoso  ||       ///\n");
    	printf("///           ||    274.597.823-02   || Clecio Barbosa Alves     ||       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -168,26 +197,23 @@ void relatListar_usuario_por_assessor(char* cpfAsr){
 }
 
 
-void relatOraculoPorAssessor(char* cpfAsr){
-	 // posteriormente, esta função irá buscar o nome do Consultor no arquivo 
-    	// por enquanto, o nome será preenchido com um valor predefinido
-    nomeAsr = (char*) malloc(10*sizeof(char));
-    strcpy(nomeAsr,"Athur");
+
+void relatListrar_consulta_por_assssor(char* cpf){
 	system("clear||cls");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           = = = = =   Consultor: %21s \n", nomeAsr);
+	printf("///           = = = = = = = = = Consulta: %12s = = = = = = =              \n", cpf);
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
    	printf("///           ===============================================             ///\n");
-	printf("///           ||  Cod Oraculo  ||     Nome do Consultor    ||             ///\n");
-    printf("///           ===============================================             ///\n");
-   	printf("///           ||     1357      || Artrur Barbosa Castro    ||             ///\n");
-    printf("///           ||     2468      || Bryan de Araújo Cardoso  ||             ///\n");
-   	printf("///           ||     3579      || Clecio Barbosa Alves     ||             ///\n");
+	printf("///           ||  Cod consulta  ||     Nome do Assessor     ||            ///\n");
+    	printf("///           ===============================================             ///\n");
+   	printf("///           ||      1357      || Artrur Barbosa Castro    ||            ///\n");
+    	printf("///           ||      2468      || Bryan de Araújo Cardoso  ||            ///\n");
+   	printf("///           ||      3579      || Clecio Barbosa Alves     ||            ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -197,6 +223,30 @@ void relatOraculoPorAssessor(char* cpfAsr){
 }
 
 
+
+
+void relatListrar_consulta_por_horario(char* horario){
+	system("clear||cls");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = = = = = = = = = Horário: %11s  = = = = = = =              ///\n", horario);
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+        printf("///           ===============================================             ///\n");
+	printf("///           ||               Cod Consulta                ||             ///\n");
+        printf("///           ===============================================             ///\n");
+	printf("///           ||                   1357                    ||             ///\n");
+    	printf("///           ||                   2468                    ||             ///\n");
+   	printf("///           ||                   3579                    ||             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+   	printf("///Tecle <ENTER> para continuar...///");
+   	getchar();
+}
 
 
 
