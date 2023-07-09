@@ -13,6 +13,18 @@ void telaPesquisarUsuario(void);
 void telaAlterarUsuario(void);
 void telaExcluirUsuario(void);
 
+void telaMenuAssessor(void);
+void telaCadastrarAssessor(void);
+void telaPesquisarAssessor(void);
+void telaAlterarAssessor(void);
+void telaExcluirAssessor(void);
+
+void telaMenuConsulta(void);
+void telaCadastrarConsulta(void);
+void telaAlterarConsulta(void);
+void telaPesquisarConsulta(void);
+void telaExcluirConsulta(void);
+
 
 /////
 //Programa principal
@@ -25,6 +37,19 @@ int main(void) {
     telaPesquisarUsuario();
     telaAlterarUsuario();
     telaExcluirUsuario();
+
+    telaMenuAssessor();
+    telaCadastrarAssessor();
+    telaPesquisarAssessor();
+    telaAlterarAssessor();
+    telaExcluirAssessor();
+
+    telaMenuConsulta();
+    telaCadastrarConsulta();
+    telaAlterarConsulta();
+    telaPesquisarConsulta();
+    telaExcluirConsulta();
+
     return 0;
 }
 
@@ -247,6 +272,270 @@ void telaExcluirUsuario(void) {
     printf("///                  Registro (apenas números): ");
     scanf("%[0-9]", registro);
     getchar(); 
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+char telaMenuAssessor(void) {
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                               ///\n");
+    printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                   = = = = = = = = Menu Assessor = = = = = = = = =             ///\n");
+    printf("///                   = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                      1. Cadastrar Assessor                                    ///\n");
+    printf("///                      2. Pesquisar Assessor                                    ///\n");
+    printf("///                      3. Atualizar cadastro do Assessor                        ///\n");
+    printf("///                      4. Excluir Assessor                                      ///\n");
+    printf("///                      0. Voltar ao menu anterior                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                      Escolha a opção desejada:   ");
+    scanf("%c", &op);
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+
+void telaCadastrarAssessor(void) {
+    char cpf[12]; 
+    char nome[51];
+    char ramo [51];
+    char celular[12];
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                               ///\n");
+    printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                  = = = = = = = = Cadastrar Assessor = = = = = = =             ///\n");
+    printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                  CPF (apenas números):          ");
+    scanf("%[0-9]", cpf);
+    getchar();
+    printf("///                  Nome completo:                 ");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    getchar();
+    printf("///                  Ramo do Assessor:                 ");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ,]", ramo);
+    getchar();
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+
+void telaPesquisarAssessor(void) {
+    char cpf[12];
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                               ///\n");
+    printf("///              = = = = = = = = = = = = = = = = = = = = = = = =                  ///\n");
+    printf("///              = = = = = = = Pesquisar Assessor = = = = = = =                   ///\n");
+    printf("///              = = = = = = = = = = = = = = = = = = = = = = = =                  ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                  Informe o CPF (apenas números):    ");                         
+    scanf("%[0-9]", cpf);
+    getchar();
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+
+void telaAlterarAssessor(void) {
+    char cpf[12];
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                               ///\n");
+    printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
+    printf("///                 = = = = = = = Atualizar Assessor = = = = = = =                ///\n");
+    printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                    Informe o CPF (apenas números):     ");                      
+    scanf("%[0-9]", cpf);
+    getchar();
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+
+void telaExcluirAssessor(void) {
+    char cpf[12];
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                               ///\n");
+    printf("///                = = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
+    printf("///                = = = = = = = Excluir Assessor = = = = = = = =                 ///\n");
+    printf("///                = = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                 Informe o CPF (apenas números):      ");
+    scanf("%[0-9]", cpf);
+    getchar();
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+
+void telaMenuConsulta(void) {
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                               ///\n");
+    printf("///                  = = = = = = = = = = = = = = = = = = = = =                    ///\n");
+    printf("///                  = = = = = = = Menu Consulta = = = = = = =                    ///\n");
+    printf("///                  = = = = = = = = = = = = = = = = = = = = =                    ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                     1. Cadastrar Consulta                                     ///\n");
+    printf("///                     2. Pesquisar Consulta                                     ///\n");
+    printf("///                     3. Atualizar Consulta                                     ///\n");
+    printf("///                     4. Excluir Consulta                                       ///\n");
+    printf("///                     0. Voltar ao menu anterior                                ///\n");
+    primtf("///                                                                               ///\n");
+    printf("///                     Escolha a opção desejada:     ");
+    scanf("%c", &op);
+    getchar();
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle<ENTER> para continuar...\n");
+    getchar();
+    }
+
+
+
+void telaCadastrarConsulta(void) {
+    char registro[12];
+    char codConsulta[8];
+    char horario[8];
+    char data[8];
+    char cpf[12];
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                               ///\n");
+    printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
+    printf("///                  = = = = = = = Cadastrar Consulta = = = = = =                 ///\n");
+    printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                  Registro:      ");
+    scanf("%[0-9]", registro);
+    printf("///                  Código da Consulta:      ");
+    scanf("%[A-Z0-9]", codConsulta);
+    getchar();
+    printf("///                  Duração:       ");
+    scanf("%[0-9]", horario);
+    getchar();
+    printf("///                  Data (apenas números): ");
+    scanf("%[0-9]", data);
+    getchar();
+    printf("///                  CPF do Assesssor (apenas números): ");
+    scanf("%[0-9]", cpf);
+    getchar();
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+
+void telaPesquisarConsulta(void) {
+    char codConsulta[8];
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                               ///\n");
+    printf("///               = = = = = = = = = = = = = = = = = = = = = = =                   ///\n");
+    printf("///               = = = = = = = Pesquisar Consulta = = = = = =                    ///\n");
+    printf("///               = = = = = = = = = = = = = = = = = = = = = = =                   ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                  Código da Consulta:      ");
+    scanf("%[A-Z0-9]", codConsulta); 
+    getchar();
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+
+void telaAlterarConsulta(void) {
+    char codConsulta[8];
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                               ///\n");
+    printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
+    printf("///                  = = = = = = = Alterar Consulta = = = = = = =                 ///\n");
+    printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                    Código da Consulta:      ");
+    scanf("%[A-Z0-9]", codConsulta); 
+    getchar();
+    printf("///                                                                               ///\n");
+    printf("///                                                                               ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+
+void telaExcluirConsulta(void) {
+    char codConsulta[8];
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                               ///\n");
+    printf("///               = = = = = = = = = = = = = = = = = = = = = = =                   ///\n");
+    printf("///               = = = = = = = Excluir Consulta = = = = = = =                    ///\n");
+    printf("///               = = = = = = = = = = = = = = = = = = = = = = =                   ///\n");
+    printf("///                                                                               ///\n");
+    printf("///                  Código da Consulta:      ");
+    scanf("%[A-Z0-9]", codConsulta); 
+    getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
