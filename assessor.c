@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "assessor.h"
 #include "biblioteca.h"
+
 void moduloAssessor(void);
     char opcao;
     do {
@@ -17,7 +18,6 @@ void moduloAssessor(void);
 	    		break;
 	    } 		
     } while (opcao != '0');
-}
 
 
 void cadastrarAssessor(void){
@@ -25,6 +25,8 @@ void cadastrarAssessor(void){
 	// exibe a tela apenas para testes
 	telaCadastrarAssessor();
 }
+
+
 void pesquisarAssessor(void) {
   	// função ainda em desenvolvimento
 	// exibe a tela apenas para testes
@@ -37,6 +39,8 @@ void alterarAssessor(void) {
 	// exibe a tela apenas para testes
 	telaCadastrarAssessor();
 }
+
+
 void excluirAssessor(void) {	
   	// função ainda em desenvolvimento
 	// exibe a tela apenas para testes
@@ -69,6 +73,8 @@ char menuAssessor(void) {
     delay(1);
     return op;
 }
+
+
 void telaCadastrarAssessor(void) {
     char cpf[12]; 
     char nome[51];
@@ -104,6 +110,8 @@ void telaCadastrarAssessor(void) {
     printf("\n");
     delay(1);
 }
+
+
 void telaPesquisarAssessor(void) {
     char cpf[12];
     system("clear||cls");
