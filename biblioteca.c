@@ -1,7 +1,6 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include <conio.h>
 #include <stdio.h>
 
@@ -156,7 +155,7 @@ int validar_email(char* email) {
     }
     // EMAIL valido
     return 1;
-//// AUTOR: https://github.com/quirinof
+}//// AUTOR: https://github.com/quirinof
 
 
 
@@ -256,7 +255,7 @@ int valida_id(char* id, int tam) {
 
     // apenas digitos numericos
     for (i = 0; i < tam; i++) {
-        if (!numero(id[i])) {
+        if (!Digito(id[i])) {
             return 0;
         }
     }
@@ -290,15 +289,23 @@ int validar_codConsulta(char* codConsulta) {
 //////////////////////////////////////////////////////////////////////////////
 /// Programa: Validar hora 
     
-    int validar_hora( int h, m, s) {
-	    if (h >= 0 && h <= 23 && m >= 0 && m <= 59 && s >= 0 && s <= 59)
-	    {
-		return 1;
-	    }
-	    else
-	    {
-		return 0;
-	    }
-	    getch(); /* Pausa */
-	    return 0;
+    int validar_horario( int h, int m, int s) {
+    time_t current_time;
+    struct tm *time_info;
+    
+    // Obtém a hora atual
+    time(&current_time);
+    time_info = localtime(&current_time);
+
+    // Extrai a hora, minuto e segundo atual
+    h = time_info->tm_hour;
+    m = time_info->tm_min;
+    s = time_info->tm_sec;
+
+// Validação da hora
+	    if (h >= 0 && h <= 23 && m >= 0 && m <= 59 && s >= 0 && s <= 59) {
+         return 1; // Hora válida
+    } else {
+        return 0; // Hora inválida
     }
+}		
