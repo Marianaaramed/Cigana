@@ -1,25 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 
 /////
 // Assinatura das funções
-void telaPrincipal(void);
+char telaPrincipal(void);
 void telaSobre(void);
 void telaEquipe(void);
-void telaMenuUsuario(void);
+char telaMenuUsuario(void);
 void telaCadastrarUsuario(void);
 void telaPesquisarUsuario(void);
 void telaAlterarUsuario(void);
 void telaExcluirUsuario(void);
 
-void telaMenuAssessor(void);
+char telaMenuAssessor(void);
 void telaCadastrarAssessor(void);
 void telaPesquisarAssessor(void);
 void telaAlterarAssessor(void);
 void telaExcluirAssessor(void);
 
-void telaMenuConsulta(void);
+char telaMenuConsulta(void);
 void telaCadastrarConsulta(void);
 void telaAlterarConsulta(void);
 void telaPesquisarConsulta(void);
@@ -29,34 +30,32 @@ void telaExcluirConsulta(void);
 /////
 //Programa principal
 int main(void) {
-    telaPrincipal();
-    telaSobre();
-    telaEquipe();
-    telaMenuUsuario();
-    telaCadastrarUsuario();
-    telaPesquisarUsuario();
-    telaAlterarUsuario();
-    telaExcluirUsuario();
-
-    telaMenuAssessor();
-    telaCadastrarAssessor();
-    telaPesquisarAssessor();
-    telaAlterarAssessor();
-    telaExcluirAssessor();
-
-    telaMenuConsulta();
-    telaCadastrarConsulta();
-    telaAlterarConsulta();
-    telaPesquisarConsulta();
-    telaExcluirConsulta();
-
+    char opcao;
+    do {
+        opcao = telaPrincipal();
+        switch (opcao) {
+             case '1':  moduloUsuario();
+                        break;
+            case '2':   moduloAssessor();
+                        break;
+            case '3':   moduloConsulta();
+                        break;
+            case '4':   // Módulo Registro
+                        break;
+            case '5':   // Módulo Relatórios
+                        break;
+            case '6':   telaSobre();
+                        telaEquipe();
+                        break;
+        }
+    } while (opcao != '0');
     return 0;
 }
-
-
+    
+   
 /////
 // Funções
-void telaPrincipal(void) {
+char telaPrincipal(void) {
     char op;
     system("clear||cls");
     printf("\n");
@@ -88,8 +87,8 @@ void telaPrincipal(void) {
     printf("///                                                                                   ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -149,7 +148,27 @@ void telaEquipe(void) {
 }
 
 
-void telaMenuUsuario(void) {
+//////
+/// Funções do Módulo Usuario  
+void moduloUsuario(void) {
+    char opcao;
+    do {
+        opcao = telaMenuUsuario();
+        switch(opcao) {
+            case '1': 	telaCadastrarUsuario ();
+                        break;
+            case '2': 	telaPesquisarUsuario();
+                        break;
+            case '3': 	telaAlterarUsuario();
+                        break;
+            case '4': 	telaExcluirUsuario();
+                        break;
+        } 		
+    } while (opcao != '0');
+}
+
+
+char telaMenuUsuario(void) {
     char op;
     system("clear||cls");
     printf("\n");
@@ -172,8 +191,8 @@ void telaMenuUsuario(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -210,8 +229,8 @@ void telaCadastrarUsuario(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -232,8 +251,8 @@ void telaPesquisarUsuario(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -254,8 +273,8 @@ void telaAlterarUsuario(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -276,8 +295,28 @@ void telaExcluirUsuario(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
+}
+
+
+//////
+/// Funções do Módulo Assessor  
+void moduloAssessor(void) {
+    char opcao;
+    do {
+        opcao = telaMenuAssessor();
+        switch(opcao) {
+            case '1': 	telaCadastrarAssessor();
+                        break;
+            case '2': 	telaPesquisarAssessor();
+                        break;
+            case '3': 	telaAlterarAssessor();
+                        break;
+            case '4': 	telaExcluirAssessor();
+                        break;
+        } 		
+    } while (opcao != '0');
 }
 
 
@@ -303,8 +342,8 @@ char telaMenuAssessor(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -335,8 +374,8 @@ void telaCadastrarAssessor(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -358,8 +397,8 @@ void telaPesquisarAssessor(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -381,8 +420,8 @@ void telaAlterarAssessor(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -404,13 +443,32 @@ void telaExcluirAssessor(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
+//////
+/// Funções do Módulo Consulta 
+void moduloConsulta(void) {
+    char opcao;
+    do {
+        opcao = telaMenuConsulta();
+        switch(opcao) {
+            case '1': 	telaCadastrarConsulta();
+                        break;
+            case '2': 	telaPesquisarConsulta();
+                        break;
+            case '3': 	telaAlterarConsulta();
+                        break;
+            case '4': 	telaExcluirConsulta();
+                        break;
+        } 		
+    } while (opcao != '0');
+}
 
-void telaMenuConsulta(void) {
+
+char telaMenuConsulta(void) {
     char op;
     system("clear||cls");
     printf("\n");
@@ -433,9 +491,9 @@ void telaMenuConsulta(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle<ENTER> para continuar...\n");
-    getchar();
-    }
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
+}
 
 
 
@@ -471,8 +529,8 @@ void telaCadastrarConsulta(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -494,8 +552,8 @@ void telaPesquisarConsulta(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -517,8 +575,8 @@ void telaAlterarConsulta(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
 
 
@@ -540,6 +598,6 @@ void telaExcluirConsulta(void) {
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
 }
