@@ -8,7 +8,6 @@
 // Funções do Módulo Sobre
 
 
-
 void telaSobre(void) {
     system("clear||cls");
     printf("\n");
