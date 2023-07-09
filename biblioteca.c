@@ -308,4 +308,4 @@ int validar_codConsulta(char* codConsulta) {
     } else {
         return 0; // Hora inválida
     }
-}		
+}
