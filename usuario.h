@@ -23,6 +23,7 @@ struct usuario {
     char email[51];
     char nasc[11];
     int status;
+    Usuario *prox;
 };
 
 void moduloUsuario(void);
