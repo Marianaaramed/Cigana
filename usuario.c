@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Usuario.h"
+#include "usuario.h"
 #include "biblioteca.h"
 
-
+typedef struct usuario Usuario;
 void moduloUsuario(void);
     char opcao;
     do {
