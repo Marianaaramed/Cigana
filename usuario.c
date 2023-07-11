@@ -5,7 +5,7 @@
 #include "biblioteca.h"
 
 typedef struct usuario Usuario;
-void moduloUsuario(void);
+void moduloUsuario(void) {
     char opcao;
     do {
         opcao = menuUsuario();
@@ -20,34 +20,69 @@ void moduloUsuario(void);
 	    		        break;
 	    } 		
     } while (opcao != '0');
+}
+
 
 
 void cadastrarUsuario(void){
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaCadastrarUsuario();
+    Usuario *usr;
+    usr = telaPreencherUsuario();    
+    gravarUsuario(usr);     
+    free(usr);
 }
+
 
 
 void pesquisarUsuario(void) {
-  	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaPesquisarUsuario();
+  Usuario* usr;
+  char* registro;	
+  registro = telaPesquisarUsuario();
+  usr = buscarUsuario(registro);
+	    exibirUsuario(usr);
+  free(usr);
+  free(registro);
 }
+
 	
   
 void alterarUsuario(void) {
-  	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaAlterarUsuario();
+  Usuario* usr;
+  char* registro;
+  registro = telaAlterarUsuario();
+  usr = buscarUsuario(registro);
+  if (usr == NULL) {    
+  printf("\n\nUsuario não encontrado!\n\n");
+  } else {
+            regravarUsuario(usr);
+            usr = telaPreencherUsuario();
+            strcpy(usr->registro, registro);
+            regravarUsuario(usr);
+            // Outra opção:
+            // excluirUsuario(registro);
+            // gravarUsuario(usr);
+  }
+  free(registro);
 }
+
 
 
 void excluirUsuario(void) {	
-  	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	telaExcluirUsuario();
-}
+   Usuario* usr;
+   char *registro;
+  
+   registro = telaExcluirUsuario();
+   usr = (Usuario*) malloc(sizeof(Usuario));
+   usr = buscarUsuario(registro);
+   if (usr == NULL) {
+    printf("\n\nUsuario não encontrado!\n\n");
+    } else {
+		usr->status = False;
+		regravarUsuario(usr);
+		free(usr);
+	}
+	free(registro);
+} 
+
 
 
 char menuUsuario(void) {
@@ -72,17 +107,38 @@ char menuUsuario(void) {
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
     delay(1);
     return op;
 }
 
 
-void telaCadastrarUsuario(void) {
-    char registro[12];
-    char cpf[12];
-    char nome[51];
-    char email[51];
-    char nasc[11];
+
+void telaErroArquivoUsuario(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                       ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = = = = = = =  Ops! Ocorreu em erro = = = = = =             ///\n");
+    printf("///           = = =  Não foi possível acessar o arquivo = = =             ///\n");
+    printf("///           = = = com informações sobre o Usuário = = = = =             ///\n");
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///           = =  Pedimos desculpas pelos inconvenientes = =             ///\n");	
+    printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+    printf("///                                                                       ///\n");
+    printf("/////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+    exit(1);
+}
+
+
+
+Usuario* telaPreencherUsuario(void) {    
+    Usuario* usr;
+    usr = (Usuario*) malloc(sizeof(Usuario));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
@@ -91,49 +147,46 @@ void telaCadastrarUsuario(void) {
     printf("///                = = = = = = = = Cadastrar Usuário  = = = = = = = =             ///\n");
     printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
     printf("///                                                                               ///\n");
-do {
     printf("///                  Registro (apenas números): ");
-    scanf("%[0-9]", registro);
-    getchar();
-} while (!validarRegistro(registro));
-do {
+    scanf("%[0-9]", usr->registro);
+    getchar();    
     printf("///                  CPF (apenas números): ");
-    scanf("%[0-9]", cpf);
+    scanf("%[0-9]", usr->cpf);
     getchar();
-} while (!validarCPF(cpf));
-do {
     printf("///                  Nome completo: ");
-    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", usr->nome);
     getchar();
-} while (!validarNome(nome));
-do {
     printf("///                  E-mail: ");
-    scanf("%[A-Za-z0-9@._]", email);
+    scanf("%[A-Za-z0-9@._]", usr->email);
     getchar();
-} while (!validarEmail(email));
-do {
-    printf("///                  Data de Nascimento (dd/mm/aaaa): ");  
-    scanf("%[0-9]", nasc);
-    getchar();
-} while (!validarNasc(nasc));
+    do {
+        printf("///                  Data de Nascimento (dd/mm/aaaa): ");  
+        scanf("%[0-9]", usr->nasc);
+        getchar();
+    } while (!validar_data(usr->nasc));    
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
     delay(1);
+    return usr;
 }
 
 
-void telaPesquisarUsuario(void) {
-    char registro[12];
+
+char* telaPesquisarUsuario(void) {
+    char* registro;
+    registro = (char*) malloc(12*sizeof(char));
+	
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
-    printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
-    printf("///                 = = = = = = = Pesquisar Usuário = = = = = = = =               ///\n");
-    printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
+    printf("///               = = = = = = = = = = = = = = = = = = = = = = = =                 ///\n");
+    printf("///             = = = = = = = = Pesquisar Usuário  = = = = = = = =                ///\n");
+    printf("///               = = = = = = = = = = = = = = = = = = = = = = = =                 ///\n");
     printf("///                                                                               ///\n");
-    printf("///                  Registro (apenas números): ");
+    printf("///                  Informe o registro (apenas números): ");
     scanf("%[0-9]", registro);
     getchar();
     printf("///                                                                               ///\n");
@@ -141,45 +194,132 @@ void telaPesquisarUsuario(void) {
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return registro;
 }
  
-void telaAlterarUsuario(void) {
-    char registro[12];
+
+
+char* telaAlterarUsuario(void) {
+    char* registro;
+
+    registro = (char*) malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                  = = = = = = = Alterar Usuário = = = = = = = = =              ///\n");
+    printf("///                = = = = = = = = Alterar Usuário  = = = = = = = = =             ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                               ///\n");
-    printf("///                  Registro (apenas números): ");
+    printf("///                   Informe o registro (apenas números): ");
     scanf("%[0-9]", registro);
     getchar();
     printf("///                                                                               ///\n");
-    printf("///                                                                               ///\n");
+    printf("///                                                                                ///n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
+    return registro;
 }
 
 
-void telaExcluirUsuario(void) {
-    char registro[12];
+
+char* telaExcluirUsuario(void) {
+    char* registro;
+
+    registro = (char*) malloc(12*sizeof(char));
     system("clear||cls");
     printf("\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                               ///\n");
-    printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
-    printf("///                 = = = = = = = Excluir Usuário = = = = = = = = =               ///\n");
-    printf("///                 = = = = = = = = = = = = = = = = = = = = = = = =               ///\n");
+    printf("///                = = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
+    printf("///              = = = = = = = = Excluir Usuário  = = = = = = = = =               ///\n");
+    printf("///               = = = = = = = = = = = = = = = = = = = = = = = =                 ///\n");
     printf("///                                                                               ///\n");
-    printf("///                  Registro (apenas números): ");
+    printf("///               Informe o registro (apenas números): ");
     scanf("%[0-9]", registro);
     getchar();
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    delay(1);
+    delay(1); 
+    return registro;
+}
+
+
+
+void gravarUsuario(Usuario* usr) {
+    FILE* fp;
+
+    fp = fopen("usuarios.dat", "ab");
+    if (fp == NULL) {
+        telaErroArquivoUsuario();
+    }
+    fwrite(usr, sizeof(Usuario), 1, fp);
+    fclose(fp);
+}
+
+
+
+Usuario* buscarUsuario(char* registro) {
+    FILE* fp;
+    Usuario* usr;
+
+    usr = (Usuario*) malloc(sizeof(Usuario));
+    fp = fopen("usuarios.dat", "rb");
+    if (fp == NULL) {
+        telaErroArquivoUsuario();
+    }
+    while(fread(usr, sizeof(Usuario), 1, fp)) {
+        if ((strcmp(usr->registro, registro) == 0) && (usr->status == True)) {
+            fclose(fp);
+            return usr;    
+        }
+    }
+    fclose(fp);
+    return NULL;
+}
+
+
+
+void exibirUsuario(Usuario* usr) {
+    if (usr == NULL) {
+        printf("\n= = = Usuario Inexistente = = =\n");
+    }
+    else {
+        printf("\n= = = Usuario Cadastrado = = =\n");
+        printf("Registro do Usuario: %s\n", usr->registro);
+        printf("CPF do Usuario: %s\n", usr->cpf);
+        printf("Nome do Usuario: %s\n", usr->nome);        
+        printf("E-mail do Usuario: %s\n", usr->email);
+        printf("Data de Nasc: %s\n", usr->nasc);
+        printf("Status: %d\n", usr->status);
+    }
+    printf("\n\nTecle ENTER para continuar!\n\n");
+    getchar();
+}  
+
+
+
+void regravarUsuario(Usuario* usr) {
+    int achou;
+    FILE* fp;
+    Usuario* usrLido;
+
+    usrLido = (Usuario*) malloc(sizeof(Usuario));
+    fp = fopen("usuarios.dat", "r+b");
+    if (fp == NULL) {
+            telaErroArquivoUsuario();
+    }
+    achou = False;
+    while(fread(usrLido, sizeof(Usuario), 1, fp) && !achou) { 
+          if (strcmp(usrLido->registro, usr->registro) == 0) {
+                    achou = True;
+                    fseek(fp, -1*sizeof(Usuario), SEEK_CUR);
+            fwrite(usr, sizeof(Usuario), 1, fp);
+             }
+    }
+    fclose(fp);
+    free(usrLido);   
 }
