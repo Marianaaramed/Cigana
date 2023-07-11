@@ -3,7 +3,9 @@
 #include "consulta.h"
 #include "biblioteca.h"
 
-void moduloConsulta(void);
+
+typedef struct consulta Consulta;
+void moduloConsulta(void){
      char opcao;
      do {
         opcao = menuConsulta();
@@ -34,12 +36,12 @@ void pesquisarConsulta(void) {
 	telaPesquisarConsulta();
 }
 
-
+    
 void alterarConsulta(void) {
   // função ainda em desenvolvimento
 	// exibe a tela apenas para testes
 	telaAlterarConsulta();
-}    
+} 
 
 
 void excluirConsulta(void) {
@@ -48,8 +50,7 @@ void excluirConsulta(void) {
 	telaExcluirConsulta();
 }
 
-
-
+    
 char menuConsulta(void) {
     char op;
     system("clear||cls");
@@ -76,9 +77,9 @@ char menuConsulta(void) {
     delay(1);
   return op;
     }
-
-
-
+    
+    
+    
 void telaCadastrarConsulta(void) {
     char registro[12];
     char codConsulta[8];
@@ -93,27 +94,27 @@ void telaCadastrarConsulta(void) {
     printf("///                  = = = = = = = Cadastrar Consulta = = = = = =                 ///\n");
     printf("///                  = = = = = = = = = = = = = = = = = = = = = = =                ///\n");
     printf("///                                                                               ///\n");
-    printf("///                  Registro:      ");
+    printf("///                  Registro do usuário(apenas números): ");
     scanf("%[0-9]", registro);
+    getchar();
     printf("///                  Código da Consulta:      ");
     scanf("%[A-Z0-9]", codConsulta);
     getchar();
     printf("///                  Duração:       ");
     scanf("%[0-9]", horario);
     getchar();
-    printf("///                  Data (apenas números): ");
+    printf("///                  Data da Consulta:(dd/mm/aaaa):     ");     
     scanf("%[0-9]", data);
     getchar();
     printf("///                  CPF do Assesssor (apenas números): ");
     scanf("%[0-9]", cpf);
-    getchar();
+    getchar();  
     printf("///                                                                               ///\n");
     printf("///                                                                               ///\n");
     printf("/////////////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     delay(1);
 }
-
 
 
 void telaPesquisarConsulta(void) {
@@ -137,7 +138,6 @@ void telaPesquisarConsulta(void) {
 }
 
 
-
 void telaAlterarConsulta(void) {
     char codConsulta[8];
     system("clear||cls");
@@ -157,7 +157,6 @@ void telaAlterarConsulta(void) {
     printf("\n");
    delay(1);
 }
-
 
 
 void telaExcluirConsulta(void) {
