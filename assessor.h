@@ -15,26 +15,21 @@
 
 typedef struct assessor Assessor;
 
-struct assessor{
+struct assessor {
     char cpf[12]; 
     char nome[51];
-    char ramo[51];
+    char ramo [51];
     int status;
 };
 
 void moduloAssessor(void);
 char menuAssessor(void);
-Assessor* telaPreencherAssessor(void);
-char* telaPesquisarAssessor(void);
-char* telaAlterarAssessor(void);
-char* telaExcluirAssessor(void);
-
+void telaCadastrarAssessor(void);
+void telaPesquisarAssessor(void);
+void telaAlterarAssessor(void);
+void telaExcluirAssessor(void);
 void cadastrarAssessor(void);
 void pesquisarAssessor(void);
 void alterarAssessor(void);
 void excluirAssessor(void);
-void gravarAssessor(Assessor*);
-
-Assessor* buscarAssessor(char*);
-void exibirAssessor(Assessor*);
 void regravarAssessor(Assessor*);
