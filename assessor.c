@@ -3,6 +3,8 @@
 #include "assessor.h"
 #include "biblioteca.h"
 
+
+typedef struct assessor Assessor;
 void moduloAssessor(void);
     char opcao;
     do {
